@@ -3,10 +3,10 @@ import Context from "./Context";
 
 const ContextProvider = ({ children }) => {
   const [swot, setSwot] = useState({
-    strength: ["shubham jain"],
-    weakness: ["shubham jain", "hjhjdjdhj"],
-    opportunity: ["shubham jain", "hjhjdjdhj"],
-    threat: ["shubham jain", "hjhjdjdhj"],
+    strength: ["strength"],
+    weakness: ["weakness"],
+    opportunity: ["opportunity"],
+    threat: ["threat"],
   });
 
   return (

@@ -8,9 +8,9 @@ const SWOTComponent = () => {
   return (
     <div className="SwotComponent">
       <EditableList items={swot.strength} name={"strength"} />
-      <EditableList items={swot.weakness} />
-      <EditableList items={swot.opportunity} />
-      <EditableList items={swot.threat} />
+      <EditableList items={swot.weakness} name={"weakness"} />
+      <EditableList items={swot.opportunity} name={"opportunity"} />
+      <EditableList items={swot.threat} name={"threat"} />
     </div>
   );
 };
