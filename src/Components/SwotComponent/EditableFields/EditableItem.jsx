@@ -3,27 +3,26 @@ import "./Edit.css";
 
 const EditableItem = ({ item, onItemChange }) => {
   const [isEditing, setEditing] = useState(false);
-  const [text, setText] = useState(item);
+  const [updateText, setUpdateText] = useState(item);
 
+  //Toogling btw inputbox and list item / updating the swot in parent component
   const handleBlur = () => {
     setEditing(false);
-    onItemChange(text);
-  };
-
-  const handleChange = (event) => {
-    setText(event.target.value);
+    onItemChange(updateText);
   };
 
   return isEditing ? (
     <input
       type="text"
-      value={text}
+      value={updateText}
       onBlur={handleBlur}
-      onChange={handleChange}
+      onChange={(event) => {
+        setUpdateText(event.target.value);
+      }}
       autoFocus
     />
   ) : (
-    <li onDoubleClick={() => setEditing(true)}>{text}</li>
+    <li onDoubleClick={() => setEditing(true)}>{updateText}</li>
   );
 };
 

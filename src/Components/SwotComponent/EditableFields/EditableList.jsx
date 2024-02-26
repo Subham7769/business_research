@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import EditableItem from "./EditableItem";
 import Context from "../../../Context/Context";
 import "./Edit.css";
@@ -7,109 +7,42 @@ import ArrowForwardOutlinedIcon from "@mui/icons-material/ArrowForwardOutlined";
 
 const EditableList = ({ items, name }) => {
   const { swot, setSwot } = useContext(Context);
-  const [listItems, setListItems] = useState(items);
   const [inputValue, setInputValue] = useState("");
 
-  useEffect(() => {
-    console.log("swot has been updated", swot);
-    switch (name) {
-      case "strength":
-        setListItems(swot.strength);
-        break;
-      case "weakness":
-        setListItems(swot.weakness);
-        break;
-      case "opportunity":
-        setListItems(swot.opportunity);
-        break;
-      case "threat":
-        setListItems(swot.threat);
-        break;
-      default:
-        console.log("updated List Items ", listItems);
-        break;
-    }
-  }, [swot]);
+  const handleItemChange = (itemToDelete, updateText) => {
+    let updatedList;
 
-  const handleItemChange = (index, updateText) => {
-    let newSwot = { ...swot };
-
-    //check if user make field/updateText "empty" then update "swot" object & listItems
+    // Deleting list item
     if (updateText === "") {
-      switch (name) {
-        case "strength":
-          newSwot.strength = newSwot.strength.filter((_, i) => i !== index);
-          break;
-        case "weakness":
-          newSwot.weakness = newSwot.weakness.filter((_, i) => i !== index);
-          break;
-        case "opportunity":
-          newSwot.opportunity = newSwot.opportunity.filter(
-            (_, i) => i !== index,
-          );
-          break;
-        case "threat":
-          newSwot.threat = newSwot.threat.filter((_, i) => i !== index);
-          break;
-
-        default:
-          console.log("Not updated");
-          break;
+      if (["strength", "weakness", "opportunity", "threat"].includes(name)) {
+        const index = swot[name].findIndex(
+          (arrItem) => arrItem === itemToDelete,
+        );
+        if (index !== -1) {
+          updatedList = swot[name].filter((_, i) => i !== index);
+        }
       }
     } else {
-      // updateItems[index] = updateText;
-      switch (name) {
-        case "strength":
-          newSwot.strength[index] = updateText;
-          break;
-        case "weakness":
-          newSwot.weakness[index] = updateText;
-          break;
-        case "opportunity":
-          newSwot.opportunity[index] = updateText;
-          break;
-        case "threat":
-          newSwot.threat[index] = updateText;
-          break;
-
-        default:
-          console.log("Not updated");
-          break;
+      // Updating existing list item
+      const index = swot[name].findIndex((arrItem) => arrItem === itemToDelete);
+      if (index !== -1) {
+        swot[name][index] = updateText;
       }
     }
-    setSwot(newSwot);
-    // setListItems(updateItems);
+
+    // Update state using the callback function
+    setSwot((prevSwot) => ({ ...prevSwot, [name]: updatedList }));
   };
 
   const addNewItem = (e) => {
-    if (e.key === "Enter" || e === "onClick") {
-      console.log("addNewItem function called");
-      let newSwot = { ...swot };
-      switch (name) {
-        case "strength":
-          newSwot.strength = [...newSwot.strength, inputValue];
-          setSwot(newSwot);
-          setInputValue("");
-          break;
-        case "weakness":
-          newSwot.weakness = [...newSwot.weakness, inputValue];
-          setSwot(newSwot);
-          setInputValue("");
-          break;
-        case "opportunity":
-          newSwot.opportunity = [...newSwot.opportunity, inputValue];
-          setSwot(newSwot);
-          setInputValue("");
-          break;
-        case "threat":
-          newSwot.threat = [...newSwot.threat, inputValue];
-          setSwot(newSwot);
-          setInputValue("");
-          break;
-
-        default:
-          console.log("error");
-          break;
+    if (inputValue !== "") {
+      if (e.key === "Enter" || e === "onClick") {
+        let newSwot = { ...swot };
+        if (["strength", "weakness", "opportunity", "threat"].includes(name)) {
+          newSwot[name] = [...newSwot[name], inputValue];
+        }
+        setSwot(newSwot);
+        setInputValue("");
       }
     }
   };
@@ -118,11 +51,11 @@ const EditableList = ({ items, name }) => {
     <div className="editable_list_container">
       <div className="editable_list">
         <ol>
-          {listItems.map((item, index) => (
+          {items.map((item, index) => (
             <EditableItem
-              key={index}
+              key={`${item}-${index}`} // Ensure unique key based on `item.id` or a combination
               item={item}
-              onItemChange={(updateText) => handleItemChange(index, updateText)}
+              onItemChange={(updateText) => handleItemChange(item, updateText)}
             />
           ))}
         </ol>
@@ -137,11 +70,7 @@ const EditableList = ({ items, name }) => {
           onKeyDown={addNewItem}
         />
         <IconButton>
-          <ArrowForwardOutlinedIcon
-            onClick={() => {
-              addNewItem("onClick");
-            }}
-          />
+          <ArrowForwardOutlinedIcon onClick={() => addNewItem("onClick")} />
         </IconButton>
       </div>
     </div>

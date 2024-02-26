@@ -7,7 +7,7 @@ const Sidebar = () => {
     <div className="sidebar">
       <nav>
         <NavLink to="/swot">
-          <BasicButtons name={"View 1"} id={1} />
+          <BasicButtons name={"Swot"} id={1} />
         </NavLink>
         <NavLink to="/view2">
           <BasicButtons name={"View 2"} id={2} />
