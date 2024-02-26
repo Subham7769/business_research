@@ -5,7 +5,7 @@ import "./Edit.css";
 import IconButton from "../../Common/Button/IconButton";
 import ArrowForwardOutlinedIcon from "@mui/icons-material/ArrowForwardOutlined";
 
-const EditableList = ({ items, name }) => {
+const EditableList = ({ items, name, color }) => {
   const { swot, setSwot } = useContext(Context);
   const [inputValue, setInputValue] = useState("");
 
@@ -49,6 +49,9 @@ const EditableList = ({ items, name }) => {
 
   return (
     <div className="editable_list_container">
+      <div className="editable_list_header" style={{backgroundColor:{color}}}>
+          <h5>{name}</h5>
+      </div>
       <div className="editable_list">
         <ol>
           {items.map((item, index) => (
