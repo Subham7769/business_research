@@ -3,7 +3,7 @@ import EditableItem from "./EditableItem";
 import Context from "../../../Context/Context";
 import "./Edit.css";
 import IconButton from "../../Common/Button/IconButton";
-import ArrowForwardOutlinedIcon from "@mui/icons-material/ArrowForwardOutlined";
+import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 
 const EditableList = ({ items, name, color }) => {
   const { swot, setSwot } = useContext(Context);
@@ -48,8 +48,8 @@ const EditableList = ({ items, name, color }) => {
   };
 
   return (
-    <div className="editable_list_container">
-      <div className="editable_list_header" style={{backgroundColor:{color}}}>
+    <div className="editable_list_container" style={{borderColor:color}}>
+      <div className="editable_list_header" style={{backgroundColor:color}}>
           <h5>{name}</h5>
       </div>
       <div className="editable_list">
@@ -73,7 +73,7 @@ const EditableList = ({ items, name, color }) => {
           onKeyDown={addNewItem}
         />
         <IconButton>
-          <ArrowForwardOutlinedIcon onClick={() => addNewItem("onClick")} />
+          <AddOutlinedIcon onClick={() => addNewItem("onClick")} style={{color:color}}/>
         </IconButton>
       </div>
     </div>

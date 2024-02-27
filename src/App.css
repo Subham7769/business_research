@@ -12,6 +12,10 @@
   --background: rgb(255, 255, 255);
   --text: rgb(42, 42, 42);
   --textSecondary: rgb(107, 107, 107);
+  --red:rgb(254, 94, 94);
+  --green:rgb(102, 227, 76);
+  --yellow:rgb(249, 228, 38);
+  --blue:rgb(111, 183, 214);
 }
 .App {
   display: flex;
