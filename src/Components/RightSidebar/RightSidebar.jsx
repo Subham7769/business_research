@@ -19,7 +19,8 @@ const RightSidebar = () => {
       <TextField id="outlined-basic" label="Product HS Code" variant="outlined" />
       <BasicButtons name={"Add Product"} variant={"contained"}/>
     </Box>
-      <EntityListing/>
+      <EntityListing name={"Products"}/>
+      <EntityListing name={"Variety"}/>
     </div>
   );
 };
