@@ -1,13 +1,27 @@
-import { NavLink } from "react-router-dom";
 import "./RightSidebar.css";
-import BasicButtons from "../Common/Button/Button";
+import BasicButtons from "../Common/Button/BasicButtons";
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import EntityListing from "../SwotComponent/EntityListing/EntityListing";
 
-const Sidebar = () => {
+const RightSidebar = () => {
   return (
     <div className="sidebar">
-      <input type="text" />
+      <Box
+      component="form"
+      sx={{
+        '& > :not(style)': { m: 0.5, width: '98%' },
+      }}
+      noValidate
+      autoComplete="off"
+    >
+      <TextField id="outlined-basic" label="Product Name" variant="outlined" />
+      <TextField id="outlined-basic" label="Product HS Code" variant="outlined" />
+      <BasicButtons name={"Add Product"} variant={"contained"}/>
+    </Box>
+      <EntityListing/>
     </div>
   );
 };
 
-export default Sidebar;
+export default RightSidebar;

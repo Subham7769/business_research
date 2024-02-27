@@ -2,31 +2,32 @@ import { useContext } from "react";
 import EditableList from "./EditableFields/EditableList";
 import Context from "../../Context/Context";
 import "./SWOTComponent.css";
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
+import FormGroup from "@mui/material/FormGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
 
 const SWOTComponent = () => {
   const { swot } = useContext(Context);
   return (
     <div className="Swot">
       <div className="SwotReason">
-        <div className="selection">
-          <input type="checkbox" name="Availability" id="Availability" />
-          <p>Availability</p>
-        </div>
-        <div className="selection">
-          <input type="checkbox" name="Interest" id="Interest" />
-          <p>Interest</p>
-        </div>
-        <div className="selection">
-          <input type="checkbox" name="Demand" id="Demand" />
-          <p>Demand</p>
-        </div>
-        <div className="selection">
-          <input type="checkbox" name="Knowledge" id="Knowledge" />
-          <p>Knowledge</p>
-        </div>
+        <FormGroup className="SwotReason">
+          <div className="selection">
+            <FormControlLabel
+              control={<Checkbox />}
+              label="Availability"
+            />
+          </div>
+          <div className="selection">
+            <FormControlLabel control={<Checkbox />} label="Interest" />
+          </div>
+          <div className="selection">
+            <FormControlLabel control={<Checkbox />} label="Demand" />
+          </div>
+          <div className="selection">
+            <FormControlLabel control={<Checkbox />} label="Knowledge" />
+          </div>
+        </FormGroup>
       </div>
       <div className="SwotComponent">
         <div className="labelTiles"></div>
