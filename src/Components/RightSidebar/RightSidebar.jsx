@@ -3,11 +3,15 @@ import BasicButtons from "../Common/Button/BasicButtons";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import EntityListing from "../SwotComponent/EntityListing/EntityListing";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import Context from "../../Context/Context";
 
 const RightSidebar = () => {
-  const [name, setName] = useState("");
-  const [code, setCode] = useState("");
+  const { mainObj, CreateNewProduct } = useContext(Context);
+  const [productName, setProductName] = useState("");
+  const [hsCode, setHsCode] = useState("");
+  const [selectionReason, setSelectionReason] = useState([]);
+
   return (
     <div className="sidebar">
       <Box
@@ -22,18 +26,18 @@ const RightSidebar = () => {
           id="outlined-basic"
           label="Product Name"
           variant="outlined"
-          value={name}
+          value={productName}
           onChange={(e) => {
-            setName(e.target.value);
+            setProductName(e.target.value);
           }}
         />
         <TextField
           id="outlined-basic"
           label="Product HS Code"
           variant="outlined"
-          value={code}
+          value={hsCode}
           onChange={(e) => {
-            setCode(e.target.value);
+            setHsCode(e.target.value);
           }}
         />
         <BasicButtons
@@ -45,7 +49,7 @@ const RightSidebar = () => {
         />
       </Box>
       <EntityListing name={"Products"} />
-      <EntityListing name={"Variety"} />
+      {/* <EntityListing name={"Variety"} /> */}
     </div>
   );
 };

@@ -8,13 +8,20 @@ import Checkbox from "@mui/material/Checkbox";
 
 const SWOTComponent = () => {
   const { swot } = useContext(Context);
+  const [selectionReason, setSelectionReason] = useState([
+    false,
+    false,
+    false,
+    false,
+  ]);
+
   return (
     <div className="Swot">
       <div className="SwotReason">
         <FormGroup className="SwotReason">
           <div className="selection">
             <FormControlLabel
-              control={<Checkbox />}
+              control={<Checkbox checked />}
               label="Availability"
             />
           </div>
