@@ -2,40 +2,14 @@ import { useContext } from "react";
 import EditableList from "./EditableFields/EditableList";
 import Context from "../../Context/Context";
 import "./SWOTComponent.css";
-import FormGroup from "@mui/material/FormGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
+import SwotReasonSelection from "../SwotComponent/SwotReasonSelection/SwotReasonSelection";
 
 const SWOTComponent = () => {
-  const { swot } = useContext(Context);
-  const [selectionReason, setSelectionReason] = useState([
-    false,
-    false,
-    false,
-    false,
-  ]);
+  const { swot } = useContext(Context); //using fro prev swot
 
   return (
     <div className="Swot">
-      <div className="SwotReason">
-        <FormGroup className="SwotReason">
-          <div className="selection">
-            <FormControlLabel
-              control={<Checkbox checked />}
-              label="Availability"
-            />
-          </div>
-          <div className="selection">
-            <FormControlLabel control={<Checkbox />} label="Interest" />
-          </div>
-          <div className="selection">
-            <FormControlLabel control={<Checkbox />} label="Demand" />
-          </div>
-          <div className="selection">
-            <FormControlLabel control={<Checkbox />} label="Knowledge" />
-          </div>
-        </FormGroup>
-      </div>
+      <SwotReasonSelection />
       <div className="SwotComponent">
         <div className="labelTiles"></div>
         <div className="labelTiles" style={{ backgroundColor: "var(--green)" }}>
