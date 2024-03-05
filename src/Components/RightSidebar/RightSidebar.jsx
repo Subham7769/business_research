@@ -10,7 +10,6 @@ const RightSidebar = () => {
   const { mainObj, CreateNewProduct } = useContext(Context);
   const [productName, setProductName] = useState("");
   const [hsCode, setHsCode] = useState("");
-  const [selectionReason, setSelectionReason] = useState([]);
 
   return (
     <div className="sidebar">
@@ -45,6 +44,7 @@ const RightSidebar = () => {
           variant={"contained"}
           onClick={() => {
             console.log("clicked");
+            CreateNewProduct(productName,hsCode)
           }}
         />
       </Box>

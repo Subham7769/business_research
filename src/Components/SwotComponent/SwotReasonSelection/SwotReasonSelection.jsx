@@ -4,65 +4,40 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import "./SwotReasonSelection.css";
 const SwotReasonSelection = () => {
+  
   const [selectionReason, setSelectionReason] = useState([
-    false,
-    false,
-    false,
-    false,
+    { status: false, name: "Availability" },
+    { status: false, name: "Interest" },
+    { status: false, name: "Demand" },
+    { status: false, name: "Knowledge" },
   ]);
 
   const changeReason = (index) => {
     const newSelectionReason = [...selectionReason];
-    newSelectionReason[index] = !newSelectionReason[index];
+    newSelectionReason[index] = {
+      ...newSelectionReason[index],
+      status: !newSelectionReason[index].status,
+    };
     setSelectionReason(newSelectionReason);
   };
   return (
     <div className="SwotReason">
       <FormGroup className="SwotReason">
-        <div className="selection">
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={selectionReason[0]}
-                onChange={() => changeReason(0)}
+        {selectionReason.map((item, index) => {
+          return (
+            <div className="selection" key={item.name + index}>
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    checked={item.status}
+                    onChange={() => changeReason(index)}
+                  />
+                }
+                label={item.name}
               />
-            }
-            label="Availability"
-          />
-        </div>
-        <div className="selection">
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={selectionReason[1]}
-                onChange={() => changeReason(1)}
-              />
-            }
-            label="Interest"
-          />
-        </div>
-        <div className="selection">
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={selectionReason[2]}
-                onChange={() => changeReason(2)}
-              />
-            }
-            label="Demand"
-          />
-        </div>
-        <div className="selection">
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={selectionReason[3]}
-                onChange={() => changeReason(3)}
-              />
-            }
-            label="Knowledge"
-          />
-        </div>
+            </div>
+          );
+        })}
       </FormGroup>
     </div>
   );

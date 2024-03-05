@@ -6,14 +6,14 @@ const ContextProvider = ({ children }) => {
     products: [],
   });
 
-  function CreateNewProduct(productName, hsCode, selectionReason) {
+  function CreateNewProduct(productName, hsCode) {
     var id =
       Math.floor(Math.random() * (9999999999 - 1000000000 + 1)) + 1000000000;
     var obj = {
       productId: id,
       productName: productName,
       hsCode: hsCode,
-      selectionReason: selectionReason,
+      selectionReason: "",
       swot: {
         strength: ["strength"],
         weakness: ["weakness"],

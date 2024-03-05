@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import "./Main.css";
 // import EditableList from "../SwotComponent/EditableFields/EditableList";
-import SWOTComponent from "../SwotComponent/SWOTComponent";
+import SWOTComponent from "../SwotComponent/SWOTComponent/SWOTComponent";
 
 const Main = () => {
   return (
