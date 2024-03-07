@@ -5,7 +5,13 @@ import "./SWOTComponent.css";
 import SwotReasonSelection from "../SwotReasonSelection/SwotReasonSelection";
 
 const SWOTComponent = () => {
-  const { swot } = useContext(Context); //using fro prev swot
+  const { swot } = useContext(Context); //using from prev swot
+  // const [swot, setSwot] = useState({
+  //   strength: ["strength"],
+  //   weakness: ["weakness"],
+  //   opportunity: ["opportunity"],
+  //   threat: ["threat"],
+  // });
 
   return (
     <div className="Swot">

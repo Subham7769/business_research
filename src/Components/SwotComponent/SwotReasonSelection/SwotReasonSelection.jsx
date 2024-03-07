@@ -1,25 +1,14 @@
-import { useState } from "react";
+import React from "react";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import "./SwotReasonSelection.css";
-const SwotReasonSelection = () => {
-  
-  const [selectionReason, setSelectionReason] = useState([
-    { status: false, name: "Availability" },
-    { status: false, name: "Interest" },
-    { status: false, name: "Demand" },
-    { status: false, name: "Knowledge" },
-  ]);
+import { useDispatch, useSelector } from "react-redux";
+import { changeReason } from "../../../Redux/Slices/SelectionReasonSlice";
 
-  const changeReason = (index) => {
-    const newSelectionReason = [...selectionReason];
-    newSelectionReason[index] = {
-      ...newSelectionReason[index],
-      status: !newSelectionReason[index].status,
-    };
-    setSelectionReason(newSelectionReason);
-  };
+const SwotReasonSelection = () => {
+  const dispatch = useDispatch();
+  const { selectionReason } = useSelector((state) => state.SwotReasonSlice);
+
   return (
     <div className="SwotReason">
       <FormGroup className="SwotReason">
@@ -30,7 +19,13 @@ const SwotReasonSelection = () => {
                 control={
                   <Checkbox
                     checked={item.status}
-                    onChange={() => changeReason(index)}
+                    onChange={() =>
+                      dispatch(
+                        changeReason({
+                          index: index,
+                        }),
+                      )
+                    }
                   />
                 }
                 label={item.name}
