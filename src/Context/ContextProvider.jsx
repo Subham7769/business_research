@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Context from "./Context";
 
 const ContextProvider = ({ children }) => {
@@ -82,6 +82,9 @@ const ContextProvider = ({ children }) => {
     opportunity: ["opportunity"],
     threat: ["threat"],
   });
+  useEffect(()=>{
+    console.log(swot)
+  },[swot])
 
   return (
     <Context.Provider

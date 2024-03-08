@@ -3,29 +3,23 @@ import EditableItem from "./EditableItem";
 import Context from "../../../Context/Context";
 import "./Edit.css";
 import IconButton from "../../Common/Button/IconButton";
-import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
+import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 
 const EditableList = ({ items, name, color }) => {
- 
   const { swot, setSwot } = useContext(Context);
   const [inputValue, setInputValue] = useState("");
 
   const handleItemChange = (itemToUpdate, updateText) => {
     let updatedList;
+    const index = swot[name].findIndex((arrItem) => arrItem === itemToUpdate);
 
     // Deleting list item
     if (updateText === "") {
-      if (["strength", "weakness", "opportunity", "threat"].includes(name)) {
-        const index = swot[name].findIndex(
-          (arrItem) => arrItem === itemToUpdate,
-        );
-        if (index !== -1) {
-          updatedList = swot[name].filter((_, i) => i !== index);
-        }
+      if (index !== -1) {
+        updatedList = swot[name].filter((_, i) => i !== index);
       }
     } else {
       // Updating existing list item
-      const index = swot[name].findIndex((arrItem) => arrItem === itemToUpdate);
       if (index !== -1) {
         swot[name][index] = updateText;
       }
@@ -39,9 +33,7 @@ const EditableList = ({ items, name, color }) => {
     if (inputValue !== "") {
       if (e.key === "Enter" || e === "onClick") {
         let newSwot = { ...swot };
-        if (["strength", "weakness", "opportunity", "threat"].includes(name)) {
-          newSwot[name] = [...newSwot[name], inputValue];
-        }
+        newSwot[name] = [...newSwot[name], inputValue];
         setSwot(newSwot);
         setInputValue("");
       }
@@ -49,15 +41,15 @@ const EditableList = ({ items, name, color }) => {
   };
 
   return (
-    <div className="editable_list_container" style={{borderColor:color}}>
-      <div className="editable_list_header" style={{backgroundColor:color}}>
-          <h5>{name}</h5>
+    <div className="editable_list_container" style={{ borderColor: color }}>
+      <div className="editable_list_header" style={{ backgroundColor: color }}>
+        <h5>{name}</h5>
       </div>
       <div className="editable_list">
         <ol>
           {items.map((item, index) => (
             <EditableItem
-              key={item+index} // Ensure unique key based on `item.id` or a combination
+              key={item + index} // Ensure unique key based on `item.id` or a combination
               item={item}
               onItemChange={(updateText) => handleItemChange(item, updateText)}
             />
@@ -74,7 +66,10 @@ const EditableList = ({ items, name, color }) => {
           onKeyDown={addNewItem}
         />
         <IconButton>
-          <AddOutlinedIcon onClick={() => addNewItem("onClick")} style={{color:color}}/>
+          <AddOutlinedIcon
+            onClick={() => addNewItem("onClick")}
+            style={{ color: color }}
+          />
         </IconButton>
       </div>
     </div>
