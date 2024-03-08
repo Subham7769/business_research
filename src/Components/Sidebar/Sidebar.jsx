@@ -1,17 +1,20 @@
 import { NavLink } from "react-router-dom";
 import "./Sidebar.css";
 import BasicButtons from "../Common/Button/BasicButtons";
-import DeleteIcon from '@mui/icons-material/Delete';
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const Sidebar = () => {
   return (
     <div className="sidebar">
       <nav className="navSidebar">
         <NavLink to="/swot">
-          <BasicButtons name={"Swot"} startIcon={<DeleteIcon />}/>
+          <BasicButtons name={"Swot"} />
         </NavLink>
-        <NavLink to="/view2">
-          <BasicButtons name={"View 2"} />
+        <NavLink to="/knowledgeBase">
+          <BasicButtons name={"Knowledge Base"} />
+        </NavLink>
+        <NavLink to="/other">
+          <BasicButtons name={"other"} />
         </NavLink>
       </nav>
     </div>

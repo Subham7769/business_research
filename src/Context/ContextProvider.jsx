@@ -22,28 +22,31 @@ const ContextProvider = ({ children }) => {
       },
       knowledgeBase: {
         description: "",
-        variety: [
+        varieties: [
           {
-            varietyName: "",
+            name: "",
+            code: "",
+            priceRange: "",
+            testing: "",
             specification: {
               Physical_Properties: [
                 {
-                  key: "value",
+                  name: "value",
                 },
               ],
               Chemical_Properties: [
                 {
-                  key: "value",
+                  name: "value",
                 },
               ],
               Technical_Properties: [
                 {
-                  key: "value",
+                  name: "value",
                 },
               ],
               Other_Properties: [
                 {
-                  key: "value",
+                  name: "value",
                 },
               ],
             },
@@ -53,8 +56,6 @@ const ContextProvider = ({ children }) => {
               town: "",
               season: "",
             },
-            priceRange: "",
-            testingMechanism: "",
           },
         ],
         Testing: [],
@@ -82,9 +83,9 @@ const ContextProvider = ({ children }) => {
     opportunity: ["opportunity"],
     threat: ["threat"],
   });
-  useEffect(()=>{
-    console.log(swot)
-  },[swot])
+  useEffect(() => {
+    console.log(swot);
+  }, [swot]);
 
   return (
     <Context.Provider
