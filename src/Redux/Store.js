@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import swotReasonReducer from "../Redux/Slices/SelectionReasonSlice";
+import swotReasonReducer from "./Slices/SwotReasonSlice";
 
 export const store = configureStore({
   reducer: {

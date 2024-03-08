@@ -6,17 +6,18 @@ import IconButton from "../../Common/Button/IconButton";
 import AddOutlinedIcon from '@mui/icons-material/AddOutlined';
 
 const EditableList = ({ items, name, color }) => {
+ 
   const { swot, setSwot } = useContext(Context);
   const [inputValue, setInputValue] = useState("");
 
-  const handleItemChange = (itemToDelete, updateText) => {
+  const handleItemChange = (itemToUpdate, updateText) => {
     let updatedList;
 
     // Deleting list item
     if (updateText === "") {
       if (["strength", "weakness", "opportunity", "threat"].includes(name)) {
         const index = swot[name].findIndex(
-          (arrItem) => arrItem === itemToDelete,
+          (arrItem) => arrItem === itemToUpdate,
         );
         if (index !== -1) {
           updatedList = swot[name].filter((_, i) => i !== index);
@@ -24,7 +25,7 @@ const EditableList = ({ items, name, color }) => {
       }
     } else {
       // Updating existing list item
-      const index = swot[name].findIndex((arrItem) => arrItem === itemToDelete);
+      const index = swot[name].findIndex((arrItem) => arrItem === itemToUpdate);
       if (index !== -1) {
         swot[name][index] = updateText;
       }
@@ -56,7 +57,7 @@ const EditableList = ({ items, name, color }) => {
         <ol>
           {items.map((item, index) => (
             <EditableItem
-              key={`${item}-${index}`} // Ensure unique key based on `item.id` or a combination
+              key={item+index} // Ensure unique key based on `item.id` or a combination
               item={item}
               onItemChange={(updateText) => handleItemChange(item, updateText)}
             />
