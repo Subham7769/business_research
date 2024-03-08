@@ -19,7 +19,7 @@ export default function AccordionUsage({
   label,
   component: Component,
   saveFunction,
-  componentProps,
+  ...otherProps
 }) {
   return (
     <div>
@@ -37,7 +37,7 @@ export default function AccordionUsage({
               <TableBody>
                 <TableRow>
                   <TableCell component="th" scope="row">
-                    <Component {...componentProps} />
+                    <Component {...otherProps} />
                   </TableCell>
                 </TableRow>
               </TableBody>
