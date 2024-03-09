@@ -2,7 +2,9 @@ import * as React from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
+import { IconButton, Table, TableBody, TableCell, TableRow } from "@mui/material";
+import TextBoxSmall from "../TextBox/TextBoxSmall/TextboxSmall";
+import AddRoundedIcon from "@mui/icons-material/AddRounded";
 
 function TabPanel(props) {
   const { children, value, index } = props;
@@ -13,10 +15,29 @@ function TabPanel(props) {
       hidden={value !== index}
       id={`scrollable-auto-tabpanel-${index}`}
       aria-labelledby={`scrollable-auto-tab-${index}`}
+      style={{ width: "100%" }}
     >
       {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
+        <Box sx={{ p: 1, borderRadius: "4px", width: "100%" }}>
+          <Table size="large" aria-label="purchases" width="100%">
+            <TableBody>
+              <TableRow>
+                <TableCell>
+                  <TextBoxSmall placeholder={"Property name"} />
+                </TableCell>
+                <TableCell>
+                  <TextBoxSmall placeholder={"Value"} />
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell colSpan={2} style={{ textAlign: "right" }}>
+                  <IconButton aria-label="add" size="large" >
+                    <AddRoundedIcon fontSize="inherit"/>
+                  </IconButton>
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
         </Box>
       )}
     </div>
@@ -38,7 +59,6 @@ export default function ScrollableTabsButtonAuto() {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        border: "1px solid rgba(0, 0, 0, 0.23)",
       }}
     >
       <Tabs
@@ -47,33 +67,17 @@ export default function ScrollableTabsButtonAuto() {
         variant="scrollable"
         scrollButtons="auto"
         aria-label="scrollable auto tabs example"
+        style={{width: '100%'}}
       >
-        <Tab label="Item One" />
-        <Tab label="Item Two" />
-        <Tab label="Item Three" />
-        <Tab label="Item Four" />
+        <Tab label="Physical" />
+        <Tab label="Chemical" />
+        <Tab label="Technical" />
+        <Tab label="Other Specifications" />
       </Tabs>
-      <TabPanel value={value} index={0}>
-        Item One Content
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        Item Two Content
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        Item Three Content
-      </TabPanel>
-      <TabPanel value={value} index={3}>
-        Item Four Content
-      </TabPanel>
-      <TabPanel value={value} index={4}>
-        Item Five Content
-      </TabPanel>
-      <TabPanel value={value} index={5}>
-        Item Six Content
-      </TabPanel>
-      <TabPanel value={value} index={6}>
-        Item Seven Content
-      </TabPanel>
+      <TabPanel value={value} index={0} />
+      <TabPanel value={value} index={1} />
+      <TabPanel value={value} index={2} />
+      <TabPanel value={value} index={3} />
     </Box>
   );
 }

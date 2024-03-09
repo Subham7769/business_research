@@ -1,8 +1,6 @@
-import AccordianTable from "../AccordianTables/Accordian";
-import TabComponent from "../TabComponent/TabComponent";
 import Accordian from "../Accordian/Accordian";
-import Textbox from "../TextBox/Textbox";
-
+import Textbox from "../TextBox/TextBoxLarge/Textbox";
+import VarietyData from "../VarietyData/VarietyData";
 import "./KnowledgeGathering.css";
 
 const KnowledgeGathering = () => {
@@ -16,8 +14,11 @@ const KnowledgeGathering = () => {
           alert("Saved");
         }}
       />
-      <AccordianTable />
-      <TabComponent />
+      <Accordian
+        label="Product Variety"
+        component={VarietyData}
+      />
+
     </div>
   );
 };

@@ -5,55 +5,40 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Button from "@mui/material/Button";
-import Table from "@mui/material/Table";
-
-import {
-  Paper,
-  TableBody,
-  TableContainer,
-  TableRow,
-  TableCell,
-} from "@mui/material";
 
 export default function AccordionUsage({
   label,
   component: Component,
   saveFunction,
+  nested,
   ...otherProps
 }) {
   return (
-    <div>
-      <Accordion>
+    <div style={nested?{width: "100%"}:{ width: "95%" }}>
+      <Accordion style={{ width: "100%" }}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel3-content"
           id="panel3-header"
+          style={{ width: "100%" }} // Override external styles
         >
           {label}
         </AccordionSummary>
-        <AccordionDetails>
-          <TableContainer component={Paper}>
-            <Table aria-label="collapsible table">
-              <TableBody>
-                <TableRow>
-                  <TableCell component="th" scope="row">
-                    <Component {...otherProps} />
-                  </TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
-          </TableContainer>
+        <AccordionDetails style={{ width: "100%" }}>
+          <Component {...otherProps} />
         </AccordionDetails>
-        <AccordionActions>
-          <Button
-            variant="contained"
-            onClick={() => {
-              saveFunction();
-            }}
-          >
-            Save
-          </Button>
-        </AccordionActions>
+        {saveFunction && (
+          <AccordionActions>
+            <Button
+              variant="contained"
+              onClick={() => {
+                saveFunction();
+              }}
+            >
+              Save
+            </Button>
+          </AccordionActions>
+        )}
       </Accordion>
     </div>
   );

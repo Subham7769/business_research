@@ -13,8 +13,8 @@ const Sidebar = () => {
         <NavLink to="/knowledgeBase">
           <BasicButtons name={"Knowledge Base"} />
         </NavLink>
-        <NavLink to="/other">
-          <BasicButtons name={"other"} />
+        <NavLink to="/TestComponent">
+          <BasicButtons name={"Test Component"} />
         </NavLink>
       </nav>
     </div>
