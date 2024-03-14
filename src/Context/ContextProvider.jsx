@@ -83,8 +83,9 @@ const ContextProvider = ({ children }) => {
     opportunity: ["opportunity"],
     threat: ["threat"],
   });
+  
   useEffect(() => {
-    console.log(swot);
+    // console.log(swot);
   }, [swot]);
 
   return (

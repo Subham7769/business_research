@@ -2,14 +2,15 @@ import { useContext } from "react";
 import EditableList from "../EditableFields/EditableList";
 import Context from "../../../Context/Context";
 import "./SWOTComponent.css";
-import SwotReasonSelection from "../SwotReasonSelection/SwotReasonSelection";
+import { Button } from "@mui/material";
+
 
 const SWOTComponent = () => {
   const { swot } = useContext(Context); 
-  console.log(swot);
+  // console.log(swot);
   return (
     <div className="Swot">
-      <SwotReasonSelection />
+      <h3>Swot Analysis</h3>
       <div className="SwotComponent">
         <div className="labelTiles"></div>
         <div className="labelTiles" style={{ backgroundColor: "var(--green)" }}>
@@ -59,6 +60,12 @@ const SWOTComponent = () => {
           name={"threat"}
           color={"var(--red)"}
         />
+      </div>
+      <div className="SaveButton">
+      <Button 
+      variant="contained"
+    onClick={()=>{alert("Swot saved");}}
+      >Save</Button>
       </div>
     </div>
   );

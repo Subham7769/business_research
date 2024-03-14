@@ -2,8 +2,8 @@ import { useContext, useState } from "react";
 import EditableItem from "./EditableItem";
 import Context from "../../../Context/Context";
 import "./Edit.css";
-import IconButton from "../../Common/Button/IconButton";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
+import { IconButton } from "@mui/material";
 
 const EditableList = ({ items, name, color }) => {
   const { swot, setSwot } = useContext(Context);
@@ -21,7 +21,8 @@ const EditableList = ({ items, name, color }) => {
     } else {
       // Updating existing list item
       if (index !== -1) {
-        swot[name][index] = updateText;
+        updatedList = swot[name];
+        updatedList[index] = updateText;
       }
     }
 
@@ -65,11 +66,8 @@ const EditableList = ({ items, name, color }) => {
           }}
           onKeyDown={addNewItem}
         />
-        <IconButton>
-          <AddOutlinedIcon
-            onClick={() => addNewItem("onClick")}
-            style={{ color: color }}
-          />
+        <IconButton aria-label="delete" size="large" onClick={() => addNewItem("onClick")}>
+          <AddOutlinedIcon style={{ color: color }}/>
         </IconButton>
       </div>
     </div>

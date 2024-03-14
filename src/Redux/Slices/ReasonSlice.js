@@ -1,14 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = [
-  { status: false, name: "Availability" },
-  { status: false, name: "Interest" },
-  { status: false, name: "Demand" },
-  { status: false, name: "Knowledge" },
+  { status: false, name: "Availability", color:"var(--green)" },
+  { status: false, name: "Interest", color:"var(--red)" },
+  { status: false, name: "Demand", color:"var(--blue)" },
+  { status: false, name: "Knowledge", color:"var(--yellow)" },
 ];
 
-const SwotReasonSlice = createSlice({
-  name: "SwotReasonSlice",
+const ReasonSlice = createSlice({
+  name: "ReasonSlice",
   initialState: initialState,
   reducers: {
     changeReason: (state, action) => {
@@ -26,9 +26,12 @@ const SwotReasonSlice = createSlice({
       }
       return state; // No changes if index is invalid
     },
+    resetInitialState: (state) => {
+      return initialState;
+    },
   },
 });
 
-export const { changeReason } = SwotReasonSlice.actions;
-export default SwotReasonSlice.reducer;
+export const { changeReason, resetInitialState } = ReasonSlice.actions;
+export default ReasonSlice.reducer;
 

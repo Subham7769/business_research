@@ -1,10 +1,8 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
 import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
 import {
-  Button,
   Table,
   TableBody,
   TableCell,
@@ -114,23 +112,6 @@ function Row({ variety }) {
   );
 }
 
-Row.propTypes = {
-  row: PropTypes.shape({
-    calories: PropTypes.number.isRequired,
-    carbs: PropTypes.number.isRequired,
-    fat: PropTypes.number.isRequired,
-    history: PropTypes.arrayOf(
-      PropTypes.shape({
-        amount: PropTypes.number.isRequired,
-        customerId: PropTypes.string.isRequired,
-        date: PropTypes.string.isRequired,
-      })
-    ).isRequired,
-    name: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    protein: PropTypes.number.isRequired,
-  }).isRequired,
-};
 
 export default function CollapsibleTable() {
   return (
@@ -151,10 +132,9 @@ export default function CollapsibleTable() {
           ))}
           <TableRow>
             <TableCell colSpan={6} style={{ textAlign: "right" }}>
-              <Button variant="contained">
-                <AddRoundedIcon />
-                Add Variety
-              </Button>
+            <IconButton aria-label="add" size="large">
+              <AddRoundedIcon fontSize="inherit" />
+            </IconButton>
             </TableCell>
           </TableRow>
         </TableBody>
