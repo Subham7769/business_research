@@ -16,6 +16,7 @@ const Sidebar = () => {
       <Divider />
       <nav className="navSidebar">
         <NavLink to="/NewProduct" className="NavLink">
+          
           <AddRoundedIcon />
           New Product
         </NavLink>
