@@ -2,13 +2,20 @@ import React from "react";
 import { IconButton, Table, TableBody, TableCell, TableRow } from "@mui/material";
 import TextBoxSmall from "../TextBox/TextBoxSmall/TextboxSmall";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
+import EditableList from "../SwotComponent/EditableFields/EditableList";
 
 const DocumentTesting = () => {
+
   return (
     <Table size="large" aria-label="purchases" width="100%">
       <TableBody>
         <TableRow>
           <TableCell>
+          {/* <EditableList 
+          items={swot.strength}
+          name={"Testing"}
+          color={"white"}
+          /> */}
             <TextBoxSmall placeholder={"Testing"} />
           </TableCell>
           <TableCell>

@@ -19,44 +19,9 @@ import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import Accordian from "../Accordian/Accordian";
 import ProductionHubTable from "../ProductionHubTable/ProductionHubTable";
 
-function createData(name, code, priceRange, testing) {
-  return {
-    name,
-    code,
-    priceRange,
-    testing,
-    specification: {
-      Physical_Properties: [
-        {
-          name: "Physical_Properties",
-        },
-      ],
-      Chemical_Properties: [
-        {
-          name: "Chemical_Properties",
-        },
-      ],
-      Technical_Properties: [
-        {
-          name: "Technical_Properties",
-        },
-      ],
-      Other_Properties: [
-        {
-          name: "Other_Properties",
-        },
-      ],
-    },
-    productionHub: {
-      state: "",
-      city: "",
-      town: "",
-      season: "",
-    },
-  };
-}
 
-let varieties = [createData("v1", "pv1", "200-301", "abc")];
+
+
 
 function Row({ variety }) {
   const [open, setOpen] = React.useState(false);
@@ -90,19 +55,19 @@ function Row({ variety }) {
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <Box sx={{ margin: 1 }}>
-              <Accordian 
-              nested={true}
-              label="Properties"
-              component={TabComponent}
-              saveFunction={() =>{alert("Properties")}}
+              <Accordian
+                nested={true}
+                label="Properties"
+                component={TabComponent}
+                saveFunction={() => { alert("Properties") }}
               />
             </Box>
             <Box sx={{ margin: 1 }}>
-            <Accordian 
-              nested={true}
-              label="Production Hub (Locations)"
-              component={ProductionHubTable}
-              saveFunction={() =>{alert("Production Hub (Locations)")}}
+              <Accordian
+                nested={true}
+                label="Production Hub (Locations)"
+                component={ProductionHubTable}
+                saveFunction={() => { alert("Production Hub (Locations)") }}
               />
             </Box>
           </Collapse>
@@ -114,6 +79,47 @@ function Row({ variety }) {
 
 
 export default function CollapsibleTable() {
+  const [varieties,SetVarieties] = React.useState([]);//or data from API or global product object
+ 
+  function createVariety(name, code, priceRange, testing) {
+    let variety = {
+      name,
+      code,
+      priceRange,
+      testing,
+      specification: {
+        Physical_Properties: [
+          {
+            name: "Physical_Properties",
+          },
+        ],
+        Chemical_Properties: [
+          {
+            name: "Chemical_Properties",
+          },
+        ],
+        Technical_Properties: [
+          {
+            name: "Technical_Properties",
+          },
+        ],
+        Other_Properties: [
+          {
+            name: "Other_Properties",
+          },
+        ],
+      },
+      productionHub: [{
+        state: "",
+        city: "",
+        town: "",
+        season: "",
+      },],
+    };
+    SetVarieties((prevVarieties)=> [...prevVarieties, variety])
+  }
+
+
   return (
     <TableContainer component={Paper}>
       <Table aria-label="collapsible table">
@@ -132,9 +138,9 @@ export default function CollapsibleTable() {
           ))}
           <TableRow>
             <TableCell colSpan={6} style={{ textAlign: "right" }}>
-            <IconButton aria-label="add" size="large">
-              <AddRoundedIcon fontSize="inherit" />
-            </IconButton>
+              <IconButton aria-label="add" size="large" onClick={()=>{createVariety('Product Name','Product Code','Price Range', 'Product Testing')}}>
+                <AddRoundedIcon fontSize="inherit" />
+              </IconButton>
             </TableCell>
           </TableRow>
         </TableBody>
