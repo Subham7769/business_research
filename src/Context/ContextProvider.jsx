@@ -78,12 +78,11 @@ const ContextProvider = ({ children }) => {
   }
 
   const [swot, setSwot] = useState({
-    strength: ["strength"],
+    strength: ["strength","dsdfhsdf","djhdckdsjkcds"],
     weakness: ["weakness"],
     opportunity: ["opportunity"],
     threat: ["threat"],
   });
-  
   useEffect(() => {
     // console.log(swot);
   }, [swot]);

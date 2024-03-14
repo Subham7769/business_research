@@ -21,11 +21,10 @@ const EditableList = ({ items, name, color }) => {
     } else {
       // Updating existing list item
       if (index !== -1) {
-        updatedList = swot[name];
-        updatedList[index] = updateText;
+        swot[name][index] = updateText;
       }
     }
-
+    
     // Update state using the callback function
     setSwot((prevSwot) => ({ ...prevSwot, [name]: updatedList }));
   };
