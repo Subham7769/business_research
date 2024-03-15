@@ -8,7 +8,7 @@ import TextBoxSmall from "../TextBox/TextBoxSmall/TextboxSmall";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 
 
-function TabPanel({ value, index, properties, specification }) {
+function TabPanel({ value, index, properties }) {
   const [allProperties, setAllProperties] = useState(properties)
 
   function AddProperties() {
@@ -71,7 +71,8 @@ function TabPanel({ value, index, properties, specification }) {
   );
 }
 
-export default function ScrollableTabsButtonAuto() {
+//only need specifications object
+function ScrollableTabsButtonAuto() {
 
   const specification = {//from global product object
     Physical_Properties: [
@@ -128,10 +129,12 @@ export default function ScrollableTabsButtonAuto() {
         <Tab label="Technical" />
         <Tab label="Other Specifications" />
       </Tabs>
-      <TabPanel value={value} index={0} properties={specification.Physical_Properties} specification={specification} />
-      <TabPanel value={value} index={1} properties={specification.Chemical_Properties} specification={specification} />
-      <TabPanel value={value} index={2} properties={specification.Technical_Properties} specification={specification} />
-      <TabPanel value={value} index={3} properties={specification.Other_Properties} specification={specification} />
+      <TabPanel value={value} index={0} properties={specification.Physical_Properties}  />
+      <TabPanel value={value} index={1} properties={specification.Chemical_Properties}  />
+      <TabPanel value={value} index={2} properties={specification.Technical_Properties}  />
+      <TabPanel value={value} index={3} properties={specification.Other_Properties}  />
     </Box>
   );
 }
+
+export default ScrollableTabsButtonAuto;

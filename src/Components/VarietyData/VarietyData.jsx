@@ -77,8 +77,8 @@ function Row({ variety }) {
   );
 }
 
-
-export default function CollapsibleTable() {
+//only need variety array of object
+ function CollapsibleTable() {
   const [varieties,SetVarieties] = React.useState([]);//or data from API or global product object
  
   function createVariety(name, code, priceRange, testing) {
@@ -91,29 +91,33 @@ export default function CollapsibleTable() {
         Physical_Properties: [
           {
             name: "Physical_Properties",
+            data: "data"
           },
         ],
         Chemical_Properties: [
           {
             name: "Chemical_Properties",
+            data: "data"
           },
         ],
         Technical_Properties: [
           {
             name: "Technical_Properties",
+            data: "data"
           },
         ],
         Other_Properties: [
           {
             name: "Other_Properties",
+            data: "data"
           },
         ],
       },
       productionHub: [{
-        state: "",
-        city: "",
-        town: "",
-        season: "",
+        state: "Enter State",
+        city: "Enter City",
+        townVillage: "Enter Town/Village",
+        season: "Enter Season",
       },],
     };
     SetVarieties((prevVarieties)=> [...prevVarieties, variety])
@@ -148,3 +152,5 @@ export default function CollapsibleTable() {
     </TableContainer>
   );
 }
+
+export default CollapsibleTable;
