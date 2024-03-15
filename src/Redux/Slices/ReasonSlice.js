@@ -32,6 +32,6 @@ const ReasonSlice = createSlice({
   },
 });
 
-export const { changeReason, resetInitialState } = ReasonSlice.actions;
+export const { changeReason, resetReasons } = ReasonSlice.actions;
 export default ReasonSlice.reducer;
 
