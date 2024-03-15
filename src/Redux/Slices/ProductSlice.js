@@ -13,14 +13,15 @@ const ProductSlice = createSlice({
             state.currentProduct = action.payload;
         },
         createNewProduct(state, action) {
+            const { productName, hsCode, Reasons } = action.payload;
             // Generate a unique ID for the new product
             const id = Math.floor(Math.random() * 10000000000);
             // Create the new product object
             const newProduct = {
                 productId: id,
-                productName: action.payload.productName,
-                hsCode: action.payload.hsCode,
-                selectionReason: action.payload.selectionReason,
+                productName: productName,
+                hsCode: hsCode,
+                selectionReason: Reasons,
                 swot: {
                     strength: ["strength"],
                     weakness: ["weakness"],
@@ -70,6 +71,9 @@ const ProductSlice = createSlice({
             // Add the new product to the state
             state.products.push(newProduct);
         },
+        updateProduct(state,action){
+            
+        }
     },
 });
 

@@ -3,6 +3,7 @@ import "./AddNewProduct.css";
 import { Box, Button, TextField, FormGroup, FormControlLabel, Checkbox } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { resetReasons, changeReason } from "../../Redux/Slices/ReasonSlice";
+import { createNewProduct } from "../../Redux/Slices/ProductSlice"
 
 const AddNewProduct = () => {
   const dispatch = useDispatch();
@@ -10,8 +11,9 @@ const AddNewProduct = () => {
   const [hsCode, setHsCode] = useState("");
   const [productNameError, setProductNameError] = useState(false);
   const [hsCodeError, setHsCodeError] = useState(false);
+  const [reasonError, setReasonError] = useState(false);
   const Reasons = useSelector((state) => state.ReasonSlice);
-  
+  console.log(Reasons);
 
   const handleSubmit = () => {
     // Check if product name is empty
@@ -26,8 +28,19 @@ const AddNewProduct = () => {
       return;
     }
 
-    // If both fields are filled, submit the form
+    // Check if at least one reason is selected
+    const isReasonSelected = Reasons.some((reason) => reason.status);
+    if (!isReasonSelected) {
+      setReasonError(true);
+      return;
+    }
+
+    //add product in Product Array
+    dispatch(createNewProduct({ productName, hsCode, Reasons }));
+
+    // If all fields are filled, submit the form
     alert("Product added successfully!");
+    // toast("Product added successfully!")
 
     // Reset form
     setProductName("");
@@ -77,7 +90,7 @@ const AddNewProduct = () => {
           error={hsCodeError}
           helperText={hsCodeError ? "Product HS Code is required" : ""}
         />
-        
+
         <div className="ReasonSelection">
           <h4>Product Selection Reason</h4>
           <FormGroup className="Reason">
@@ -103,8 +116,12 @@ const AddNewProduct = () => {
               );
             })}
           </FormGroup>
+          {reasonError && (
+            <span style={{ color: "red", fontSize: "0.75rem" }}>
+              Please select at least one reason.
+            </span>)}
         </div>
-        
+
         <Button
           variant="contained"
           onClick={handleSubmit}
