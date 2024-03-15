@@ -1,22 +1,25 @@
-import React from "react";
-import { IconButton, Table, TableBody, TableCell, TableRow } from "@mui/material";
-import TextBoxSmall from "../TextBox/TextBoxSmall/TextboxSmall";
-import AddRoundedIcon from "@mui/icons-material/AddRounded";
+import { useState } from "react";
+import { Table, TableBody, TableCell, TableRow } from "@mui/material";
+import EditableList from "../SwotComponent/EditableFields/EditableList";
+
 
 const ApplicationUsage = () => {
+  const [credentialCollection,setCredentialCollection] = useState({
+    Applications:["df"],
+  })
+  console.log(credentialCollection);
   return (
     <Table size="large" aria-label="purchases" width="100%">
       <TableBody>
         <TableRow>
           <TableCell>
-            <TextBoxSmall placeholder={"Application of Usage..."} />
-          </TableCell>
-        </TableRow>
-        <TableRow>
-          <TableCell colSpan={4} style={{ textAlign: "right" }}>
-            <IconButton aria-label="add" size="large">
-              <AddRoundedIcon fontSize="inherit" />
-            </IconButton>
+          <EditableList
+              items={credentialCollection.Applications}
+              name={"Applications"}
+              color={"lightgrey"}
+              mainData={credentialCollection}
+              setMainData={setCredentialCollection}
+            />
           </TableCell>
         </TableRow>
       </TableBody>

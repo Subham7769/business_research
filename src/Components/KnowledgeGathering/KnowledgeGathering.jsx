@@ -15,7 +15,7 @@ const KnowledgeGathering = () => {
         label="Product Description"
         component={Textbox}
         saveFunction={() => {
-          alert("Saved");
+          alert("Product Description");
         }}
       />
       <Accordian
@@ -29,28 +29,28 @@ const KnowledgeGathering = () => {
         label="Product Testing, Standard, Quality, Packing Standard Required"
         component={DocumentTesting}
         saveFunction={() => {
-          alert("testing");
+          alert("Product Testing, Standard, Quality, Packing Standard Required");
         }}
       />
       <Accordian
         label="Certificates, Licenses, Documents Required"
         component={CertificatesLicense}
         saveFunction={() => {
-          alert("testing");
+          alert("Certificates, Licenses, Documents Required");
         }}
       />
       <Accordian
         label="EPC & RCMC Required"
         component={EpcRcmc}
         saveFunction={() => {
-          alert("testing");
+          alert("EPC & RCMC Required");
         }}
       />
       <Accordian
         label="Application of Product Use (End Consumer of Goods/Services)"
         component={ApplicationUsage}
         saveFunction={() => {
-          alert("testing");
+          alert("Application of Product Use (End Consumer of Goods/Services)");
         }}
       />
     </div>

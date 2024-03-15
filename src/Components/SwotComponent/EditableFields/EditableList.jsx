@@ -1,40 +1,39 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import EditableItem from "./EditableItem";
-import Context from "../../../Context/Context";
 import "./Edit.css";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import { IconButton } from "@mui/material";
 
-const EditableList = ({ items, name, color }) => {
-  const { swot, setSwot } = useContext(Context);
+const EditableList = ({ items, name, color, mainData, setMainData }) => {
   const [inputValue, setInputValue] = useState("");
 
   const handleItemChange = (itemToUpdate, updateText) => {
     let updatedList;
-    const index = swot[name].findIndex((arrItem) => arrItem === itemToUpdate);
+    const index = mainData[name].findIndex((arrItem) => arrItem === itemToUpdate);
 
     // Deleting list item
     if (updateText === "") {
       if (index !== -1) {
-        updatedList = swot[name].filter((_, i) => i !== index);
+        updatedList = mainData[name].filter((_, i) => i !== index);
       }
     } else {
       // Updating existing list item
       if (index !== -1) {
-        swot[name][index] = updateText;
+        updatedList = mainData[name];
+        updatedList[index] = updateText;
       }
     }
     
     // Update state using the callback function
-    setSwot((prevSwot) => ({ ...prevSwot, [name]: updatedList }));
+    setMainData((prevmainData) => ({ ...prevmainData, [name]: updatedList }));
   };
 
   const addNewItem = (e) => {
     if (inputValue !== "") {
       if (e.key === "Enter" || e === "onClick") {
-        let newSwot = { ...swot };
-        newSwot[name] = [...newSwot[name], inputValue];
-        setSwot(newSwot);
+        let newmainData = { ...mainData };
+        newmainData[name] = [...newmainData[name], inputValue];
+        setMainData(newmainData);
         setInputValue("");
       }
     }
@@ -65,7 +64,7 @@ const EditableList = ({ items, name, color }) => {
           }}
           onKeyDown={addNewItem}
         />
-        <IconButton aria-label="delete" size="large" onClick={() => addNewItem("onClick")}>
+        <IconButton aria-label="delete"  onClick={() => addNewItem("onClick")}>
           <AddOutlinedIcon style={{ color: color }}/>
         </IconButton>
       </div>

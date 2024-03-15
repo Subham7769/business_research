@@ -10,6 +10,8 @@ import PriceCheckRoundedIcon from '@mui/icons-material/PriceCheckRounded';
 import { Divider } from "@mui/material";
 
 const Sidebar = () => {
+
+
   return (
     <div className="sidebar">
       <SelectDropDown/>

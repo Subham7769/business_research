@@ -26,7 +26,7 @@ const ReasonSlice = createSlice({
       }
       return state; // No changes if index is invalid
     },
-    resetInitialState: (state) => {
+    resetReasons: (state) => {
       return initialState;
     },
   },

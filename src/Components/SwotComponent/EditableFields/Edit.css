@@ -5,6 +5,7 @@
   border-radius: 0.4rem;
   border: 1px solid grey;
   overflow: hidden;
+  min-height: 10rem;
 }
 .editable_list_header{
   text-align:center;
@@ -36,7 +37,7 @@
   border: none;
   background-color: transparent;
   padding-left: 1rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 
 .editable_list > ol {

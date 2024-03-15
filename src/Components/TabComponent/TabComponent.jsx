@@ -1,4 +1,3 @@
-import * as React from "react";
 import { useState } from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
@@ -72,7 +71,7 @@ function TabPanel({ value, index, properties }) {
 }
 
 //only need specifications object
-function ScrollableTabsButtonAuto() {
+function TabComponent() {
 
   const specification = {//from global product object
     Physical_Properties: [
@@ -137,4 +136,4 @@ function ScrollableTabsButtonAuto() {
   );
 }
 
-export default ScrollableTabsButtonAuto;
+export default TabComponent;

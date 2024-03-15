@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./AddNewProduct.css";
 import { Box, Button, TextField, FormGroup, FormControlLabel, Checkbox } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import { resetInitialState, changeReason } from "../../Redux/Slices/ReasonSlice";
+import { resetReasons, changeReason } from "../../Redux/Slices/ReasonSlice";
 
 const AddNewProduct = () => {
   const dispatch = useDispatch();
@@ -11,6 +11,7 @@ const AddNewProduct = () => {
   const [productNameError, setProductNameError] = useState(false);
   const [hsCodeError, setHsCodeError] = useState(false);
   const Reasons = useSelector((state) => state.ReasonSlice);
+  
 
   const handleSubmit = () => {
     // Check if product name is empty
@@ -35,7 +36,7 @@ const AddNewProduct = () => {
     setHsCodeError(false);
 
     // Reset Redux state
-    dispatch(resetInitialState());
+    dispatch(resetReasons());
   };
 
 

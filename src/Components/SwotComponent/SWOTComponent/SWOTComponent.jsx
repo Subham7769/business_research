@@ -6,7 +6,7 @@ import { Button } from "@mui/material";
 
 
 const SWOTComponent = () => {
-  const { swot } = useContext(Context); 
+  const { swot,setSwot } = useContext(Context); 
   // console.log(swot);
   return (
     <div className="Swot">
@@ -38,11 +38,15 @@ const SWOTComponent = () => {
           items={swot.strength}
           name={"strength"}
           color={"var(--green)"}
+          mainData ={swot}
+          setMainData = {setSwot}
         />
         <EditableList
           items={swot.weakness}
           name={"weakness"}
           color={"var(--yellow)"}
+          mainData ={swot}
+          setMainData = {setSwot}
         />
         <div className="labelTiles" style={{ backgroundColor: "var(--blue)" }}>
           <div className="vertical">
@@ -54,11 +58,15 @@ const SWOTComponent = () => {
           items={swot.opportunity}
           name={"opportunity"}
           color={"var(--blue)"}
+          mainData ={swot}
+          setMainData = {setSwot}
         />
         <EditableList
           items={swot.threat}
           name={"threat"}
           color={"var(--red)"}
+          mainData ={swot}
+          setMainData = {setSwot}
         />
       </div>
       <div className="SaveButton">

@@ -4,14 +4,13 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import { useSelector,useDispatch } from "react-redux";
+import {setCurrentProduct} from "../../Redux/Slices/ProductSlice"
 
 export default function BasicSelect() {
-  const [products, setProducts] = React.useState(['Turmeric', 'Red Chilli', 'Ginger Powder']);
-  const [selectProduct, setSelectProduct] = React.useState('');
-
-  const handleChange = (event) => {
-    setSelectProduct(event.target.value);
-  };
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.ProductSlice.products);
+  const selectedProductId = useSelector(state => state.ProductSlice.selectedProductId);
 
   return (
     <Box sx={{ minWidth: 120 }}>
@@ -20,12 +19,12 @@ export default function BasicSelect() {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={selectProduct}
+          value={selectedProductId}
           label="Product"
-          onChange={handleChange}
+          onChange={(event)=> dispatch(setCurrentProduct(event.target.value))}
         >
           {
-            products.map((item,index)=><MenuItem value={10} key={item+index}>{item}</MenuItem>)
+            products.map((item)=><MenuItem value={item.productId} key={item.productId}>{item.productName}</MenuItem>)
           }
 
         </Select>
