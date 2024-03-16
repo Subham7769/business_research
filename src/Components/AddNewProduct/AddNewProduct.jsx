@@ -13,7 +13,7 @@ const AddNewProduct = () => {
   const [hsCodeError, setHsCodeError] = useState(false);
   const [reasonError, setReasonError] = useState(false);
   const Reasons = useSelector((state) => state.ReasonSlice);
-  console.log(Reasons);
+  // console.log(Reasons);
 
   const handleSubmit = () => {
     // Check if product name is empty

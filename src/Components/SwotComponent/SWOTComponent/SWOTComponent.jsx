@@ -1,21 +1,32 @@
-import { useContext, useState } from "react";
+import { useEffect, useState } from "react";
 import EditableList from "../EditableFields/EditableList";
-import Context from "../../../Context/Context";
 import "./SWOTComponent.css";
 import { Button } from "@mui/material";
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import {updateSwot} from "../../../Redux/Slices/ProductSlice"
 
 //we need full product state to update 
 //we need updateProduct function to update full product state in save function
-//we need swot of selected product based on selectedProductId
+//we need swot of selected product based on currentProductId
 //
 const SWOTComponent = () => {
-  const selectedProductId = useSelector(state=>state.ProductSlice.selectedProductId)
-  const product = useSelector(state=>state.ProductSlice.products.filter((item)=>item.id === selectedProductId)[0])
-  const [swot , setSwot] = useState(product.swot)
-  console.log(selectedProductId);
-  console.log(swot);
-  // const { swot,setSwot } = useContext(Context); 
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.ProductSlice.products);
+  const currentProductId = useSelector(state => state.ProductSlice.currentProductId);
+  const product = products.find(product => product.productId === currentProductId);
+  const [swot, setSwot] = useState(product.swot)
+
+  useEffect(() => {
+    if (product) {
+      setSwot(product.swot);
+    }
+  }, [currentProductId, product]);
+
+  function saveSwot() {
+    dispatch(updateSwot({swot}))
+  }
+
+
   return (
     <div className="Swot">
       <h3>Swot Analysis</h3>
@@ -46,15 +57,15 @@ const SWOTComponent = () => {
           items={swot.strength}
           name={"strength"}
           color={"var(--green)"}
-          mainData ={swot}
-          setMainData = {setSwot}
+          mainData={swot}
+          setMainData={setSwot}
         />
         <EditableList
           items={swot.weakness}
           name={"weakness"}
           color={"var(--yellow)"}
-          mainData ={swot}
-          setMainData = {setSwot}
+          mainData={swot}
+          setMainData={setSwot}
         />
         <div className="labelTiles" style={{ backgroundColor: "var(--blue)" }}>
           <div className="vertical">
@@ -66,22 +77,22 @@ const SWOTComponent = () => {
           items={swot.opportunity}
           name={"opportunity"}
           color={"var(--blue)"}
-          mainData ={swot}
-          setMainData = {setSwot}
+          mainData={swot}
+          setMainData={setSwot}
         />
         <EditableList
           items={swot.threat}
           name={"threat"}
           color={"var(--red)"}
-          mainData ={swot}
-          setMainData = {setSwot}
+          mainData={swot}
+          setMainData={setSwot}
         />
       </div>
       <div className="SaveButton">
-      <Button 
-      variant="contained"
-    onClick={()=>{alert("Swot saved");}}
-      >Save</Button>
+        <Button
+          variant="contained"
+          onClick={() => { saveSwot() }}
+        >Save</Button>
       </div>
     </div>
   );
