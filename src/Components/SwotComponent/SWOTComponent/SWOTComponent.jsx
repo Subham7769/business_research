@@ -16,6 +16,7 @@ const SWOTComponent = () => {
   const product = products.find(product => product.productId === currentProductId);
   const [swot, setSwot] = useState(product.swot)
 
+    //update swot every time when currentProductId/product changes
   useEffect(() => {
     if (product) {
       setSwot(product.swot);

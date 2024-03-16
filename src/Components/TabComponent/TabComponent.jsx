@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
@@ -6,8 +6,14 @@ import { IconButton, Table, TableBody, TableCell, TableRow } from "@mui/material
 import TextBoxSmall from "../TextBox/TextBoxSmall/TextboxSmall";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 
+//All properties with corresponding property key-value pair
+// All properties -
+// Physical_Properties, 
+// Chemical_Properties, 
+// Technical_Properties, 
+// Other_Properties
 
-function TabPanel({ value, index, properties }) {
+function TabPanel({ value, index, properties, setUpdateProperty }) {
   const [allProperties, setAllProperties] = useState(properties)
 
   function AddProperties() {
@@ -17,6 +23,7 @@ function TabPanel({ value, index, properties }) {
       ]);
   }
 
+  //handling changes to properties array & its property data
   function handleChange(e, property) {
     const index = allProperties.findIndex(obj => obj.name === property.name);
     if (index !== -1) {
@@ -31,6 +38,10 @@ function TabPanel({ value, index, properties }) {
       alert("No object found");
     }
   }
+
+  useEffect(()=>{
+    setUpdateProperty(allProperties)
+  },[allProperties])
 
 
   return (
@@ -71,39 +82,32 @@ function TabPanel({ value, index, properties }) {
 }
 
 //only need specifications object
-function TabComponent() {
-
-  const specification = {//from global product object
-    Physical_Properties: [
-      {
-        name: "Physical_Properties",
-        data: "data"
-      },
-    ],
-    Chemical_Properties: [
-      {
-        name: "Chemical_Properties",
-        data: "data"
-      },
-    ],
-    Technical_Properties: [
-      {
-        name: "Technical_Properties",
-        data: "data"
-      },
-    ],
-    Other_Properties: [
-      {
-        name: "Other_Properties",
-        data: "data"
-      },
-    ],
-  }
-
+function TabComponent({specification,updateSpecifications2}) {
+  const [Physical_Properties,setPhysical_Properties] = useState(specification.Physical_Properties)
+  const [Chemical_Properties,setChemical_Properties] = useState(specification.Chemical_Properties)
+  const [Technical_Properties,setTechnical_Properties] = useState(specification.Technical_Properties)
+  const [Other_Properties,setOther_Properties] = useState(specification.Other_Properties)
   const [value, setValue] = useState(0);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  useEffect(()=>{
+    updateSpecifications2({Physical_Properties, Chemical_Properties, Technical_Properties, Other_Properties})
+  },[Physical_Properties, Chemical_Properties, Technical_Properties, Other_Properties])
+
+
+  function handlePropertiesUpdates(updatedProperties,name){
+    if (name == "Physical_Properties") {
+      setPhysical_Properties(updatedProperties)
+    } else if(name == "Chemical_Properties"){
+      setChemical_Properties(updatedProperties)
+    } else if(name == "Technical_Properties"){
+      setTechnical_Properties(updatedProperties)
+    } else if(name == "Other_Properties"){
+      setOther_Properties(updatedProperties)
+    }
+  }
 
   return (
     <Box
@@ -128,10 +132,10 @@ function TabComponent() {
         <Tab label="Technical" />
         <Tab label="Other Specifications" />
       </Tabs>
-      <TabPanel value={value} index={0} properties={specification.Physical_Properties}  />
-      <TabPanel value={value} index={1} properties={specification.Chemical_Properties}  />
-      <TabPanel value={value} index={2} properties={specification.Technical_Properties}  />
-      <TabPanel value={value} index={3} properties={specification.Other_Properties}  />
+      <TabPanel value={value} index={0} properties={Physical_Properties}  setUpdateProperty={(updatedProperties)=>{handlePropertiesUpdates(updatedProperties,"Physical_Properties")}}/>
+      <TabPanel value={value} index={1} properties={Chemical_Properties}  setUpdateProperty={(updatedProperties)=>{handlePropertiesUpdates(updatedProperties,"Chemical_Properties")}}/>
+      <TabPanel value={value} index={2} properties={Technical_Properties}  setUpdateProperty={(updatedProperties)=>{handlePropertiesUpdates(updatedProperties,"Technical_Properties")}}/>
+      <TabPanel value={value} index={3} properties={Other_Properties}  setUpdateProperty={(updatedProperties)=>{handlePropertiesUpdates(updatedProperties,"Other_Properties")}}/>
     </Box>
   );
 }

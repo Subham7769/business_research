@@ -7,7 +7,7 @@ const ApplicationUsage = () => {
   const [credentialCollection,setCredentialCollection] = useState({
     Applications:["df"],
   })
-  console.log(credentialCollection);
+  // console.log(credentialCollection);
   return (
     <Table size="large" aria-label="purchases" width="100%">
       <TableBody>

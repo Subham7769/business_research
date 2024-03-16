@@ -6,8 +6,17 @@ import CertificatesLicense from "../CertificatesLicense/CertificatesLicense";
 import EpcRcmc from "../EpcRcmc/EpcRcmc";
 import ApplicationUsage from "../ApplicationUsage/ApplicationUsage";
 import "./KnowledgeGathering.css";
+import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import {updateDescription,updateVariety} from "../../Redux/Slices/ProductSlice"
 
 const KnowledgeGathering = () => {
+  const dispatch = useDispatch();
+  const products = useSelector((state) => state.ProductSlice.products);
+  const currentProductId = useSelector(state => state.ProductSlice.currentProductId);
+  const product = products.find(product => product.productId === currentProductId);
+  const [Description, setDescription] = useState(product.knowledgeBase.description)
+
   return (
     <div className="KnowledgeGathering">
       <h3>Knowledge Gathering</h3>
@@ -15,15 +24,18 @@ const KnowledgeGathering = () => {
         label="Product Description"
         component={Textbox}
         saveFunction={() => {
-          alert("Product Description");
+          dispatch(updateDescription({Description}))
         }}
+        DescriptionUpdater={(updatedDescription)=>{ setDescription(updatedDescription)}}
+        Description={Description}
       />
       <Accordian
         label="Product Variety"
         component={VarietyData}
         saveFunction={() => {
-          alert("Product Variety");
+          dispatch(updateVariety({Description}))
         }}
+        
       />
       <Accordian
         label="Product Testing, Standard, Quality, Packing Standard Required"

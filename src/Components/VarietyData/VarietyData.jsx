@@ -1,4 +1,3 @@
-import * as React from "react";
 import Box from "@mui/material/Box";
 import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
@@ -18,16 +17,26 @@ import TextBoxSmall from "../TextBox/TextBoxSmall/TextboxSmall";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import Accordian from "../Accordian/Accordian";
 import ProductionHubTable from "../ProductionHubTable/ProductionHubTable";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 
 
 
-
+//rendering all the varieties
 function Row({ variety }) {
-  const [open, setOpen] = React.useState(false);
+  const [currentVariety,setCurrentVariety] = useState(variety)
+  const [open, setOpen] = useState(false);
+
+  function updateSpecifications1(AllSpecification){
+    const updatedCurrentVariety = currentVariety;
+    const updatedAllSpecification = Object.assign({}, AllSpecification);
+    // updatedCurrentVariety.specification = {...AllSpecification}
+    setCurrentVariety(...currentVariety, ...updatedAllSpecification)
+  }
 
   return (
-    <React.Fragment>
+    <>
       <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
         <TableCell>
           <IconButton
@@ -39,16 +48,16 @@ function Row({ variety }) {
           </IconButton>
         </TableCell>
         <TableCell align="center">
-          <TextBoxSmall value={variety.name} />
+          <TextBoxSmall value={currentVariety.name} />
         </TableCell>
         <TableCell align="center">
-          <TextBoxSmall value={variety.code} />
+          <TextBoxSmall value={currentVariety.code} />  
         </TableCell>
         <TableCell align="center">
-          <TextBoxSmall value={variety.priceRange} />
+          <TextBoxSmall value={currentVariety.priceRange} />
         </TableCell>
         <TableCell align="center">
-          <TextBoxSmall value={variety.testing} />
+          <TextBoxSmall value={currentVariety.testing} />
         </TableCell>
       </TableRow>
       <TableRow>
@@ -60,6 +69,8 @@ function Row({ variety }) {
                 label="Properties"
                 component={TabComponent}
                 saveFunction={() => { alert("Properties") }}
+                specification={currentVariety.specification}
+                updateSpecifications2={(AllSpecification)=>{updateSpecifications1(AllSpecification)}}
               />
             </Box>
             <Box sx={{ margin: 1 }}>
@@ -73,16 +84,28 @@ function Row({ variety }) {
           </Collapse>
         </TableCell>
       </TableRow>
-    </React.Fragment>
+    </>
   );
 }
 
 //only need variety array of object
- function CollapsibleTable() {
-  const [varieties,SetVarieties] = React.useState([]);//or data from API or global product object
+ function VarietyData() {
+  const currentProductId = useSelector(state => state.ProductSlice.currentProductId)
+  const products = useSelector(state => state.ProductSlice.products)
+  const product = products.find(products=>products.productId === currentProductId)
+  const [varieties,SetVarieties] = useState(product.knowledgeBase.varieties);//or data from API or global product object
+
+  //update varieties every time when currentProductId/product changes
+  useEffect(() => {
+    if (varieties) {
+      SetVarieties(varieties);
+    }
+  }, [currentProductId, product]);
+
  
+// create a new variety 
   function createVariety(name, code, priceRange, testing) {
-    let variety = {
+    let newVariety = {
       name,
       code,
       priceRange,
@@ -120,7 +143,7 @@ function Row({ variety }) {
         season: "Enter Season",
       },],
     };
-    SetVarieties((prevVarieties)=> [...prevVarieties, variety])
+    SetVarieties((prevVarieties)=> [...prevVarieties, newVariety])
   }
 
 
@@ -153,4 +176,4 @@ function Row({ variety }) {
   );
 }
 
-export default CollapsibleTable;
+export default VarietyData;

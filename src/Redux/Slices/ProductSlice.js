@@ -1,7 +1,84 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  products: [],
+  products: [{
+    productId: 13456,
+    productName: "DemoName",
+    hsCode: "DemoCode",
+    selectionReason: [
+      { status: false, name: "Availability", color:"var(--green)" },
+      { status: false, name: "Interest", color:"var(--red)" },
+      { status: false, name: "Demand", color:"var(--blue)" },
+      { status: false, name: "Knowledge", color:"var(--yellow)" },
+    ],
+    swot: {
+      strength: ["strength"],
+      weakness: ["weakness"],
+      opportunity: ["opportunity"],
+      threat: ["threat"],
+    },
+    knowledgeBase: {
+      description: "description",
+      varieties: [
+        {
+          name: "Variety Name",
+          code: "Variety Code",
+          priceRange: "100-120",
+          testing: "Paper Tensile strength",
+          specification: {
+            Physical_Properties: [
+              {
+                name: "Physical_Properties",
+                data: "data"
+              },
+            ],
+            Chemical_Properties: [
+              {
+                name: "Chemical_Properties",
+                data: "data"
+              },
+            ],
+            Technical_Properties: [
+              {
+                name: "Technical_Properties",
+                data: "data"
+              },
+            ],
+            Other_Properties: [
+              {
+                name: "Other_Properties",
+                data: "data"
+              },
+            ],
+          },
+          productionHub: [
+            {
+              state: "Enter State",
+              city: "Enter City",
+              townVillage: "Enter Town/Village",
+              season: "Enter Season",
+            },
+          ],
+        },
+      ],
+      evaluationCriteria: {
+        Testing: ["Testing"],
+        Standards: ["Standards"],
+        Quality: ["Quality"],
+        Packing: ["Packing"],
+      },
+      CredentialCollection: {
+        Certificates: ["Certificates"],
+        Licenses: ["Licenses"],
+        Documents: ["Documents"],
+      },
+      EPC: "EPC",
+      RCMC: "RCMC",
+      ApplicationUsecase: {
+        Applications: ["Applications"],
+      },
+    },
+  }],
 };
 
 const ProductSlice = createSlice({
@@ -36,10 +113,30 @@ const ProductSlice = createSlice({
               priceRange: "",
               testing: "",
               specification: {
-                Physical_Properties: [],
-                Chemical_Properties: [],
-                Technical_Properties: [],
-                Other_Properties: [],
+                Physical_Properties: [
+                  {
+                    name: "Physical_Properties",
+                    data: "data"
+                  },
+                ],
+                Chemical_Properties: [
+                  {
+                    name: "Chemical_Properties",
+                    data: "data"
+                  },
+                ],
+                Technical_Properties: [
+                  {
+                    name: "Technical_Properties",
+                    data: "data"
+                  },
+                ],
+                Other_Properties: [
+                  {
+                    name: "Other_Properties",
+                    data: "data"
+                  },
+                ],
               },
               productionHub: [
                 {
@@ -89,8 +186,28 @@ const ProductSlice = createSlice({
         alert("Swot updated successfully");
       }
     },
+    updateDescription(state,action){
+      const { Description } = action.payload;
+      const product = state.products.find(product => product.productId === state.currentProductId)
+      const Index = state.products.findIndex(product => product.productId === state.currentProductId)
+      product.knowledgeBase.description = Description;
+      const allProducts = [...state.products];
+      allProducts[Index] = product;
+      state.products = [...allProducts];
+      alert("Description updated successfully");
+    },
+    updateVariety(state,action){
+      const { Variety } = action.payload;
+      const product = state.products.find(product => product.productId === state.currentProductId)
+      const Index = state.products.findIndex(product => product.productId === state.currentProductId)
+      product.knowledgeBase.description = Description;
+      const allProducts = [...state.products];
+      allProducts[Index] = product;
+      state.products = [...allProducts];
+      alert("Description updated successfully");
+    },
   },
 });
 
-export const { setCurrentProduct, createNewProduct,updateSwot } = ProductSlice.actions;
+export const { setCurrentProduct, createNewProduct,updateSwot,updateDescription,updateVariety } = ProductSlice.actions;
 export default ProductSlice.reducer;
