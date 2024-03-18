@@ -8,7 +8,7 @@ import ApplicationUsage from "../ApplicationUsage/ApplicationUsage";
 import "./KnowledgeGathering.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import {updateDescription,updateVariety,updateEPC_RCMC} from "../../Redux/Slices/ProductSlice"
+import { updateDescription, updateVariety, updateEPC_RCMC } from "../../Redux/Slices/ProductSlice"
 
 const KnowledgeGathering = () => {
   const dispatch = useDispatch();
@@ -18,7 +18,7 @@ const KnowledgeGathering = () => {
   const [Description, setDescription] = useState(product.knowledgeBase.description);
   const [EPC, setEPC] = useState(product.knowledgeBase.EPC);
   const [RCMC, setRCMC] = useState(product.knowledgeBase.RCMC);
-  const [varieties,SetVarieties] = useState(product.knowledgeBase.varieties);
+  const [varieties, SetVarieties] = useState(product.knowledgeBase.varieties);
 
   return (
     <div className="KnowledgeGathering">
@@ -27,16 +27,16 @@ const KnowledgeGathering = () => {
         label="Product Description"
         component={Textbox}
         saveFunction={() => {
-          dispatch(updateDescription({Description}))
+          dispatch(updateDescription({ Description }))
         }}
-        DescriptionUpdater={(updatedDescription)=>{ setDescription(updatedDescription)}}
+        DescriptionUpdater={(updatedDescription) => { setDescription(updatedDescription) }}
         Description={Description}
       />
       <Accordian
         label="Product Variety"
         component={VarietyData}
         saveFunction={() => {
-          dispatch(updateVariety({varieties}))
+          dispatch(updateVariety({ varieties }))
         }}
         varieties={varieties}
         SetVarieties={SetVarieties}
@@ -59,9 +59,9 @@ const KnowledgeGathering = () => {
         label="EPC & RCMC Required"
         component={EpcRcmc}
         saveFunction={() => {
-          dispatch(updateEPC_RCMC({EPC,RCMC}))
+          dispatch(updateEPC_RCMC({ EPC, RCMC }))
         }}
-        EPC_RCMC_Updater={(EPC,RCMC)=>{ setEPC(EPC); setRCMC(RCMC)}}
+        EPC_RCMC_Updater={(EPC, RCMC) => { setEPC(EPC); setRCMC(RCMC) }}
         EPC={EPC}
         RCMC={RCMC}
       />
