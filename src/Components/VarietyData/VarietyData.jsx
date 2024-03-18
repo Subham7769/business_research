@@ -18,22 +18,30 @@ import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import Accordian from "../Accordian/Accordian";
 import ProductionHubTable from "../ProductionHubTable/ProductionHubTable";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-
 
 
 
 //rendering all the varieties
-function Row({ variety }) {
-  const [currentVariety,setCurrentVariety] = useState(variety)
+function Row({ variety, varieties, SetVarieties }) {
+  const [currentVariety,setCurrentVariety] = useState(variety)//till here i am getting fully updated currentVariety
+  const [specification,setSpecification] = useState(currentVariety.specification)//till here i am getting fully updated currentVariety
   const [open, setOpen] = useState(false);
 
-  function updateSpecifications1(AllSpecification){
-    const updatedCurrentVariety = currentVariety;
-    const updatedAllSpecification = Object.assign({}, AllSpecification);
-    // updatedCurrentVariety.specification = {...AllSpecification}
-    setCurrentVariety(...currentVariety, ...updatedAllSpecification)
-  }
+  useEffect(()=>{
+    const Index = varieties.indexOf((obj)=> obj.name === currentVariety.name)
+    const allVarieties = [...varieties]
+    allVarieties[Index] = currentVariety;
+    SetVarieties(allVarieties);
+  },[currentVariety])
+
+  useEffect(() => {
+    setCurrentVariety((prevCurrentVariety) => ({
+      ...prevCurrentVariety,
+      specification: specification,
+    }));
+  }, [specification]);
+
+  
 
   return (
     <>
@@ -68,9 +76,8 @@ function Row({ variety }) {
                 nested={true}
                 label="Properties"
                 component={TabComponent}
-                saveFunction={() => { alert("Properties") }}
-                specification={currentVariety.specification}
-                updateSpecifications2={(AllSpecification)=>{updateSpecifications1(AllSpecification)}}
+                specification={specification}
+                setSpecification={setSpecification}
               />
             </Box>
             <Box sx={{ margin: 1 }}>
@@ -78,7 +85,6 @@ function Row({ variety }) {
                 nested={true}
                 label="Production Hub (Locations)"
                 component={ProductionHubTable}
-                saveFunction={() => { alert("Production Hub (Locations)") }}
               />
             </Box>
           </Collapse>
@@ -88,19 +94,10 @@ function Row({ variety }) {
   );
 }
 
-//only need variety array of object
- function VarietyData() {
-  const currentProductId = useSelector(state => state.ProductSlice.currentProductId)
-  const products = useSelector(state => state.ProductSlice.products)
-  const product = products.find(products=>products.productId === currentProductId)
-  const [varieties,SetVarieties] = useState(product.knowledgeBase.varieties);//or data from API or global product object
-
-  //update varieties every time when currentProductId/product changes
-  useEffect(() => {
-    if (varieties) {
-      SetVarieties(varieties);
-    }
-  }, [currentProductId, product]);
+//only need variety array of object  
+//or data from API or global product object
+//till here i am getting fully updated varieties
+ function VarietyData({varieties, SetVarieties}) {
 
  
 // create a new variety 
@@ -161,7 +158,7 @@ function Row({ variety }) {
         </TableHead>
         <TableBody>
           {varieties.map((variety) => (
-            <Row key={variety.name} variety={variety} />
+            <Row key={variety.name} variety={variety} varieties={varieties} SetVarieties={SetVarieties}/>
           ))}
           <TableRow>
             <TableCell colSpan={6} style={{ textAlign: "right" }}>

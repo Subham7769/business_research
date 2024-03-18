@@ -8,14 +8,17 @@ import ApplicationUsage from "../ApplicationUsage/ApplicationUsage";
 import "./KnowledgeGathering.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import {updateDescription,updateVariety} from "../../Redux/Slices/ProductSlice"
+import {updateDescription,updateVariety,updateEPC_RCMC} from "../../Redux/Slices/ProductSlice"
 
 const KnowledgeGathering = () => {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.ProductSlice.products);
   const currentProductId = useSelector(state => state.ProductSlice.currentProductId);
   const product = products.find(product => product.productId === currentProductId);
-  const [Description, setDescription] = useState(product.knowledgeBase.description)
+  const [Description, setDescription] = useState(product.knowledgeBase.description);
+  const [EPC, setEPC] = useState(product.knowledgeBase.EPC);
+  const [RCMC, setRCMC] = useState(product.knowledgeBase.RCMC);
+  const [varieties,SetVarieties] = useState(product.knowledgeBase.varieties);
 
   return (
     <div className="KnowledgeGathering">
@@ -33,9 +36,10 @@ const KnowledgeGathering = () => {
         label="Product Variety"
         component={VarietyData}
         saveFunction={() => {
-          dispatch(updateVariety({Description}))
+          dispatch(updateVariety({varieties}))
         }}
-        
+        varieties={varieties}
+        SetVarieties={SetVarieties}
       />
       <Accordian
         label="Product Testing, Standard, Quality, Packing Standard Required"
@@ -55,8 +59,11 @@ const KnowledgeGathering = () => {
         label="EPC & RCMC Required"
         component={EpcRcmc}
         saveFunction={() => {
-          alert("EPC & RCMC Required");
+          dispatch(updateEPC_RCMC({EPC,RCMC}))
         }}
+        EPC_RCMC_Updater={(EPC,RCMC)=>{ setEPC(EPC); setRCMC(RCMC)}}
+        EPC={EPC}
+        RCMC={RCMC}
       />
       <Accordian
         label="Application of Product Use (End Consumer of Goods/Services)"

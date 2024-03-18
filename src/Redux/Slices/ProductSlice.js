@@ -197,17 +197,28 @@ const ProductSlice = createSlice({
       alert("Description updated successfully");
     },
     updateVariety(state,action){
-      const { Variety } = action.payload;
+      const { varieties } = action.payload;
       const product = state.products.find(product => product.productId === state.currentProductId)
       const Index = state.products.findIndex(product => product.productId === state.currentProductId)
-      product.knowledgeBase.description = Description;
+      product.knowledgeBase.description = varieties;
       const allProducts = [...state.products];
       allProducts[Index] = product;
       state.products = [...allProducts];
-      alert("Description updated successfully");
+      alert("Variety updated successfully");
+    },
+    updateEPC_RCMC(state,action){
+      const {EPC,RCMC} = action.payload;
+      const product = state.products.find(product => product.productId === state.currentProductId)
+      const Index = state.products.findIndex(product => product.productId === state.currentProductId)
+      product.knowledgeBase.EPC = EPC;
+      product.knowledgeBase.RCMC = RCMC;
+      const allProducts = [...state.products];
+      allProducts[Index] = product;
+      state.products = [...allProducts];
+      alert("EPC & RCMC updated successfully");
     },
   },
 });
 
-export const { setCurrentProduct, createNewProduct,updateSwot,updateDescription,updateVariety } = ProductSlice.actions;
+export const { setCurrentProduct, createNewProduct,updateSwot,updateDescription,updateVariety, updateEPC_RCMC} = ProductSlice.actions;
 export default ProductSlice.reducer;

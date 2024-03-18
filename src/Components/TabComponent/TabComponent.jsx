@@ -14,7 +14,7 @@ import AddRoundedIcon from "@mui/icons-material/AddRounded";
 // Other_Properties
 
 function TabPanel({ value, index, properties, setUpdateProperty }) {
-  const [allProperties, setAllProperties] = useState(properties)
+  const [allProperties, setAllProperties] = useState(properties)//till here all properties are updated
 
   function AddProperties() {
       setAllProperties(prevProperties => [
@@ -82,7 +82,8 @@ function TabPanel({ value, index, properties, setUpdateProperty }) {
 }
 
 //only need specifications object
-function TabComponent({specification,updateSpecifications2}) {
+function TabComponent({specification, setSpecification}) {
+  console.log(specification)
   const [Physical_Properties,setPhysical_Properties] = useState(specification.Physical_Properties)
   const [Chemical_Properties,setChemical_Properties] = useState(specification.Chemical_Properties)
   const [Technical_Properties,setTechnical_Properties] = useState(specification.Technical_Properties)
@@ -92,9 +93,18 @@ function TabComponent({specification,updateSpecifications2}) {
     setValue(newValue);
   };
 
-  useEffect(()=>{
-    updateSpecifications2({Physical_Properties, Chemical_Properties, Technical_Properties, Other_Properties})
-  },[Physical_Properties, Chemical_Properties, Technical_Properties, Other_Properties])
+  useEffect(() => {
+    // Create a new specification object with updated properties
+    const updatedSpecification = {
+      Physical_Properties: [...Physical_Properties],
+      Chemical_Properties: [...Chemical_Properties],
+      Technical_Properties: [...Technical_Properties],
+      Other_Properties: [...Other_Properties],
+    };
+  
+    // Set the state to use the new specification object
+    setSpecification(updatedSpecification);
+  }, [Physical_Properties, Chemical_Properties, Technical_Properties, Other_Properties]);
 
 
   function handlePropertiesUpdates(updatedProperties,name){
@@ -107,6 +117,7 @@ function TabComponent({specification,updateSpecifications2}) {
     } else if(name == "Other_Properties"){
       setOther_Properties(updatedProperties)
     }
+
   }
 
   return (
