@@ -3,7 +3,6 @@ import EditableList from "../SwotComponent/EditableFields/EditableList";
 
 //need only applicationUseCase object
 const ApplicationUsage = ({applicationUseCase,setApplicationUseCase}) => {
-  // console.log(applicationUseCase);
   return (
     <Table size="large" aria-label="purchases" width="100%">
       <TableBody>

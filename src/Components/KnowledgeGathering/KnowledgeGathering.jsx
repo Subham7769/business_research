@@ -15,12 +15,57 @@ const KnowledgeGathering = () => {
   const currentProductId = useSelector(state => state.ProductSlice.currentProductId);
   const product = products.find(product => product.productId === currentProductId);
   const [Description, setDescription] = useState(product.knowledgeBase.description);
-  const [varieties, SetVarieties] = useState(product.knowledgeBase.varieties);
   const [EPC, setEPC] = useState(product.knowledgeBase.EPC);
   const [RCMC, setRCMC] = useState(product.knowledgeBase.RCMC);
   const [evaluationCriteria,setEvaluationCriteria] = useState(product.knowledgeBase.evaluationCriteria);
   const [credentialCollection,setCredentialCollection] = useState(product.knowledgeBase.credentialCollection);
   const [applicationUseCase,setApplicationUseCase] = useState(product.knowledgeBase.applicationUseCase);
+  const [varieties, SetVarieties] = useState(product.knowledgeBase.varieties);
+
+  console.log(varieties);
+
+  // create a new variety 
+  function createVariety() {
+    let newVariety = {
+      name:"",
+      code:"",
+      priceRange:"",
+      testing:"",
+      specification: {
+        Physical_Properties: [
+          {
+            name: "Physical_Properties",
+            data: "data"
+          },
+        ],
+        Chemical_Properties: [
+          {
+            name: "Chemical_Properties",
+            data: "data"
+          },
+        ],
+        Technical_Properties: [
+          {
+            name: "Technical_Properties",
+            data: "data"
+          },
+        ],
+        Other_Properties: [
+          {
+            name: "Other_Properties",
+            data: "data"
+          },
+        ],
+      },
+      productionHub: [{
+        state: "Enter State",
+        city: "Enter City",
+        townVillage: "Enter Town/Village",
+        season: "Enter Season",
+      },],
+    };
+    SetVarieties((prevVarieties)=> [...prevVarieties, newVariety])
+  }
   
   return (
     <div className="KnowledgeGathering">
@@ -43,6 +88,7 @@ const KnowledgeGathering = () => {
         }}
         varieties={varieties}
         SetVarieties={SetVarieties}
+        createVariety={createVariety}
       />
       <Accordian
         label="Product Testing, Standard, Quality, Packing Standard Required"

@@ -1,84 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  products: [{
-    productId: 13456,
-    productName: "DemoName",
-    hsCode: "DemoCode",
-    selectionReason: [
-      { status: false, name: "Availability", color:"var(--green)" },
-      { status: false, name: "Interest", color:"var(--red)" },
-      { status: false, name: "Demand", color:"var(--blue)" },
-      { status: false, name: "Knowledge", color:"var(--yellow)" },
-    ],
-    swot: {
-      strength: ["strength"],
-      weakness: ["weakness"],
-      opportunity: ["opportunity"],
-      threat: ["threat"],
-    },
-    knowledgeBase: {
-      description: "description",
-      varieties: [
-        {
-          name: "Variety Name",
-          code: "Variety Code",
-          priceRange: "100-120",
-          testing: "Paper Tensile strength",
-          specification: {
-            Physical_Properties: [
-              {
-                name: "Physical_Properties",
-                data: "data"
-              },
-            ],
-            Chemical_Properties: [
-              {
-                name: "Chemical_Properties",
-                data: "data"
-              },
-            ],
-            Technical_Properties: [
-              {
-                name: "Technical_Properties",
-                data: "data"
-              },
-            ],
-            Other_Properties: [
-              {
-                name: "Other_Properties",
-                data: "data"
-              },
-            ],
-          },
-          productionHub: [
-            {
-              state: "Enter State",
-              city: "Enter City",
-              townVillage: "Enter Town/Village",
-              season: "Enter Season",
-            },
-          ],
-        },
-      ],
-      evaluationCriteria: {
-        Testing: ["Testing"],
-        Standards: ["Standards"],
-        Quality: ["Quality"],
-        Packing: ["Packing"],
-      },
-      credentialCollection: {
-        Certificates: ["Certificates"],
-        Licenses: ["Licenses"],
-        Documents: ["Documents"],
-      },
-      EPC: "EPC123",
-      RCMC: "RCMC123",
-      applicationUseCase: {
-        Applications: ["Applications"],
-      },
-    },
-  }],
+  products: [],
 };
 
 const ProductSlice = createSlice({
@@ -161,8 +84,8 @@ const ProductSlice = createSlice({
           },
           EPC: "",
           RCMC: "",
-          applicationUsecase: {
-            Applications: [],
+          applicationUseCase: {
+            Applications: ["Applications"],
           },
         },
       };
@@ -200,7 +123,6 @@ const ProductSlice = createSlice({
     //   const { varieties } = action.payload;
     //   const product = state.products.find(product => product.productId === state.currentProductId)
     //   const Index = state.products.findIndex(product => product.productId === state.currentProductId)
-    //   product.knowledgeBase.description = varieties;
     //   const allProducts = [...state.products];
     //   allProducts[Index] = product;
     //   state.products = [...allProducts];
@@ -244,7 +166,7 @@ const ProductSlice = createSlice({
       const { applicationUseCase } = action.payload;
       const productIndex = state.products.findIndex(product => product.productId === state.currentProductId);
       if (productIndex !== -1) {
-        state.products[productIndex].knowledgeBase.ApplicationUseCase = applicationUseCase;
+        state.products[productIndex].knowledgeBase.applicationUseCase = applicationUseCase;
         alert("Application of Product Use (End Consumer of Goods/Services) updated successfully");
       }
     },

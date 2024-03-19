@@ -36,13 +36,6 @@ const CertificatesLicense = ({credentialCollection,setCredentialCollection}) => 
             />
           </TableCell>
         </TableRow>
-        <TableRow>
-          <TableCell colSpan={4} style={{ textAlign: "right" }}>
-            <IconButton aria-label="add" size="large">
-              <AddRoundedIcon fontSize="inherit" />
-            </IconButton>
-          </TableCell>
-        </TableRow>
       </TableBody>
     </Table>
   );

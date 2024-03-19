@@ -24,8 +24,14 @@ import { useEffect, useState } from "react";
 //rendering all the varieties
 function Row({ variety, varieties, SetVarieties }) {
   const [currentVariety,setCurrentVariety] = useState(variety)//till here i am getting fully updated currentVariety
-  const [specification,setSpecification] = useState(currentVariety.specification)//till here i am getting fully updated currentVariety
+  const [currentVarietyName,setCurrentVarietyName] = useState(currentVariety.name)
+  const [currentVarietyCode,setCurrentVarietyCode] = useState(currentVariety.code)
+  const [currentVarietyPriceRange,setCurrentVarietyPriceRange] = useState(currentVariety.priceRange)
+  const [currentVarietyTesting,setCurrentVarietyTesting] = useState(currentVariety.testing)
+  const [specification,setSpecification] = useState(currentVariety.specification)
+  const [productionHub,setProductionHub] = useState(currentVariety.productionHub)
   const [open, setOpen] = useState(false);
+
 
   useEffect(()=>{
     const Index = varieties.indexOf((obj)=> obj.name === currentVariety.name)
@@ -56,16 +62,16 @@ function Row({ variety, varieties, SetVarieties }) {
           </IconButton>
         </TableCell>
         <TableCell align="center">
-          <TextBox value={currentVariety.name} />
+          <TextBox value={currentVarietyName} valueUpdater={setCurrentVarietyName} placeholder={"Name"}/>
         </TableCell>
         <TableCell align="center">
-          <TextBox value={currentVariety.code} />  
+          <TextBox value={currentVarietyCode} valueUpdater={setCurrentVarietyCode} placeholder={"Code"}/>
         </TableCell>
         <TableCell align="center">
-          <TextBox value={currentVariety.priceRange} />
+          <TextBox value={currentVarietyPriceRange}valueUpdater={setCurrentVarietyPriceRange}  placeholder={"Price Range"}/>
         </TableCell>
         <TableCell align="center">
-          <TextBox value={currentVariety.testing} />
+          <TextBox value={currentVarietyTesting} valueUpdater={setCurrentVarietyTesting} placeholder={"Testings"}/>
         </TableCell>
       </TableRow>
       <TableRow>
@@ -85,6 +91,8 @@ function Row({ variety, varieties, SetVarieties }) {
                 nested={true}
                 label="Production Hub (Locations)"
                 component={ProductionHubTable}
+                productionHub={productionHub}
+                setProductionHub={setProductionHub}
               />
             </Box>
           </Collapse>
@@ -97,52 +105,7 @@ function Row({ variety, varieties, SetVarieties }) {
 //only need variety array of object  
 //or data from API or global product object
 //till here i am getting fully updated varieties
- function VarietyData({varieties, SetVarieties}) {
-
- 
-// create a new variety 
-  function createVariety(name, code, priceRange, testing) {
-    let newVariety = {
-      name,
-      code,
-      priceRange,
-      testing,
-      specification: {
-        Physical_Properties: [
-          {
-            name: "Physical_Properties",
-            data: "data"
-          },
-        ],
-        Chemical_Properties: [
-          {
-            name: "Chemical_Properties",
-            data: "data"
-          },
-        ],
-        Technical_Properties: [
-          {
-            name: "Technical_Properties",
-            data: "data"
-          },
-        ],
-        Other_Properties: [
-          {
-            name: "Other_Properties",
-            data: "data"
-          },
-        ],
-      },
-      productionHub: [{
-        state: "Enter State",
-        city: "Enter City",
-        townVillage: "Enter Town/Village",
-        season: "Enter Season",
-      },],
-    };
-    SetVarieties((prevVarieties)=> [...prevVarieties, newVariety])
-  }
-
+ function VarietyData({varieties, SetVarieties, createVariety}) {
 
   return (
     <TableContainer component={Paper}>
@@ -157,12 +120,12 @@ function Row({ variety, varieties, SetVarieties }) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {varieties.map((variety) => (
-            <Row key={variety.name} variety={variety} varieties={varieties} SetVarieties={SetVarieties}/>
+          {varieties.map((variety,index) => (
+            <Row key={variety.name+index} variety={variety} varieties={varieties} SetVarieties={SetVarieties}/>
           ))}
           <TableRow>
             <TableCell colSpan={6} style={{ textAlign: "right" }}>
-              <IconButton aria-label="add" size="large" onClick={()=>{createVariety('Product Name','Product Code','Price Range', 'Product Testing')}}>
+              <IconButton aria-label="add" size="large" onClick={()=>{createVariety()}}>
                 <AddRoundedIcon fontSize="inherit" />
               </IconButton>
             </TableCell>

@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink,useNavigate } from "react-router-dom";
 import "./Sidebar.css";
 import SelectDropDown from "../SelectDropDown/SelectDropDown"
 import AcUnitRoundedIcon from '@mui/icons-material/AcUnitRounded';
@@ -8,14 +8,21 @@ import ScienceRoundedIcon from "@mui/icons-material/ScienceRounded";
 import TravelExploreRoundedIcon from '@mui/icons-material/TravelExploreRounded';
 import PriceCheckRoundedIcon from '@mui/icons-material/PriceCheckRounded';
 import { Divider } from "@mui/material";
+import { useSelector } from "react-redux";
+
+
 
 const Sidebar = () => {
-
+  const navigate = useNavigate();
+  const products = useSelector(state=>state.ProductSlice.products)
 
   return (
     <div className="sidebar">
-      <SelectDropDown/>
-      <Divider />
+      {
+        !products.length<1 ? ( <><SelectDropDown/> <Divider /></>): navigate('/NewProduct')
+      }
+      
+      
       <nav className="navSidebar">
         <NavLink to="/NewProduct" className="NavLink">
           
@@ -33,6 +40,14 @@ const Sidebar = () => {
         <NavLink to="/TestComponent" className="NavLink">
           <ScienceRoundedIcon />
           Test Component
+        </NavLink>
+        <NavLink to="/abc" className="NavLink">
+          <TravelExploreRoundedIcon />
+          Market Research
+        </NavLink>
+        <NavLink to="/def" className="NavLink">
+          <PriceCheckRoundedIcon />
+          Price Calculation
         </NavLink>
       </nav>
     </div>
