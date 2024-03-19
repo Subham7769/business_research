@@ -1,6 +1,6 @@
 import React from "react";
 import { IconButton, Table, TableBody, TableCell, TableRow } from "@mui/material";
-import TextBoxSmall from "../TextBox/TextBoxSmall/TextboxSmall";
+import TextBox from "../TextBox/Textbox";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 
 const TestDocumentTesting = () => {
@@ -9,16 +9,16 @@ const TestDocumentTesting = () => {
       <TableBody>
         <TableRow>
           <TableCell>
-            <TextBoxSmall placeholder={"Testing"} />
+            <TextBox placeholder={"Testing"} />
           </TableCell>
           <TableCell>
-            <TextBoxSmall placeholder={"Standards"} />
+            <TextBox placeholder={"Standards"} />
           </TableCell>
           <TableCell>
-            <TextBoxSmall placeholder={"Quality"} />
+            <TextBox placeholder={"Quality"} />
           </TableCell>
           <TableCell>
-            <TextBoxSmall placeholder={"Packing"} />
+            <TextBox placeholder={"Packing"} />
           </TableCell>
         </TableRow>
         <TableRow>

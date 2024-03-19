@@ -6,7 +6,7 @@ import {
   TableCell,
   TableRow,
 } from "@mui/material";
-import TextBoxSmall from "../TextBox/TextBoxSmall/TextboxSmall";
+import TextBox from "../TextBox/Textbox";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 
 
@@ -56,16 +56,16 @@ const ProductionHubTable = () => {
           return (
             <TableRow key={hub + index}>
               <TableCell>
-                <TextBoxSmall placeholder={"State"} name={"state"} value={hub.state} onClick={(e)=>{handleChange(e,hub)}}/>
+                <TextBox placeholder={"State"} name={"state"} value={hub.state} onClick={(e)=>{handleChange(e,hub)}}/>
               </TableCell>
               <TableCell>
-                <TextBoxSmall placeholder={"City"} name={"city"} value={hub.city} onClick={(e)=>{handleChange(e,hub)}}/>
+                <TextBox placeholder={"City"} name={"city"} value={hub.city} onClick={(e)=>{handleChange(e,hub)}}/>
               </TableCell>
               <TableCell>
-                <TextBoxSmall placeholder={"Town/Village"} name={"townVillage"} value={hub.townVillage} onClick={(e)=>{handleChange(e,hub)}}/>
+                <TextBox placeholder={"Town/Village"} name={"townVillage"} value={hub.townVillage} onClick={(e)=>{handleChange(e,hub)}}/>
               </TableCell>
               <TableCell>
-                <TextBoxSmall placeholder={"Season"} name={"season"} value={hub.season} onClick={(e)=>{handleChange(e,hub)}}/>
+                <TextBox placeholder={"Season"} name={"season"} value={hub.season} onClick={(e)=>{handleChange(e,hub)}}/>
               </TableCell>
             </TableRow>
           );

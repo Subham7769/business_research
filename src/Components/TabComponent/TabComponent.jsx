@@ -3,7 +3,7 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import { IconButton, Table, TableBody, TableCell, TableRow } from "@mui/material";
-import TextBoxSmall from "../TextBox/TextBoxSmall/TextboxSmall";
+import TextBox from "../TextBox/Textbox";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 
 //All properties with corresponding property key-value pair
@@ -59,10 +59,10 @@ function TabPanel({ value, index, properties, setUpdateProperty }) {
               {allProperties.map((property, index) => (
                 <TableRow key={index}>
                   <TableCell>
-                    <TextBoxSmall placeholder={"Property name"} value={property.name} name={"name"} onChange={(e) => handleChange(e, property)} />
+                    <TextBox placeholder={"Property name"} value={property.name} name={"name"} onChange={(e) => handleChange(e, property)} />
                   </TableCell>
                   <TableCell>
-                    <TextBoxSmall placeholder={"Value"} value={property.data} name={"data"} onChange={(e) => handleChange(e, property)} />
+                    <TextBox placeholder={"Value"} value={property.data} name={"data"} onChange={(e) => handleChange(e, property)} />
                   </TableCell>
                 </TableRow>
               ))}

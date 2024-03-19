@@ -1,15 +1,9 @@
-import { useState } from "react";
 import { Table, TableBody, TableCell, TableRow } from "@mui/material";
 import EditableList from "../SwotComponent/EditableFields/EditableList";
 
 // required only evaluationCriteria: {}
-const DocumentTesting = () => {
- const [evaluationCriteria,setEvaluationCriteria] = useState({
-  Testing: ["as"],
-  Standards: ["df"],
-  Quality: ["gh"],
-  Packing: ["kl"],
-})
+const DocumentTesting = ({evaluationCriteria,setEvaluationCriteria}) => {
+
 
   return (
     <Table size="large" aria-label="purchases" width="100%">

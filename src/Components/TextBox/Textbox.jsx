@@ -2,8 +2,12 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import {useState} from "react";
 
-export default function MultilineTextFields({ value,placeholder }) {
-  const [text, setText] = useState(value);
+export default function MultilineTextFields({ value,placeholder,valueUpdater }) {
+  const [updatedValue, setUpdatedValue] = useState(value);
+  function handleChange(e){
+    setUpdatedValue(e.target.value);
+    valueUpdater(updatedValue);
+   }
   return (
     <Box
       component="form"
@@ -17,10 +21,10 @@ export default function MultilineTextFields({ value,placeholder }) {
         <TextField
           id="textarea"
           placeholder={placeholder}
-          value={text}
+          value={updatedValue}
+          onChange={(e)=>{handleChange(e)}}
           multiline
           fullWidth
-          onChange={(e) => setText(e.target.value)}
         />
       </div>
     </Box>

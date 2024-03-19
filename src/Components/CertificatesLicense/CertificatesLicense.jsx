@@ -1,14 +1,9 @@
-import { useState } from "react";
 import { IconButton, Table, TableBody, TableCell, TableRow } from "@mui/material";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import EditableList from "../SwotComponent/EditableFields/EditableList";
 
-const CertificatesLicense = () => {
-  const [credentialCollection,setCredentialCollection] = useState({
-    Certificates: ['cxc'],
-    Licenses: ["xcx"],
-    Documents: ["fgf"],
-  })
+const CertificatesLicense = ({credentialCollection,setCredentialCollection}) => {
+
   return (
     <Table size="large" aria-label="purchases" width="100%">
       <TableBody>

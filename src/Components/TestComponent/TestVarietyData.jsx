@@ -16,7 +16,7 @@ import Paper from "@mui/material/Paper";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import TabComponent from "../TabComponent/TabComponent";
-import TextBoxSmall from "../TextBox/TextBoxSmall/TextboxSmall";
+import TextBox from "../TextBox/Textbox";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import Accordian from "../Accordian/Accordian";
 import ProductionHubTable from "../ProductionHubTable/ProductionHubTable";
@@ -76,16 +76,16 @@ function Row({ variety }) {
           </IconButton>
         </TableCell>
         <TableCell align="center">
-          <TextBoxSmall value={variety.name} />
+          <TextBox value={variety.name} />
         </TableCell>
         <TableCell align="center">
-          <TextBoxSmall value={variety.code} />
+          <TextBox value={variety.code} />
         </TableCell>
         <TableCell align="center">
-          <TextBoxSmall value={variety.priceRange} />
+          <TextBox value={variety.priceRange} />
         </TableCell>
         <TableCell align="center">
-          <TextBoxSmall value={variety.testing} />
+          <TextBox value={variety.testing} />
         </TableCell>
       </TableRow>
       <TableRow>

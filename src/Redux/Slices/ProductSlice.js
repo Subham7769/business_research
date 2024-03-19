@@ -67,14 +67,14 @@ const initialState = {
         Quality: ["Quality"],
         Packing: ["Packing"],
       },
-      CredentialCollection: {
+      credentialCollection: {
         Certificates: ["Certificates"],
         Licenses: ["Licenses"],
         Documents: ["Documents"],
       },
-      EPC: "EPC",
-      RCMC: "RCMC",
-      ApplicationUsecase: {
+      EPC: "EPC123",
+      RCMC: "RCMC123",
+      applicationUseCase: {
         Applications: ["Applications"],
       },
     },
@@ -154,14 +154,14 @@ const ProductSlice = createSlice({
             Quality: [],
             Packing: [],
           },
-          CredentialCollection: {
+          credentialCollection: {
             Certificates: [],
             Licenses: [],
             Documents: [],
           },
           EPC: "",
           RCMC: "",
-          ApplicationUsecase: {
+          applicationUsecase: {
             Applications: [],
           },
         },
@@ -196,29 +196,60 @@ const ProductSlice = createSlice({
       state.products = [...allProducts];
       alert("Description updated successfully");
     },
-    updateVariety(state,action){
+    // updateVariety(state,action){
+    //   const { varieties } = action.payload;
+    //   const product = state.products.find(product => product.productId === state.currentProductId)
+    //   const Index = state.products.findIndex(product => product.productId === state.currentProductId)
+    //   product.knowledgeBase.description = varieties;
+    //   const allProducts = [...state.products];
+    //   allProducts[Index] = product;
+    //   state.products = [...allProducts];
+    //   alert("Variety updated successfully");
+    // },
+    updateVariety(state, action) {
       const { varieties } = action.payload;
-      const product = state.products.find(product => product.productId === state.currentProductId)
-      const Index = state.products.findIndex(product => product.productId === state.currentProductId)
-      product.knowledgeBase.description = varieties;
-      const allProducts = [...state.products];
-      allProducts[Index] = product;
-      state.products = [...allProducts];
-      alert("Variety updated successfully");
+      const productIndex = state.products.findIndex(product => product.productId === state.currentProductId);
+      if (productIndex !== -1) {
+        state.products[productIndex].knowledgeBase.varieties = varieties;
+        alert("Variety updated successfully");
+      }
     },
-    updateEPC_RCMC(state,action){
-      const {EPC,RCMC} = action.payload;
-      const product = state.products.find(product => product.productId === state.currentProductId)
-      const Index = state.products.findIndex(product => product.productId === state.currentProductId)
-      product.knowledgeBase.EPC = EPC;
-      product.knowledgeBase.RCMC = RCMC;
-      const allProducts = [...state.products];
-      allProducts[Index] = product;
-      state.products = [...allProducts];
-      alert("EPC & RCMC updated successfully");
+    updateEPC_RCMC(state, action) {
+      const { EPC, RCMC } = action.payload;
+      console.log(EPC, RCMC)
+      const productIndex = state.products.findIndex(product => product.productId === state.currentProductId);
+      if (productIndex !== -1) {
+        state.products[productIndex].knowledgeBase.EPC = EPC;
+        state.products[productIndex].knowledgeBase.RCMC = RCMC;
+        alert("EPC & RCMC updated successfully");
+      }
+    },
+    updateEvaluationCriteria(state, action) {
+      const { evaluationCriteria } = action.payload;
+      const productIndex = state.products.findIndex(product => product.productId === state.currentProductId);
+      if (productIndex !== -1) {
+        state.products[productIndex].knowledgeBase.evaluationCriteria = evaluationCriteria;
+        alert("Product Testing, Standard, Quality, Packing Standards updated successfully");
+      }
+    },
+    updateCredentialCollection(state, action) {
+      const { credentialCollection } = action.payload;
+      const productIndex = state.products.findIndex(product => product.productId === state.currentProductId);
+      if (productIndex !== -1) {
+        state.products[productIndex].knowledgeBase.credentialCollection = credentialCollection;
+        alert("Certificates, Licenses, Documents Required updated successfully");
+      }
+    },
+    updateApplicationUseCase(state, action) {
+      const { applicationUseCase } = action.payload;
+      const productIndex = state.products.findIndex(product => product.productId === state.currentProductId);
+      if (productIndex !== -1) {
+        state.products[productIndex].knowledgeBase.ApplicationUseCase = applicationUseCase;
+        alert("Application of Product Use (End Consumer of Goods/Services) updated successfully");
+      }
     },
   },
 });
 
-export const { setCurrentProduct, createNewProduct,updateSwot,updateDescription,updateVariety, updateEPC_RCMC} = ProductSlice.actions;
+export const { setCurrentProduct, createNewProduct,updateSwot,updateDescription,updateVariety, updateEPC_RCMC,updateEvaluationCriteria,updateCredentialCollection,updateApplicationUseCase} = ProductSlice.actions;
 export default ProductSlice.reducer;

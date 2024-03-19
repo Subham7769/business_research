@@ -1,24 +1,20 @@
-import { useState } from "react";
 import { Table, TableBody, TableCell, TableRow } from "@mui/material";
 import EditableList from "../SwotComponent/EditableFields/EditableList";
 
-
-const ApplicationUsage = () => {
-  const [credentialCollection,setCredentialCollection] = useState({
-    Applications:["df"],
-  })
-  // console.log(credentialCollection);
+//need only applicationUseCase object
+const ApplicationUsage = ({applicationUseCase,setApplicationUseCase}) => {
+  // console.log(applicationUseCase);
   return (
     <Table size="large" aria-label="purchases" width="100%">
       <TableBody>
         <TableRow>
           <TableCell>
           <EditableList
-              items={credentialCollection.Applications}
+              items={applicationUseCase.Applications}
               name={"Applications"}
               color={"lightgrey"}
-              mainData={credentialCollection}
-              setMainData={setCredentialCollection}
+              mainData={applicationUseCase}
+              setMainData={setApplicationUseCase}
             />
           </TableCell>
         </TableRow>
