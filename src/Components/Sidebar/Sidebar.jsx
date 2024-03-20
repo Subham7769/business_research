@@ -56,6 +56,10 @@ const Sidebar = () => {
           <PriceCheckRoundedIcon />
           Price Calculation
         </NavLink>
+        <NavLink to="/Login" className="NavLink">
+          <PriceCheckRoundedIcon />
+          Login
+        </NavLink>
       </nav>
     </div>
   );
