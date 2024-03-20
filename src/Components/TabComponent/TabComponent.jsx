@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
-import { IconButton, Table, TableBody, TableCell, TableRow } from "@mui/material";
+import { Button, IconButton, Table, TableBody, TableCell, TableRow } from "@mui/material";
 import TextBox from "../TextBox/Textbox";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 
@@ -34,6 +34,7 @@ function TabPanel({ value, index, properties, setUpdateProperty }) {
       alert("No object found");
     }
   }
+
   function handleChangeData(updatedValue, property) {
     const index = allProperties.findIndex(obj => obj.name === property.name);
     if (index !== -1) {
@@ -44,10 +45,10 @@ function TabPanel({ value, index, properties, setUpdateProperty }) {
       alert("No object found");
     }
   }
-
-  useEffect(() => {
+  //handling property array update
+  function handleSave() {
     setUpdateProperty(allProperties)
-  }, [allProperties])
+  }
 
 
   return (
@@ -77,6 +78,7 @@ function TabPanel({ value, index, properties, setUpdateProperty }) {
                   <IconButton aria-label="add" size="large" onClick={() => AddProperties()}>
                     <AddRoundedIcon fontSize="inherit" />
                   </IconButton>
+                  <Button variant="contained" onClick={() => {handleSave();}}>Save</Button>
                 </TableCell>
               </TableRow>
             </TableBody>
@@ -113,7 +115,7 @@ function TabComponent({ specification, setSpecification }) {
   }, [Physical_Properties, Chemical_Properties, Technical_Properties, Other_Properties]);
 
 
-
+// upadting the corresponding array of properties
   function handlePropertiesUpdates(updatedProperties, name) {
     if (name == "Physical_Properties") {
       setPhysical_Properties(updatedProperties)

@@ -17,9 +17,9 @@ const KnowledgeGathering = () => {
   const [Description, setDescription] = useState(product.knowledgeBase.description);
   const [EPC, setEPC] = useState(product.knowledgeBase.EPC);
   const [RCMC, setRCMC] = useState(product.knowledgeBase.RCMC);
-  const [evaluationCriteria,setEvaluationCriteria] = useState(product.knowledgeBase.evaluationCriteria);
-  const [credentialCollection,setCredentialCollection] = useState(product.knowledgeBase.credentialCollection);
-  const [applicationUseCase,setApplicationUseCase] = useState(product.knowledgeBase.applicationUseCase);
+  const [evaluationCriteria, setEvaluationCriteria] = useState(product.knowledgeBase.evaluationCriteria);
+  const [credentialCollection, setCredentialCollection] = useState(product.knowledgeBase.credentialCollection);
+  const [applicationUseCase, setApplicationUseCase] = useState(product.knowledgeBase.applicationUseCase);
   const [varieties, SetVarieties] = useState(product.knowledgeBase.varieties);
 
   console.log(varieties);
@@ -27,10 +27,10 @@ const KnowledgeGathering = () => {
   // create a new variety 
   function createVariety() {
     let newVariety = {
-      name:"",
-      code:"",
-      priceRange:"",
-      testing:"",
+      name: "",
+      code: "",
+      priceRange: "",
+      testing: "",
       specification: {
         Physical_Properties: [
           {
@@ -64,9 +64,9 @@ const KnowledgeGathering = () => {
         season: "Enter Season",
       },],
     };
-    SetVarieties((prevVarieties)=> [...prevVarieties, newVariety])
+    SetVarieties((prevVarieties) => [...prevVarieties, newVariety])
   }
-  
+
   return (
     <div className="KnowledgeGathering">
       <h3>Knowledge Gathering</h3>

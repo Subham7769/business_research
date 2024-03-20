@@ -1,4 +1,3 @@
-import  { useState } from "react";
 import {
   IconButton,
   Table,
@@ -11,68 +10,58 @@ import AddRoundedIcon from "@mui/icons-material/AddRounded";
 
 
 //only need production Hub array of object
-const ProductionHubTable = () => {
-  let productionHubREquired = [{
-    state: "Enter State",
-    city: "Enter City",
-    townVillage: "Enter Town/Village",
-    season: "Enter Season",
-  },];
+const productionHubTable = ({productionHub, setProductionHub}) => {
 
-  const [ProductionHub, setAllProductionHub] = useState(productionHubREquired);
-
-  function AddProductionHub() {
-    setAllProductionHub((prevProperties) => [
+  function AddproductionHub() {
+    setProductionHub((prevProperties) => [
       ...prevProperties,
       { state: "Enter State", city: "Enter City", townVillage: "Enter Town/Village", season: "Enter Season", },
     ]);
   }
 
-  function handleChange(e, hub) {
-    const index = ProductionHub.findIndex(obj => obj.state === hub.state);
+  function handleChange(updatedValue, hub,name) {
+    const index = productionHub.findIndex(obj => obj.state === hub.state);
     if (index !== -1) {
-      const updatedProperties = [...ProductionHub]; // Creating a copy of the state array
-      if (e.target.name === "state") {
-        updatedProperties[index] = { ...updatedProperties[index], state: e.target.value }; // Updating the name of the specific object
-      } else if (e.target.name === "city") {
-        updatedProperties[index] = { ...updatedProperties[index], city: e.target.value };
-      } else if (e.target.name === "townVillage") {
-        updatedProperties[index] = { ...updatedProperties[index], townVillage: e.target.value };
-      } else if (e.target.name === "season") {
-        updatedProperties[index] = { ...updatedProperties[index], season: e.target.value };
+      const updatedProperties = [...productionHub]; // Creating a copy of the state array
+      if (name === "state") {
+        updatedProperties[index] = { ...updatedProperties[index], state: updatedValue }; // Updating the name of the specific object
+      } else if (name === "city") {
+        updatedProperties[index] = { ...updatedProperties[index], city: updatedValue };
+      } else if (name === "townVillage") {
+        updatedProperties[index] = { ...updatedProperties[index], townVillage: updatedValue };
+      } else if (name === "season") {
+        updatedProperties[index] = { ...updatedProperties[index], season: updatedValue };
       }
-      setAllProductionHub(updatedProperties); // Updating the state with the new array
+      setProductionHub(updatedProperties); // Updating the state with the new array
     } else {
       alert("No object found");
     }
   }
 
-
-
   return (
     <Table size="large" aria-label="purchases" width="100%">
       <TableBody>
-        {ProductionHub.map((hub, index) => {
+        {productionHub.map((hub, index) => {
           return (
             <TableRow key={hub + index}>
               <TableCell>
-                <TextBox placeholder={"State"} name={"state"} value={hub.state} onClick={(e)=>{handleChange(e,hub)}}/>
+                <TextBox placeholder={"State"} value={hub.state} valueUpdater={(updatedValue)=>{handleChange(updatedValue,hub,"state")}}/>
               </TableCell>
               <TableCell>
-                <TextBox placeholder={"City"} name={"city"} value={hub.city} onClick={(e)=>{handleChange(e,hub)}}/>
+                <TextBox placeholder={"City"} value={hub.city} valueUpdater={(updatedValue)=>{handleChange(updatedValue,hub,"city")}}/>
               </TableCell>
               <TableCell>
-                <TextBox placeholder={"Town/Village"} name={"townVillage"} value={hub.townVillage} onClick={(e)=>{handleChange(e,hub)}}/>
+                <TextBox placeholder={"Town/Village"} value={hub.townVillage} valueUpdater={(updatedValue)=>{handleChange(updatedValue,hub,"townVillage")}}/>
               </TableCell>
               <TableCell>
-                <TextBox placeholder={"Season"} name={"season"} value={hub.season} onClick={(e)=>{handleChange(e,hub)}}/>
+                <TextBox placeholder={"Season"} value={hub.season} valueUpdater={(updatedValue)=>{handleChange(updatedValue,hub,"season")}}/>
               </TableCell>
             </TableRow>
           );
         })}
         <TableRow>
           <TableCell colSpan={4} style={{ textAlign: "right" }}>
-            <IconButton aria-label="add" size="large" onClick={() => AddProductionHub()}>
+            <IconButton aria-label="add" size="large" onClick={() => AddproductionHub()}>
               <AddRoundedIcon fontSize="inherit" />
             </IconButton>
           </TableCell>
@@ -82,4 +71,4 @@ const ProductionHubTable = () => {
   );
 };
 
-export default ProductionHubTable;
+export default productionHubTable;

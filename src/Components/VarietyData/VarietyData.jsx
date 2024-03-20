@@ -23,31 +23,58 @@ import { useEffect, useState } from "react";
 
 //rendering all the varieties
 function Row({ variety, varieties, SetVarieties }) {
-  const [currentVariety,setCurrentVariety] = useState(variety)//till here i am getting fully updated currentVariety
-  const [currentVarietyName,setCurrentVarietyName] = useState(currentVariety.name)
-  const [currentVarietyCode,setCurrentVarietyCode] = useState(currentVariety.code)
-  const [currentVarietyPriceRange,setCurrentVarietyPriceRange] = useState(currentVariety.priceRange)
-  const [currentVarietyTesting,setCurrentVarietyTesting] = useState(currentVariety.testing)
-  const [specification,setSpecification] = useState(currentVariety.specification)
-  const [productionHub,setProductionHub] = useState(currentVariety.productionHub)
+  const [currentVariety, setCurrentVariety] = useState(variety)//till here i am getting fully updated currentVariety
   const [open, setOpen] = useState(false);
 
 
-  useEffect(()=>{
-    const Index = varieties.indexOf((obj)=> obj.name === currentVariety.name)
+  function setCurrentVarietyName(updatedValue) {
+    setCurrentVariety((prevVariety) => ({
+      ...prevVariety,
+      name: updatedValue,
+    }));
+  }
+
+  function setCurrentVarietyCode(updatedValue) {
+    setCurrentVariety((prevVariety) => ({
+      ...prevVariety,
+      code: updatedValue,
+    }));
+  }
+
+  function setCurrentVarietyPriceRange(updatedValue) {
+    setCurrentVariety((prevVariety) => ({
+      ...prevVariety,
+      priceRange: updatedValue,
+    }));
+  }
+
+  function setCurrentVarietyTesting(updatedValue) {
+    setCurrentVariety((prevVariety) => ({
+      ...prevVariety,
+      testing: updatedValue,
+    }));
+  }
+
+  function setSpecification(updatedValue) {
+    setCurrentVariety((prevVariety) => ({
+      ...prevVariety,
+      specification: updatedValue,
+    }));
+  }
+
+  function setProductionHub(updatedValue) {
+    setCurrentVariety((prevVariety) => ({
+      ...prevVariety,
+      productionHub: updatedValue,
+    }));
+  }
+
+  useEffect(() => {
+    const Index = varieties.indexOf((obj) => obj.name === currentVariety.name)
     const allVarieties = [...varieties]
     allVarieties[Index] = currentVariety;
     SetVarieties(allVarieties);
-  },[currentVariety])
-
-  useEffect(() => {
-    setCurrentVariety((prevCurrentVariety) => ({
-      ...prevCurrentVariety,
-      specification: specification,
-    }));
-  }, [specification]);
-
-  
+  }, [currentVariety])
 
   return (
     <>
@@ -62,16 +89,16 @@ function Row({ variety, varieties, SetVarieties }) {
           </IconButton>
         </TableCell>
         <TableCell align="center">
-          <TextBox value={currentVarietyName} valueUpdater={setCurrentVarietyName} placeholder={"Name"}/>
+          <TextBox value={currentVariety.name} valueUpdater={(updatedValue)=>setCurrentVarietyName(updatedValue)} placeholder={"Name"} />
         </TableCell>
         <TableCell align="center">
-          <TextBox value={currentVarietyCode} valueUpdater={setCurrentVarietyCode} placeholder={"Code"}/>
+          <TextBox value={currentVariety.code} valueUpdater={(updatedValue)=>setCurrentVarietyCode(updatedValue)} placeholder={"Code"} />
         </TableCell>
         <TableCell align="center">
-          <TextBox value={currentVarietyPriceRange}valueUpdater={setCurrentVarietyPriceRange}  placeholder={"Price Range"}/>
+          <TextBox value={currentVariety.priceRange} valueUpdater={(updatedValue)=>setCurrentVarietyPriceRange(updatedValue)} placeholder={"Price Range"} />
         </TableCell>
         <TableCell align="center">
-          <TextBox value={currentVarietyTesting} valueUpdater={setCurrentVarietyTesting} placeholder={"Testings"}/>
+          <TextBox value={currentVariety.testing} valueUpdater={(updatedValue)=>setCurrentVarietyTesting(updatedValue)} placeholder={"Testings"} />
         </TableCell>
       </TableRow>
       <TableRow>
@@ -82,8 +109,8 @@ function Row({ variety, varieties, SetVarieties }) {
                 nested={true}
                 label="Properties"
                 component={TabComponent}
-                specification={specification}
-                setSpecification={setSpecification}
+                specification={currentVariety.specification}
+                setSpecification={(updatedValue)=>setSpecification(updatedValue)}
               />
             </Box>
             <Box sx={{ margin: 1 }}>
@@ -91,8 +118,8 @@ function Row({ variety, varieties, SetVarieties }) {
                 nested={true}
                 label="Production Hub (Locations)"
                 component={ProductionHubTable}
-                productionHub={productionHub}
-                setProductionHub={setProductionHub}
+                productionHub={currentVariety.productionHub}
+                setProductionHub={(updatedValue)=>setProductionHub(updatedValue)}
               />
             </Box>
           </Collapse>
@@ -105,7 +132,7 @@ function Row({ variety, varieties, SetVarieties }) {
 //only need variety array of object  
 //or data from API or global product object
 //till here i am getting fully updated varieties
- function VarietyData({varieties, SetVarieties, createVariety}) {
+function VarietyData({ varieties, SetVarieties, createVariety }) {
 
   return (
     <TableContainer component={Paper}>
@@ -120,12 +147,12 @@ function Row({ variety, varieties, SetVarieties }) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {varieties.map((variety,index) => (
-            <Row key={variety.name+index} variety={variety} varieties={varieties} SetVarieties={SetVarieties}/>
+          {varieties.map((variety, index) => (
+            <Row key={variety.name + index} variety={variety} varieties={varieties} SetVarieties={SetVarieties} />
           ))}
           <TableRow>
             <TableCell colSpan={6} style={{ textAlign: "right" }}>
-              <IconButton aria-label="add" size="large" onClick={()=>{createVariety()}}>
+              <IconButton aria-label="add" size="large" onClick={() => { createVariety() }}>
                 <AddRoundedIcon fontSize="inherit" />
               </IconButton>
             </TableCell>

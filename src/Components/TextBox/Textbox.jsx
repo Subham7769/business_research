@@ -4,10 +4,6 @@ import {useState} from "react";
 
 export default function MultilineTextFields({ value,placeholder,valueUpdater }) {
   const [updatedValue, setUpdatedValue] = useState(value);
-  function handleChange(e){
-    setUpdatedValue(e.target.value);
-    valueUpdater(updatedValue);
-   }
   return (
     <Box
       component="form"
@@ -22,7 +18,8 @@ export default function MultilineTextFields({ value,placeholder,valueUpdater }) 
           id="textarea"
           placeholder={placeholder}
           value={updatedValue}
-          onChange={(e)=>{handleChange(e)}}
+          onChange={(e)=>{setUpdatedValue(e.target.value)}}
+          onBlur={()=>{valueUpdater(updatedValue)}}
           multiline
           fullWidth
         />

@@ -9,6 +9,7 @@ import TravelExploreRoundedIcon from '@mui/icons-material/TravelExploreRounded';
 import PriceCheckRoundedIcon from '@mui/icons-material/PriceCheckRounded';
 import { Divider } from "@mui/material";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 
 
@@ -16,10 +17,16 @@ const Sidebar = () => {
   const navigate = useNavigate();
   const products = useSelector(state=>state.ProductSlice.products)
 
+    useEffect(() => {
+    if (!products.length) {
+      navigate('/NewProduct');
+    }
+  }, [products, navigate]);
+
   return (
     <div className="sidebar">
       {
-        !products.length<1 ? ( <><SelectDropDown/> <Divider /></>): navigate('/NewProduct')
+        !products.length<1 ? ( <><SelectDropDown/> <Divider /></>): null
       }
       
       
