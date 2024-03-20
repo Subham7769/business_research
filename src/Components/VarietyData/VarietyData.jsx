@@ -1,14 +1,8 @@
+import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-} from "@mui/material";
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
@@ -17,94 +11,47 @@ import TextBox from "../TextBox/Textbox";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import Accordian from "../Accordian/Accordian";
 import ProductionHubTable from "../ProductionHubTable/ProductionHubTable";
-import { useEffect, useState } from "react";
-
-
-
-//rendering all the varieties
-function Row({ variety, varieties, SetVarieties }) {
-  const [currentVariety, setCurrentVariety] = useState(variety)//till here i am getting fully updated currentVariety
+ 
+function Row({ variety, varieties, setVarieties }) {
   const [open, setOpen] = useState(false);
-
-
-  function setCurrentVarietyName(updatedValue) {
-    setCurrentVariety((prevVariety) => ({
-      ...prevVariety,
-      name: updatedValue,
-    }));
-  }
-
-  function setCurrentVarietyCode(updatedValue) {
-    setCurrentVariety((prevVariety) => ({
-      ...prevVariety,
-      code: updatedValue,
-    }));
-  }
-
-  function setCurrentVarietyPriceRange(updatedValue) {
-    setCurrentVariety((prevVariety) => ({
-      ...prevVariety,
-      priceRange: updatedValue,
-    }));
-  }
-
-  function setCurrentVarietyTesting(updatedValue) {
-    setCurrentVariety((prevVariety) => ({
-      ...prevVariety,
-      testing: updatedValue,
-    }));
-  }
-
-  function setSpecification(updatedValue) {
-    setCurrentVariety((prevVariety) => ({
-      ...prevVariety,
-      specification: updatedValue,
-    }));
-  }
-
-  function setProductionHub(updatedValue) {
-    setCurrentVariety((prevVariety) => ({
-      ...prevVariety,
-      productionHub: updatedValue,
-    }));
-  }
-
+  const [currentVariety, setCurrentVariety] = useState(variety);
+ 
   useEffect(() => {
     setCurrentVariety(variety);
   }, [variety]);
-
-  useEffect(() => {
-    const Index = varieties.indexOf((obj) => obj.varietyId === currentVariety.Id)
-    if(Index !==-1){
-      const allVarieties = [...varieties]
-      allVarieties[Index] = currentVariety;
-      SetVarieties(allVarieties);
+ 
+  const handleOpenToggle = () => {
+    setOpen(!open);
+  };
+ 
+  const handleUpdateVariety = (updatedVariety) => {
+    const index = varieties.findIndex((v) => v.varietyId === updatedVariety.varietyId);
+    if (index !== -1) {
+      const updatedVarieties = [...varieties];
+      updatedVarieties[index] = updatedVariety;
+      setVarieties(updatedVarieties);
     }
-  }, [currentVariety])
-
+  };
+ 
   return (
     <>
       <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
         <TableCell>
-          <IconButton
-            aria-label="expand row"
-            size="small"
-            onClick={() => setOpen(!open)}
-          >
+          <IconButton aria-label="expand row" size="small" onClick={handleOpenToggle}>
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>
         <TableCell align="center">
-          <TextBox value={currentVariety.name} valueUpdater={(updatedValue)=>setCurrentVarietyName(updatedValue)} placeholder={"Name"} />
+          <TextBox value={currentVariety.name} valueUpdater={(value) => handleUpdateVariety({ ...currentVariety, name: value })} placeholder="Name" />
         </TableCell>
         <TableCell align="center">
-          <TextBox value={currentVariety.code} valueUpdater={(updatedValue)=>setCurrentVarietyCode(updatedValue)} placeholder={"Code"} />
+          <TextBox value={currentVariety.code} valueUpdater={(value) => handleUpdateVariety({ ...currentVariety, code: value })} placeholder="Code" />
         </TableCell>
         <TableCell align="center">
-          <TextBox value={currentVariety.priceRange} valueUpdater={(updatedValue)=>setCurrentVarietyPriceRange(updatedValue)} placeholder={"Price Range"} />
+          <TextBox value={currentVariety.priceRange} valueUpdater={(value) => handleUpdateVariety({ ...currentVariety, priceRange: value })} placeholder="Price Range" />
         </TableCell>
         <TableCell align="center">
-          <TextBox value={currentVariety.testing} valueUpdater={(updatedValue)=>setCurrentVarietyTesting(updatedValue)} placeholder={"Testings"} />
+          <TextBox value={currentVariety.testing} valueUpdater={(value) => handleUpdateVariety({ ...currentVariety, testing: value })} placeholder="Testings" />
         </TableCell>
       </TableRow>
       <TableRow>
@@ -116,7 +63,7 @@ function Row({ variety, varieties, SetVarieties }) {
                 label="Properties"
                 component={TabComponent}
                 specification={currentVariety.specification}
-                setSpecification={(updatedValue)=>setSpecification(updatedValue)}
+                setSpecification={(value) => handleUpdateVariety({ ...currentVariety, specification: value })}
               />
             </Box>
             <Box sx={{ margin: 1 }}>
@@ -125,7 +72,7 @@ function Row({ variety, varieties, SetVarieties }) {
                 label="Production Hub (Locations)"
                 component={ProductionHubTable}
                 productionHub={currentVariety.productionHub}
-                setProductionHub={(updatedValue)=>setProductionHub(updatedValue)}
+                setProductionHub={(value) => handleUpdateVariety({ ...currentVariety, productionHub: value })}
               />
             </Box>
           </Collapse>
@@ -134,12 +81,8 @@ function Row({ variety, varieties, SetVarieties }) {
     </>
   );
 }
-
-//only need variety array of object  
-//or data from API or global product object
-//till here i am getting fully updated varieties
-function VarietyData({ varieties, SetVarieties, createVariety }) {
-
+ 
+function VarietyData({ varieties, setVarieties, createVariety }) {
   return (
     <TableContainer component={Paper}>
       <Table aria-label="collapsible table">
@@ -154,11 +97,11 @@ function VarietyData({ varieties, SetVarieties, createVariety }) {
         </TableHead>
         <TableBody>
           {varieties.map((variety, index) => (
-            <Row key={variety.name + index} variety={variety} varieties={varieties} SetVarieties={SetVarieties} />
+            <Row key={variety.name + index} variety={variety} varieties={varieties} setVarieties={setVarieties} />
           ))}
           <TableRow>
             <TableCell colSpan={6} style={{ textAlign: "right" }}>
-              <IconButton aria-label="add" size="large" onClick={() => { createVariety() }}>
+              <IconButton aria-label="add" size="large" onClick={createVariety}>
                 <AddRoundedIcon fontSize="inherit" />
               </IconButton>
             </TableCell>
@@ -168,5 +111,5 @@ function VarietyData({ varieties, SetVarieties, createVariety }) {
     </TableContainer>
   );
 }
-
+ 
 export default VarietyData;

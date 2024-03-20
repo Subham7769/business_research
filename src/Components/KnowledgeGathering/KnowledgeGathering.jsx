@@ -21,7 +21,7 @@ const KnowledgeGathering = () => {
   const [evaluationCriteria, setEvaluationCriteria] = useState(product.knowledgeBase.evaluationCriteria);
   const [credentialCollection, setCredentialCollection] = useState(product.knowledgeBase.credentialCollection);
   const [applicationUseCase, setApplicationUseCase] = useState(product.knowledgeBase.applicationUseCase);
-  const [varieties, SetVarieties] = useState(product.knowledgeBase.varieties);
+  const [varieties, setVarieties] = useState(product.knowledgeBase.varieties);
 
   console.log(varieties);
 
@@ -67,7 +67,7 @@ const KnowledgeGathering = () => {
         season: "Enter Season",
       },],
     };
-    SetVarieties((prevVarieties) => [...prevVarieties, newVariety])
+    setVarieties((prevVarieties) => [...prevVarieties, newVariety])
   }
 
   return (
@@ -90,7 +90,7 @@ const KnowledgeGathering = () => {
           dispatch(updateVariety({ varieties }))
         }}
         varieties={varieties}
-        SetVarieties={SetVarieties}
+        setVarieties={setVarieties}
         createVariety={createVariety}
       />
       <Accordian
