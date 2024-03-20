@@ -14,6 +14,7 @@ const KnowledgeGathering = () => {
   const products = useSelector((state) => state.ProductSlice.products);
   const currentProductId = useSelector(state => state.ProductSlice.currentProductId);
   const product = products.find(product => product.productId === currentProductId);
+  
   const [Description, setDescription] = useState(product.knowledgeBase.description);
   const [EPC, setEPC] = useState(product.knowledgeBase.EPC);
   const [RCMC, setRCMC] = useState(product.knowledgeBase.RCMC);
@@ -26,7 +27,9 @@ const KnowledgeGathering = () => {
 
   // create a new variety 
   function createVariety() {
+    const vId = Math.floor(Math.random() * 10000000000);
     let newVariety = {
+      varietyId:vId,
       name: "",
       code: "",
       priceRange: "",

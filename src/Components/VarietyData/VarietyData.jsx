@@ -70,10 +70,16 @@ function Row({ variety, varieties, SetVarieties }) {
   }
 
   useEffect(() => {
-    const Index = varieties.indexOf((obj) => obj.name === currentVariety.name)
-    const allVarieties = [...varieties]
-    allVarieties[Index] = currentVariety;
-    SetVarieties(allVarieties);
+    setCurrentVariety(variety);
+  }, [variety]);
+
+  useEffect(() => {
+    const Index = varieties.indexOf((obj) => obj.varietyId === currentVariety.Id)
+    if(Index !==-1){
+      const allVarieties = [...varieties]
+      allVarieties[Index] = currentVariety;
+      SetVarieties(allVarieties);
+    }
   }, [currentVariety])
 
   return (

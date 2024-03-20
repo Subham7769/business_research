@@ -15,6 +15,7 @@ const ProductSlice = createSlice({
       const { productName, hsCode, Reasons } = action.payload;
       // Generate a unique ID for the new product
       const id = Math.floor(Math.random() * 10000000000);
+      const vId = Math.floor(Math.random() * 10000000000);
       // Create the new product object
       const newProduct = {
         productId: id,
@@ -31,7 +32,8 @@ const ProductSlice = createSlice({
           description: "",
           varieties: [
             {
-              name: "",
+              varietyId:vId,
+              name: "new variety",
               code: "",
               priceRange: "",
               testing: "",
