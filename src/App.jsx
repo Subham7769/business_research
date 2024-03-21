@@ -6,6 +6,7 @@ import ContextProvider from "./Context/ContextProvider";
 import { Provider } from "react-redux";
 import { store } from "./Redux/Store";
 import LandingPage from "./Components/LandingPage/LandingPage";
+import Login from "./Components/Login/Login";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
           <div className="App">
             <Header />
             <Routes>
+              <Route path="/Login" element={<Login />} />
               <Route path="/" element={<LandingPage />} />
               <Route path="/Dashboard" element={<Dashboard />} >
                 {/* Nested Routes */}

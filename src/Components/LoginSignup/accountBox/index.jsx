@@ -128,6 +128,7 @@ export default function AccountBox() {
         animate={isExpanded ? "expanded" : "collapsed"}
         variants={backdropVariants}
         transition={expandingTransition}
+        style={{zIndex:10}}
       />
       {active === "signin" && <HeaderContainer>
         <HeaderText>Welcome</HeaderText>
