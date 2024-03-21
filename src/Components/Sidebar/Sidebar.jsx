@@ -17,17 +17,17 @@ const Sidebar = () => {
   const navigate = useNavigate();
   const products = useSelector(state=>state.ProductSlice.products)
 
-    useEffect(() => {
-    if (!products.length) {
-      navigate('/NewProduct');
-    }
-  }, [products, navigate]);
+  //   useEffect(() => {
+  //   if (!products.length) {
+  //     navigate('/NewProduct');
+  //   }
+  // }, [products, navigate]);
 
   return (
     <div className="sidebar">
-      {
+      {/* {
         !products.length<1 ? ( <><SelectDropDown/> <Divider /></>): null
-      }
+      } */}
       
       
       <nav className="navSidebar">
@@ -56,9 +56,17 @@ const Sidebar = () => {
           <PriceCheckRoundedIcon />
           Price Calculation
         </NavLink>
-        <NavLink to="/Login" className="NavLink">
+        {/* <NavLink to="/Login" className="NavLink">
           <PriceCheckRoundedIcon />
           Login
+        </NavLink>
+        <NavLink to="/Signup" className="NavLink">
+          <PriceCheckRoundedIcon />
+          Signup
+        </NavLink> */}
+        <NavLink to="/LoginSignupContainer" className="NavLink">
+          <PriceCheckRoundedIcon />
+          Signup
         </NavLink>
       </nav>
     </div>

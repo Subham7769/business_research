@@ -5,6 +5,8 @@ import KnowledgeGathering from "../KnowledgeGathering/KnowledgeGathering";
 import TestComponent from '../TestComponent/TestComponent';
 import AddNewProduct from '../AddNewProduct/AddNewProduct';
 import Login from '../Login/Login'
+import Signup from '../Signup/Signup'
+import LoginSignupContainer from '../LoginSignup/LoginSignupContainer';
 
 const Main = () => {
   return (
@@ -15,6 +17,8 @@ const Main = () => {
         <Route path="/knowledgeBase" element={<KnowledgeGathering />} />
         <Route path="/TestComponent" element={<TestComponent />} />
         <Route path="/Login" element={<Login />} />
+        <Route path="/Signup" element={<Signup />} />
+        <Route path="/LoginSignupContainer" element={<LoginSignupContainer />} />
       </Routes>
     </div>
   );
