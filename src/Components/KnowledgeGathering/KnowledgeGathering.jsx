@@ -14,16 +14,13 @@ const KnowledgeGathering = () => {
   const products = useSelector((state) => state.ProductSlice.products);
   const currentProductId = useSelector(state => state.ProductSlice.currentProductId);
   const product = products.find(product => product.productId === currentProductId);
-  
   const [Description, setDescription] = useState(product.knowledgeBase.description);
+  const [varieties, setVarieties] = useState(product.knowledgeBase.varieties);
   const [EPC, setEPC] = useState(product.knowledgeBase.EPC);
   const [RCMC, setRCMC] = useState(product.knowledgeBase.RCMC);
   const [evaluationCriteria, setEvaluationCriteria] = useState(product.knowledgeBase.evaluationCriteria);
   const [credentialCollection, setCredentialCollection] = useState(product.knowledgeBase.credentialCollection);
-  const [applicationUseCase, setApplicationUseCase] = useState(product.knowledgeBase.applicationUseCase);
-  const [varieties, setVarieties] = useState(product.knowledgeBase.varieties);
-
-  console.log(varieties);
+  const [applicationUsecase, setApplicationUseCase] = useState(product.knowledgeBase.applicationUsecase);
 
   // create a new variety 
   function createVariety() {
@@ -126,9 +123,9 @@ const KnowledgeGathering = () => {
         label="Application of Product Use (End Consumer of Goods/Services)"
         component={ApplicationUsage}
         saveFunction={() => {
-          dispatch(updateApplicationUseCase({ applicationUseCase }))
+          dispatch(updateApplicationUseCase({ applicationUsecase }))
         }}
-        applicationUseCase={applicationUseCase}
+        applicationUsecase={applicationUsecase}
         setApplicationUseCase={setApplicationUseCase}
       />
     </div>

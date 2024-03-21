@@ -2,17 +2,17 @@ import { Table, TableBody, TableCell, TableRow } from "@mui/material";
 import EditableList from "../SwotComponent/EditableFields/EditableList";
 
 //need only applicationUseCase object
-const ApplicationUsage = ({applicationUseCase,setApplicationUseCase}) => {
+const ApplicationUsage = ({applicationUsecase,setApplicationUseCase}) => {
   return (
     <Table size="large" aria-label="purchases" width="100%">
       <TableBody>
         <TableRow>
           <TableCell>
           <EditableList
-              items={applicationUseCase.Applications}
+              items={applicationUsecase.Applications}
               name={"Applications"}
               color={"lightgrey"}
-              mainData={applicationUseCase}
+              mainData={applicationUsecase}
               setMainData={setApplicationUseCase}
             />
           </TableCell>

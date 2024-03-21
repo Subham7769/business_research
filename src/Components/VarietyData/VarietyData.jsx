@@ -32,6 +32,8 @@ function Row({ variety, varieties, setVarieties }) {
       setVarieties(updatedVarieties);
     }
   };
+
+  
  
   return (
     <>

@@ -16,6 +16,7 @@ const ProductSlice = createSlice({
       // Generate a unique ID for the new product
       const id = Math.floor(Math.random() * 10000000000);
       const vId = Math.floor(Math.random() * 10000000000);
+      const stateId = Math.floor(Math.random() * 10000000000);
       // Create the new product object
       const newProduct = {
         productId: id,
@@ -33,7 +34,7 @@ const ProductSlice = createSlice({
           varieties: [
             {
               varietyId:vId,
-              name: "new variety",
+              name: "",
               code: "",
               priceRange: "",
               testing: "",
@@ -65,6 +66,7 @@ const ProductSlice = createSlice({
               },
               productionHub: [
                 {
+                  stateId:stateId,
                   state: "Enter State",
                   city: "Enter City",
                   townVillage: "Enter Town/Village",
@@ -86,7 +88,7 @@ const ProductSlice = createSlice({
           },
           EPC: "",
           RCMC: "",
-          applicationUseCase: {
+          applicationUsecase: {
             Applications: ["Applications"],
           },
         },
@@ -121,15 +123,6 @@ const ProductSlice = createSlice({
       state.products = [...allProducts];
       alert("Description updated successfully");
     },
-    // updateVariety(state,action){
-    //   const { varieties } = action.payload;
-    //   const product = state.products.find(product => product.productId === state.currentProductId)
-    //   const Index = state.products.findIndex(product => product.productId === state.currentProductId)
-    //   const allProducts = [...state.products];
-    //   allProducts[Index] = product;
-    //   state.products = [...allProducts];
-    //   alert("Variety updated successfully");
-    // },
     updateVariety(state, action) {
       const { varieties } = action.payload;
       const productIndex = state.products.findIndex(product => product.productId === state.currentProductId);
@@ -165,10 +158,10 @@ const ProductSlice = createSlice({
       }
     },
     updateApplicationUseCase(state, action) {
-      const { applicationUseCase } = action.payload;
+      const { applicationUsecase } = action.payload;
       const productIndex = state.products.findIndex(product => product.productId === state.currentProductId);
       if (productIndex !== -1) {
-        state.products[productIndex].knowledgeBase.applicationUseCase = applicationUseCase;
+        state.products[productIndex].knowledgeBase.applicationUsecase = applicationUsecase;
         alert("Application of Product Use (End Consumer of Goods/Services) updated successfully");
       }
     },
