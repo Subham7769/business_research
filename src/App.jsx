@@ -1,11 +1,11 @@
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Header from "./Components/Header/Header";
-import Body from "./Components/Body/Body";
+import Dashboard from "./Components/Dashboard/Dashboard";
 import ContextProvider from "./Context/ContextProvider";
 import { Provider } from "react-redux";
 import { store } from "./Redux/Store";
-
+import LandingPage from "./Components/LandingPage/LandingPage";
 
 const App = () => {
   return (
@@ -14,7 +14,19 @@ const App = () => {
         <BrowserRouter>
           <div className="App">
             <Header />
-            <Body />
+            <Routes>
+              <Route path="/" element={<LandingPage />} />
+              <Route path="/Dashboard" element={<Dashboard />} >
+                {/* Nested Routes */}
+                <Route path="NewProduct" element={<Dashboard.Main />} />
+                <Route path="swot" element={<Dashboard.Main />} />
+                <Route path="knowledgeBase" element={<Dashboard.Main />} />
+                <Route path="TestComponent" element={<Dashboard.Main />} />
+                <Route path="Login" element={<Dashboard.Main />} />
+                <Route path="Signup" element={<Dashboard.Main />} />
+                <Route path="LoginSignupContainer" element={<Dashboard.Main />} />
+              </Route>
+            </Routes>
           </div>
         </BrowserRouter>
       </ContextProvider>

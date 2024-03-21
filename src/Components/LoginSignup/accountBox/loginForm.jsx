@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import  { useContext } from "react";
 import {
   BoldLink,
   BoxContainer,
@@ -11,7 +11,7 @@ import {
 import { Marginer } from "../marginer";
 import { AccountContext } from './accountContext';
 
-export function LoginForm(props) {
+export function LoginForm() {
 
   const { switchToSignup } = useContext(AccountContext);
 

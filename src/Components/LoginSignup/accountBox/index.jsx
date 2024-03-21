@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import {  useState } from 'react';
 import styled from 'styled-components';
 import { LoginForm } from './loginForm';
 import { SignupForm } from './signupForm';
@@ -92,7 +92,7 @@ const expandingTransition = {
   stiffness: 30,
 }
 
-export default function AccountBox(props) {
+export default function AccountBox() {
   const [isExpanded, setExpanded] = useState(false);
   const [active, setActive] = useState('signin');
 
