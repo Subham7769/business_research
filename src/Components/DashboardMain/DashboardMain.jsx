@@ -4,8 +4,8 @@ import SWOTComponent from '../SwotComponent/SWOTComponent/SWOTComponent';
 import KnowledgeGathering from '../KnowledgeGathering/KnowledgeGathering';
 import TestComponent from '../TestComponent/TestComponent';
 import AddNewProduct from '../AddNewProduct/AddNewProduct';
-import MarketResearch from '../MarketResearch/MarketResearch';
-import PriceCalculation from '../PriceCalculation/PriceCalculation';
+import MarketResearch from '../MarketResearch/MarketResearch'
+import PriceCalculation from '../PriceCalculation/PriceCalculation'
 import LoginSignupContainer from '../LoginSignup/LoginSignupContainer';
 
 const DashboardMain = () => {
