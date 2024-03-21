@@ -15,7 +15,7 @@ const LandingPage = () => {
           initial={{ opacity: 0, x: 500 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}
-          className="Track-crypto-heading"
+          className="Step-Wise-heading"
         >
             Step Wise
         </motion.h1>
@@ -23,7 +23,7 @@ const LandingPage = () => {
           initial={{ opacity: 0, x: 500 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, delay: 0.5 }}
-          className="Real-Time-heading"
+          className="Export-Navigator-heading"
         >
           An Export Navigator.
         </motion.h1>
@@ -45,9 +45,9 @@ const LandingPage = () => {
           </NavLink>
           <RWebShare
             data={{
-              text: "Crypto Tracker",
-              url: "https://crypto-tracker-ashy-ten.vercel.app/",
-              title: "Crypto Tracker",
+              text: "Step Wise",
+              url: "https://business-research.vercel.app/",
+              title: "Step Wise",
             }}
           >
             <div>
