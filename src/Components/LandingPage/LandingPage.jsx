@@ -57,20 +57,7 @@ const LandingPage = () => {
         </motion.div>
       </div>
       <div className="imageContainer">
-        <motion.img
-          initial={{ y: -20 }}
-          animate={{ y: 20 }}
-          transition={{
-            type: "smooth",
-            repeatType: "mirror",
-            duration: 2,
-            repeat: Infinity,
-          }}
-          src={phone}
-          alt=""
-          className="phone"
-        />
-        <img src={gradient} alt="" className="gradient" />
+        <img src="./phone.gif" alt="" />
       </div>
     </main>
   );
