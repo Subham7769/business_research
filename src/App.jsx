@@ -6,7 +6,7 @@ import ContextProvider from "./Context/ContextProvider";
 import { Provider } from "react-redux";
 import { store } from "./Redux/Store";
 import LandingPage from "./Components/LandingPage/LandingPage";
-import Login from "./Components/TestComponent/Login/Login";
+import LoginSignin from './Components/LoginSignin/LoginSignin'
 
 const App = () => {
   return (
@@ -16,17 +16,14 @@ const App = () => {
           <div className="App">
             <Header />
             <Routes>
-              <Route path="/Login" element={<Login />} />
+              <Route path="/LoginSignin" element={<LoginSignin />} />
               <Route path="/" element={<LandingPage />} />
               <Route path="/Dashboard" element={<Dashboard />} >
                 {/* Nested Routes */}
-                <Route path="NewProduct" element={<Dashboard.Main />} />
-                <Route path="swot" element={<Dashboard.Main />} />
-                <Route path="knowledgeBase" element={<Dashboard.Main />} />
-                <Route path="TestComponent" element={<Dashboard.Main />} />
-                <Route path="Login" element={<Dashboard.Main />} />
-                <Route path="Signup" element={<Dashboard.Main />} />
-                <Route path="LoginSignupContainer" element={<Dashboard.Main />} />
+                <Route path="NewProduct" element={<Dashboard.DashboardMain />} />
+                <Route path="swot" element={<Dashboard.DashboardMain />} />
+                <Route path="knowledgeBase" element={<Dashboard.DashboardMain />} />
+                <Route path="TestComponent" element={<Dashboard.DashboardMain />} />
               </Route>
             </Routes>
           </div>

@@ -70,7 +70,6 @@ const Signup = () => {
                 autoComplete="off"
             >
                 <TextField
-                    required
                     id="outlined-basic"
                     label="Name"
                     variant="outlined"
@@ -85,7 +84,6 @@ const Signup = () => {
                 />
 
                 <TextField
-                    required
                     id="outlined-basic"
                     label="Username"
                     variant="outlined"
@@ -100,7 +98,6 @@ const Signup = () => {
                 />
 
                 <TextField
-                    required
                     id="outlined-basic"
                     label="Email"
                     variant="outlined"
@@ -115,7 +112,6 @@ const Signup = () => {
                 />
 
                 <TextField
-                    required
                     id="outlined-basic"
                     label="Password"
                     variant="outlined"
@@ -130,7 +126,6 @@ const Signup = () => {
                 />
 
                 <TextField
-                    required
                     id="outlined-basic"
                     label="Confirm Password"
                     variant="outlined"
@@ -144,6 +139,7 @@ const Signup = () => {
                     style={{ width: '95%' }}
                 />
 
+                {/* <FormControlLabel required control={<Checkbox />} label="Required" checked={tnc}/> */}
                 {/* <FormControlLabel required control={<Checkbox />} label="Required" checked={tnc}/> */}
 
                 <Button

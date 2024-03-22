@@ -6,7 +6,6 @@ import TestComponent from '../../TestComponent/TestComponent';
 import AddNewProduct from '../AddNewProduct/AddNewProduct.jsx';
 import MarketResearch from '../MarketResearch/MarketResearch.jsx'
 import PriceCalculation from '../PriceCalculation/PriceCalculation.jsx'
-import LoginSignupContainer from '../../TestComponent/LoginSignup/LoginSignupContainer';
 
 const DashboardMain = () => {
   return (
@@ -18,7 +17,6 @@ const DashboardMain = () => {
         <Route path="TestComponent" element={<TestComponent />} />
         <Route path="MarketResearch" element={<MarketResearch />} />
         <Route path="PriceCalculation" element={<PriceCalculation />} />
-        <Route path="LoginSignupContainer" element={<LoginSignupContainer />} />
       </Routes>
     </div>
   );

@@ -10,7 +10,7 @@ const Header = () => {
         <img src={Logo} alt="Your GIF" width={"50px"} height={"50px"} />Step Wise
       </div>
       <div className="profile">
-        <Link to="/Login" >
+        <Link to="/LoginSignin" >
           <Chip
             avatar={<Avatar alt="Natacha" src="/static/images/avatar/1.jpg" />}
             label="Avatar"

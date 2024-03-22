@@ -87,3 +87,10 @@ const Login = () => {
 };
 
 export default Login;
+<TextField
+id="filled-password-input"
+label="Password"
+type="password"
+autoComplete="current-password"
+variant="filled"
+/>
