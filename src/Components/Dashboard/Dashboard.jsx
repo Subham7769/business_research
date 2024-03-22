@@ -1,6 +1,6 @@
 import "./Dashboard.css";
-import Sidebar from "../Sidebar/Sidebar";
-import DashboardMain from "../DashboardMain/DashboardMain";
+import Sidebar from "./Sidebar/Sidebar";
+import DashboardMain from "./DashboardMain/DashboardMain";
 
 const Dashboard = () => {
   return (

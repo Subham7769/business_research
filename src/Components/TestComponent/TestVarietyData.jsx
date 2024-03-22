@@ -15,11 +15,11 @@ import {
 import Paper from "@mui/material/Paper";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import TabComponent from "../TabComponent/TabComponent";
-import TextBox from "../TextBox/Textbox";
+import TabComponent from "../Common/TabComponent/TabComponent";
+import TextBox from "../Common/TextBox/Textbox";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
-import Accordian from "../Accordian/Accordian";
-import ProductionHubTable from "../ProductionHubTable/ProductionHubTable";
+import Accordian from "../Common/Accordian/Accordian";
+import ProductionHubTable from "../Dashboard/ProductionHubTable/ProductionHubTable";
 
 function createData(name, code, priceRange, testing) {
   return {

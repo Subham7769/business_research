@@ -1,6 +1,6 @@
 import React from "react";
 import { IconButton, Table, TableBody, TableCell, TableRow } from "@mui/material";
-import TextBox from "../TextBox/Textbox";
+import TextBox from "../Common/TextBox/Textbox";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 
 const TestDocumentTesting = () => {
