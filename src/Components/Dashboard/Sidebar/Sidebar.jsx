@@ -36,18 +36,18 @@ const Sidebar = () => {
           <AcUnitRoundedIcon />
           Knowledge Base
         </NavLink>
-        <NavLink to="/Dashboard/TestComponent" className="NavLink">
-          <ScienceRoundedIcon />
-          Test Component
-        </NavLink>
-        {/* <NavLink to="/Dashboard/MarketResearch" className="NavLink">
+        <NavLink to="/Dashboard/MarketResearch" className="NavLink">
           <TravelExploreRoundedIcon />
           Market Research
         </NavLink>
         <NavLink to="/Dashboard/PriceCalculation" className="NavLink">
           <PriceCheckRoundedIcon />
           Price Calculation
-        </NavLink> */}
+        </NavLink>
+        <NavLink to="/Dashboard/TestComponent" className="NavLink">
+          <ScienceRoundedIcon />
+          Test Component
+        </NavLink>
       </nav>
     </div>
   );

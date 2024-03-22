@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import {  toast } from "react-toastify";
 
 const initialState = {
   products: [],
@@ -96,6 +97,7 @@ const ProductSlice = createSlice({
       state.currentProductId = id;
       // Add the new product to the state
       state.products.push(newProduct);
+      toast("New Product Created.")
     },
     updateSwot(state, action) {
       const { swot } = action.payload;
@@ -110,7 +112,7 @@ const ProductSlice = createSlice({
         const allProducts = [...state.products];
         allProducts[Index] = product;
         state.products = [...allProducts];
-        alert("Swot updated successfully");
+        toast("Swot updated successfully");
       }
     },
     updateDescription(state,action){
@@ -121,14 +123,14 @@ const ProductSlice = createSlice({
       const allProducts = [...state.products];
       allProducts[Index] = product;
       state.products = [...allProducts];
-      alert("Description updated successfully");
+      toast("Description updated successfully");
     },
     updateVariety(state, action) {
       const { varieties } = action.payload;
       const productIndex = state.products.findIndex(product => product.productId === state.currentProductId);
       if (productIndex !== -1) {
         state.products[productIndex].knowledgeBase.varieties = varieties;
-        alert("Variety updated successfully");
+        toast("Variety updated successfully");
       }
     },
     updateEPC_RCMC(state, action) {
@@ -138,7 +140,7 @@ const ProductSlice = createSlice({
       if (productIndex !== -1) {
         state.products[productIndex].knowledgeBase.EPC = EPC;
         state.products[productIndex].knowledgeBase.RCMC = RCMC;
-        alert("EPC & RCMC updated successfully");
+        toast("EPC & RCMC updated successfully");
       }
     },
     updateEvaluationCriteria(state, action) {
@@ -146,7 +148,7 @@ const ProductSlice = createSlice({
       const productIndex = state.products.findIndex(product => product.productId === state.currentProductId);
       if (productIndex !== -1) {
         state.products[productIndex].knowledgeBase.evaluationCriteria = evaluationCriteria;
-        alert("Product Testing, Standard, Quality, Packing Standards updated successfully");
+        toast("Product Testing, Standard, Quality, Packing Standards updated successfully");
       }
     },
     updateCredentialCollection(state, action) {
@@ -154,7 +156,7 @@ const ProductSlice = createSlice({
       const productIndex = state.products.findIndex(product => product.productId === state.currentProductId);
       if (productIndex !== -1) {
         state.products[productIndex].knowledgeBase.credentialCollection = credentialCollection;
-        alert("Certificates, Licenses, Documents Required updated successfully");
+        toast("Certificates, Licenses, Documents Required updated successfully");
       }
     },
     updateApplicationUseCase(state, action) {
@@ -162,7 +164,7 @@ const ProductSlice = createSlice({
       const productIndex = state.products.findIndex(product => product.productId === state.currentProductId);
       if (productIndex !== -1) {
         state.products[productIndex].knowledgeBase.applicationUsecase = applicationUsecase;
-        alert("Application of Product Use (End Consumer of Goods/Services) updated successfully");
+        toast("Application of Product Use (End Consumer of Goods/Services) updated successfully");
       }
     },
   },

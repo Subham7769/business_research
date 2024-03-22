@@ -14,9 +14,9 @@ const DashboardMain = () => {
         <Route path="/" element={<AddNewProduct />} />
         <Route path="swot" element={<SWOTComponent />} />
         <Route path="knowledgeBase" element={<KnowledgeGathering />} />
-        <Route path="TestComponent" element={<TestComponent />} />
         <Route path="MarketResearch" element={<MarketResearch />} />
         <Route path="PriceCalculation" element={<PriceCalculation />} />
+        <Route path="TestComponent" element={<TestComponent />} />
       </Routes>
     </div>
   );

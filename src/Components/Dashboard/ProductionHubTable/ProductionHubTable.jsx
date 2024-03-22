@@ -7,6 +7,7 @@ import {
 } from "@mui/material";
 import TextBox from "../../Common/TextBox/Textbox";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
+import { toast } from "react-toastify";
 
 
 //only need production Hub array of object
@@ -38,7 +39,7 @@ const productionHubTable = ({ productionHub, setProductionHub }) => {
 
       setProductionHub(updatedProperties);
     } else {
-      alert("No object found");
+      toast("No object found");
     }
   }
 

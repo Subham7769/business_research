@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./LoginSignin.css";
 import SignInForm from "./SignInForm";
 import SignUpForm from "./SignUpForm";
@@ -14,7 +14,7 @@ export default function LoginSignin() {
   const containerClass =
     "container " + (type === "signUp" ? "right-panel-active" : "");
   return (
-    <div className="App">
+    <div className="LoginSignin">
       <div className={containerClass} id="container">
         <SignUpForm />
         <SignInForm />
@@ -22,11 +22,11 @@ export default function LoginSignin() {
           <div className="overlay">
             <div className="overlay-panel overlay-left">
               <h1>Welcome Back!</h1>
-              <p>
+              <p className="para">
                 To keep connected with us please login with your personal info
               </p>
               <button
-                className="ghost"
+                className="ghost button"
                 id="signIn"
                 onClick={() => handleOnClick("signIn")}
               >
@@ -35,9 +35,9 @@ export default function LoginSignin() {
             </div>
             <div className="overlay-panel overlay-right">
               <h1>Hello, Friend!</h1>
-              <p>Enter your personal details and start journey with us</p>
+              <p className="para">Enter your personal details and start journey with us</p>
               <button
-                className="ghost "
+                className="ghost button"
                 id="signUp"
                 onClick={() => handleOnClick("signUp")}
               >

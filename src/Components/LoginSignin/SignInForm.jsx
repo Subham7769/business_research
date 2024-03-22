@@ -3,6 +3,7 @@ import MovingRoundedIcon from '@mui/icons-material/MovingRounded';
 import WorkspacesRoundedIcon from '@mui/icons-material/WorkspacesRounded';
 import VpnKeyRoundedIcon from '@mui/icons-material/VpnKeyRounded';
 import { TextField } from "@mui/material";
+import { toast } from 'react-toastify';
 function SignInForm() {
   // const [state, setState] = useState({
   //   email: "",
@@ -40,7 +41,7 @@ function SignInForm() {
   //   evt.preventDefault();
 
   //   const { email, password } = state;
-  //   alert(`You are login with email: ${email} and password: ${password}`);
+    // toast(`You are login with email: ${email} and password: ${password}`);
 
   //   for (const key in state) {
   //     setState({
@@ -52,7 +53,7 @@ function SignInForm() {
 
   return (
     <div className="form-container sign-in-container">
-      <form onSubmit={handleOnSubmit}>
+      <form className='form' onSubmit={handleOnSubmit}>
         <h1>Sign in</h1>
         <div className="icon-cont">
           <div className="social-container">
@@ -92,8 +93,8 @@ function SignInForm() {
             helperText={passwordError ? "Password is required" : ""}
             style={{ width: "100%",marginBottom: "1.5rem"}}
           />
-        <a href="#">Forgot your password?</a>
-        <button type='submit'>Sign In</button>
+        <a className='forgetPasswordlink' href="#">Forgot your password?</a>
+        <button className='button' type='submit'>Sign In</button>
       </form>
     </div>
   );

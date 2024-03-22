@@ -38,10 +38,6 @@ const AddNewProduct = () => {
     //add product in Product Array
     dispatch(createNewProduct({ productName, hsCode, Reasons }));
 
-    // If all fields are filled, submit the form
-    alert("Product added successfully!");
-    // toast("Product added successfully!")
-
     // Reset form
     setProductName("");
     setHsCode("");

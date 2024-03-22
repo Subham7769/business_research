@@ -23,6 +23,8 @@ const App = () => {
                 <Route path="NewProduct" element={<Dashboard.DashboardMain />} />
                 <Route path="swot" element={<Dashboard.DashboardMain />} />
                 <Route path="knowledgeBase" element={<Dashboard.DashboardMain />} />
+                <Route path="MarketResearch" element={<Dashboard.DashboardMain />} />
+                <Route path="PriceCalculation" element={<Dashboard.DashboardMain />} />
                 <Route path="TestComponent" element={<Dashboard.DashboardMain />} />
               </Route>
             </Routes>
