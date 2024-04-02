@@ -1,11 +1,9 @@
 import "./style.css";
-import phone from "./phone.png";
-import gradient from "./gradient.png";
 import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
 import { RWebShare } from "react-web-share";
 import { Button } from "@mui/material";
-
+import logo from "./logo.gif";
 
 const LandingPage = () => {
   return (
@@ -17,7 +15,7 @@ const LandingPage = () => {
           transition={{ duration: 1 }}
           className="Step-Wise-heading"
         >
-            Step Wise
+          Step Wise
         </motion.h1>
         <motion.h1
           initial={{ opacity: 0, x: 500 }}
@@ -57,7 +55,13 @@ const LandingPage = () => {
         </motion.div>
       </div>
       <div className="imageContainer">
-        <img src="./phone.gif" alt="" />
+        <motion.img
+          initial={{ y: -20 }}
+          animate={{ y: 20 }}
+          src={logo}
+          alt=""
+          className="phone"
+        />
       </div>
     </main>
   );

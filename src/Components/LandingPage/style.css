@@ -1,88 +1,79 @@
 main {
-    display: flex;
-    padding: 3rem;
-    gap: 3rem;
+  display: flex;
+  padding: 3rem;
+  gap: 2rem;
+}
+.textContainer {
+  flex: 0.7;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.textContainer a {
+  text-decoration: none;
+}
+.Export-Navigator-heading {
+  font-size: 4.5rem;
+  margin: 0;
+  color: rgb(14, 116, 219);
+}
+.Step-Wise-heading {
+  font-size: 6.5rem;
+  margin: 0;
+  color: black;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
+}
+.Step-Wise-heading:hover {
+  color: white;
+  -webkit-text-stroke-color: black;
+  transition: all 0.3s;
+}
+.buttonContainer {
+  display: flex;
+  gap: 1rem;
+}
+
+.imageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0.3;
+}
+.phone {
+  z-index: 10;
+  min-width: 280px;
+  max-width: 300px;
+}
+@media only screen and (max-width: 768px) {
+  main {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 5rem;
   }
   .textContainer {
-    flex: 0.65;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+    gap: 1.5rem;
   }
-  .textContainer a{
-  text-decoration: none;
-  }
-  .Export-Navigator-heading {
-    font-size: 6rem;
-    margin: 0;
-    color: rgb(14, 116, 219);
-
-  }
-  .Step-Wise-heading {
-    font-size: 9.5rem;
-    margin: 0;
-    color: black;
-    -webkit-text-stroke-width: 2px;
-    -webkit-text-stroke-color: black;
-  }
-  .Step-Wise-heading:hover {
-    color: white;
-    -webkit-text-stroke-color: black;
-    transition: all 0.3s;
-  }
-
-  .buttonContainer {
-    display: flex;
-    gap: 1rem;
+  .textContainer > h1 {
+    font-size: 3.5rem;
   }
 
   .imageContainer {
-    flex: 0.25;
-    position: relative;
+    flex: 1;
+    display: block;
   }
   .phone {
-    position: absolute;
-    z-index: 10;
     min-width: 280px;
     max-width: 300px;
+    left: 20%;
   }
   .gradient {
-    position: absolute;
-    top: 3rem;
-    left: 2rem;
+    left: 25%;
     min-width: 200px;
-    max-width: 260px;
+    max-width: 250px;
   }
-  @media only screen and (max-width: 768px) {
-    main {
-      flex-direction: column;
-      padding: 1rem;
-      gap: 5rem;
-    }
-    .textContainer {
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      flex: 1;
-      gap: 1.5rem;
-    }
-    .textContainer > h1 {
-      font-size: 3.5rem;
-    }
-  
-    .imageContainer {
-      flex: 1;
-      display: block;
-    }
-    .phone {
-      min-width: 280px;
-      max-width: 300px;
-      left: 20%;
-    }
-    .gradient {
-      left: 25%;
-      min-width: 200px;
-      max-width: 250px;
-    }
-  }
-  
+}
