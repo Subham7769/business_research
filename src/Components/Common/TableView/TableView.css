@@ -1,5 +1,4 @@
 .tableDataContainer {
-  border: 1px solid #f51414;
   overflow-y: scroll;
   height: fit-content;
 }

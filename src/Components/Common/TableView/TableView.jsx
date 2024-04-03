@@ -7,33 +7,24 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import "./TableView.css";
+import { Button } from "@mui/material";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: "dodgerblue",
-    color: theme.palette.common.white,
-    padding: "5px",
+    backgroundColor: "#e0f7ff",
+    color: theme.palette.common.black,
+    padding: "2px",
+    borderRadius: "5px 5px 0px 0px",
   },
   [`&.${tableCellClasses.body}`]: {
     fontSize: 12,
-    padding: "8px",
-  },
-}));
-const StyledTableCellNested = styled(TableCell)(({ theme }) => ({
-  [`&.${tableCellClasses.head}`]: {
-    backgroundColor: "dodgerblue",
-    color: theme.palette.common.white,
-    padding: "5px",
-  },
-  [`&.${tableCellClasses.body}`]: {
-    fontSize: 12,
-    padding: "3px",
+    padding: "4px",
   },
 }));
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
   "&:nth-of-type(odd)": {
-    padding: "5px",
+    padding: "3px",
   },
   // hide last border
   "&:last-child td, &:last-child th": {
@@ -53,11 +44,27 @@ function ReasonsExtractor(selectionReason) {
   return ReasonStr;
 }
 
+function printDiv(productName, id) {
+  var divContents = document.getElementById(id).innerHTML;
+  var a = window.open("", "", "height=100%, width=100%");
+  a.document.write("<html>");
+  a.document.write(`<body > <h1>${productName} + " Report"</h1><br>`);
+  a.document.write(divContents);
+  a.document.write("</body></html>");
+  a.document.close();
+  a.print();
+}
+
 function TableView({ products }) {
   return (
     <div className="tableDataContainer">
       {products.map((product) => (
-        <TableContainer component={Paper} key={product.productId}>
+        <TableContainer
+          component={Paper}
+          key={product.productId}
+          id={product.productId}
+        >
+          <h1>{product.productName}</h1>
           <Table sx={{ minWidth: 700 }} aria-label="customized table">
             <tbody>
               {/* //Description */}
@@ -72,7 +79,7 @@ function TableView({ products }) {
                       </TableRow>
                     </TableHead>
                     <TableBody>
-                      <StyledTableRow key={product.name}>
+                      <StyledTableRow>
                         <StyledTableCell>
                           {product.knowledgeBase.description}
                         </StyledTableCell>
@@ -87,22 +94,18 @@ function TableView({ products }) {
                   <table width="100%">
                     <TableHead>
                       <TableRow>
-                        <StyledTableCell align="center" width="33%">
-                          Product Name
-                        </StyledTableCell>
-                        <StyledTableCell align="center" width="33%">
+                        <StyledTableCell align="center" width="50%">
                           HS Code
                         </StyledTableCell>
-                        <StyledTableCell align="center" width="33%">
+                        <StyledTableCell align="center" width="50%">
                           Selection
                         </StyledTableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
                       <StyledTableRow>
-                        <StyledTableCell>{product.productName}</StyledTableCell>
                         <StyledTableCell>{product.hsCode}</StyledTableCell>
-                        <StyledTableCell align="center">
+                        <StyledTableCell>
                           {ReasonsExtractor(product.selectionReason)}
                         </StyledTableCell>
                       </StyledTableRow>
@@ -116,11 +119,17 @@ function TableView({ products }) {
                   <table width="100%">
                     <TableHead>
                       <TableRow>
-                        <StyledTableCell align="center" width="50%">
+                        <StyledTableCell align="center" width="25%">
                           Strength
                         </StyledTableCell>
-                        <StyledTableCell align="center" width="50%">
+                        <StyledTableCell align="center" width="25%">
                           Weakness
+                        </StyledTableCell>
+                        <StyledTableCell align="center" width="25%">
+                          Opportunities
+                        </StyledTableCell>
+                        <StyledTableCell align="center" width="25%">
+                          Threats
                         </StyledTableCell>
                       </TableRow>
                     </TableHead>
@@ -144,26 +153,6 @@ function TableView({ products }) {
                             </ol>
                           </TableBody>
                         </StyledTableCell>
-                      </StyledTableRow>
-                    </TableBody>
-                  </table>
-                </StyledTableCell>
-              </StyledTableRow>
-              <StyledTableRow>
-                <StyledTableCell>
-                  <table width="100%">
-                    <TableHead>
-                      <TableRow>
-                        <StyledTableCell align="center" width="50%">
-                          Opportunities
-                        </StyledTableCell>
-                        <StyledTableCell align="center" width="50%">
-                          Threats
-                        </StyledTableCell>
-                      </TableRow>
-                    </TableHead>
-                    <TableBody>
-                      <StyledTableRow key={product.name}>
                         <StyledTableCell>
                           <TableBody>
                             <ol>
@@ -190,28 +179,24 @@ function TableView({ products }) {
               {/* //varieties  */}
               <StyledTableRow>
                 <StyledTableCell>
-                  <table width="100%">
-                    {product.knowledgeBase.varieties.map((variety, index) => (
-                      <>
+                  {product.knowledgeBase.varieties.map((variety, index) => (
+                    <TableContainer component={Paper} key={variety + index}>
+                      <h2>{" Variety Name - " + variety.name}</h2>
+                      <table width="100%" key={variety + index}>
                         <TableHead>
                           <TableRow>
-                            <StyledTableCell align="center" width="33%">
-                              Variety Name
-                            </StyledTableCell>
-                            <StyledTableCell align="center" width="33%">
+                            <StyledTableCell align="center" width="50%">
                               Variety Code
                             </StyledTableCell>
-                            <StyledTableCell align="center" width="33%">
+                            <StyledTableCell align="center" width="50%">
                               Price Range
                             </StyledTableCell>
                           </TableRow>
                         </TableHead>
                         <TableBody>
                           {/* //varieties name code priceRange */}
+
                           <StyledTableRow key={index}>
-                            <StyledTableCell align="center">
-                              {variety.name}
-                            </StyledTableCell>
                             <StyledTableCell align="center">
                               {variety.code}
                             </StyledTableCell>
@@ -226,11 +211,17 @@ function TableView({ products }) {
                               <table width="100%">
                                 <TableHead>
                                   <TableRow>
-                                    <StyledTableCell align="center" width="50%">
+                                    <StyledTableCell align="center" width="25%">
                                       Physical Properties
                                     </StyledTableCell>
-                                    <StyledTableCell align="center" width="50%">
+                                    <StyledTableCell align="center" width="25%">
                                       Chemical Properties
+                                    </StyledTableCell>
+                                    <StyledTableCell align="center" width="25%">
+                                      Technical Properties
+                                    </StyledTableCell>
+                                    <StyledTableCell align="center" width="25%">
+                                      Other_Properties
                                     </StyledTableCell>
                                   </TableRow>
                                 </TableHead>
@@ -238,30 +229,14 @@ function TableView({ products }) {
                                   <TableRow>
                                     <StyledTableCell>
                                       <table width="100%">
-                                        <TableHead>
-                                          <TableRow>
-                                            <StyledTableCell
-                                              align="center"
-                                              width={"50%"}
-                                            >
-                                              Name
-                                            </StyledTableCell>
-                                            <StyledTableCell
-                                              align="center"
-                                              width={"50%"}
-                                            >
-                                              Data
-                                            </StyledTableCell>
-                                          </TableRow>
-                                        </TableHead>
                                         <TableBody>
                                           {variety.specification.Physical_Properties.map(
                                             (item, idx) => (
                                               <TableRow key={"physProp" + idx}>
-                                                <StyledTableCell>
+                                                <StyledTableCell width="50%">
                                                   {item.name}
                                                 </StyledTableCell>
-                                                <StyledTableCell>
+                                                <StyledTableCell width="50%">
                                                   {item.data}
                                                 </StyledTableCell>
                                               </TableRow>
@@ -272,30 +247,50 @@ function TableView({ products }) {
                                     </StyledTableCell>
                                     <StyledTableCell>
                                       <table width="100%">
-                                        <TableHead>
-                                          <TableRow>
-                                            <StyledTableCell
-                                              align="center"
-                                              width={"50%"}
-                                            >
-                                              Name
-                                            </StyledTableCell>
-                                            <StyledTableCell
-                                              align="center"
-                                              width={"50%"}
-                                            >
-                                              Data
-                                            </StyledTableCell>
-                                          </TableRow>
-                                        </TableHead>
                                         <TableBody>
                                           {variety.specification.Chemical_Properties.map(
                                             (item, idx) => (
                                               <TableRow key={"chemProp" + idx}>
-                                                <StyledTableCell>
+                                                <StyledTableCell width="50%">
                                                   {item.name}
                                                 </StyledTableCell>
-                                                <StyledTableCell>
+                                                <StyledTableCell width="50%">
+                                                  {item.data}
+                                                </StyledTableCell>
+                                              </TableRow>
+                                            ),
+                                          )}
+                                        </TableBody>
+                                      </table>
+                                    </StyledTableCell>
+                                    <StyledTableCell>
+                                      <table width="100%">
+                                        <TableBody>
+                                          {variety.specification.Technical_Properties.map(
+                                            (item, idx) => (
+                                              <TableRow key={"techProp" + idx}>
+                                                <StyledTableCell width="50%">
+                                                  {item.name}
+                                                </StyledTableCell>
+                                                <StyledTableCell width="50%">
+                                                  {item.data}
+                                                </StyledTableCell>
+                                              </TableRow>
+                                            ),
+                                          )}
+                                        </TableBody>
+                                      </table>
+                                    </StyledTableCell>
+                                    <StyledTableCell>
+                                      <table width="100%">
+                                        <TableBody>
+                                          {variety.specification.Other_Properties.map(
+                                            (item, idx) => (
+                                              <TableRow key={"othrProp" + idx}>
+                                                <StyledTableCell width="50%">
+                                                  {item.name}
+                                                </StyledTableCell>
+                                                <StyledTableCell width="50%">
                                                   {item.data}
                                                 </StyledTableCell>
                                               </TableRow>
@@ -310,94 +305,6 @@ function TableView({ products }) {
                             </StyledTableCell>
                           </StyledTableRow>
 
-                          <StyledTableRow key={index + "spec"}>
-                            <StyledTableCell colSpan={3}>
-                              <table width="100%">
-                                <TableHead>
-                                  <TableRow>
-                                    <StyledTableCell align="center" width="50%">
-                                      Technical Properties
-                                    </StyledTableCell>
-                                    <StyledTableCell align="center" width="50%">
-                                      Other_Properties
-                                    </StyledTableCell>
-                                  </TableRow>
-                                </TableHead>
-                                <TableBody>
-                                  <TableRow>
-                                    <StyledTableCell>
-                                      <table width="100%">
-                                        <TableHead>
-                                          <TableRow>
-                                            <StyledTableCell
-                                              align="center"
-                                              width={"50%"}
-                                            >
-                                              Name
-                                            </StyledTableCell>
-                                            <StyledTableCell
-                                              align="center"
-                                              width={"50%"}
-                                            >
-                                              Data
-                                            </StyledTableCell>
-                                          </TableRow>
-                                        </TableHead>
-                                        <TableBody>
-                                          {variety.specification.Technical_Properties.map(
-                                            (item, idx) => (
-                                              <TableRow key={"techProp" + idx}>
-                                                <StyledTableCell>
-                                                  {item.name}
-                                                </StyledTableCell>
-                                                <StyledTableCell>
-                                                  {item.data}
-                                                </StyledTableCell>
-                                              </TableRow>
-                                            ),
-                                          )}
-                                        </TableBody>
-                                      </table>
-                                    </StyledTableCell>
-                                    <StyledTableCell>
-                                      <table width="100%">
-                                        <TableHead>
-                                          <TableRow>
-                                            <StyledTableCell
-                                              align="center"
-                                              width={"50%"}
-                                            >
-                                              Name
-                                            </StyledTableCell>
-                                            <StyledTableCell
-                                              align="center"
-                                              width={"50%"}
-                                            >
-                                              Data
-                                            </StyledTableCell>
-                                          </TableRow>
-                                        </TableHead>
-                                        <TableBody>
-                                          {variety.specification.Other_Properties.map(
-                                            (item, idx) => (
-                                              <TableRow key={"othrProp" + idx}>
-                                                <StyledTableCell>
-                                                  {item.name}
-                                                </StyledTableCell>
-                                                <StyledTableCell>
-                                                  {item.data}
-                                                </StyledTableCell>
-                                              </TableRow>
-                                            ),
-                                          )}
-                                        </TableBody>
-                                      </table>
-                                    </StyledTableCell>
-                                  </TableRow>
-                                </TableBody>
-                              </table>
-                            </StyledTableCell>
-                          </StyledTableRow>
                           <StyledTableRow key={index + "spec"}>
                             <StyledTableCell colSpan={3}>
                               <table width="100%">
@@ -501,12 +408,28 @@ function TableView({ products }) {
                             </StyledTableCell>
                           </StyledTableRow>
                         </TableBody>
-                      </>
-                    ))}
-                  </table>
+                      </table>
+                    </TableContainer>
+                  ))}
                 </StyledTableCell>
               </StyledTableRow>
+              {/*  */}
             </tbody>
+            <tfoot>
+              <StyledTableRow>
+                <StyledTableCell width="100%">
+                  <Button
+                    variant="contained"
+                    fullWidth
+                    onClick={() =>
+                      printDiv(product.productName, product.productId)
+                    }
+                  >
+                    {"Download" + " " + product.productName + " " + "Report"}
+                  </Button>
+                </StyledTableCell>
+              </StyledTableRow>
+            </tfoot>
           </Table>
         </TableContainer>
       ))}
