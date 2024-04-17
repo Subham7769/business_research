@@ -29,6 +29,7 @@ const SWOTComponent = () => {
 
 
   return (
+    
     <div className="Swot">
       <h3>Swot Analysis</h3>
       <div className="SwotComponent">
