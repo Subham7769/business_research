@@ -1,10 +1,17 @@
-.overlay {
-    position: fixed;
-    top: 10px;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+.AllArea{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: #dbe8f6a1;
+}
+
+.overlay1 {
+  border-radius: 0.5rem;
+    width: 50vw;
+    height: 50vh;
+    background-color: rgba(175, 222, 249, 0.5); /* Semi-transparent black background */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,13 +19,12 @@
     z-index: 9999; /* Ensure the overlay is above other content */
   }
   
-  .overlay p {
+  .overlay1 p {
     font-size: 1.2rem;
-    color: white;
     margin-bottom: 20px;
   }
   
-  .overlay button {
+  .overlay1 button {
     padding: 10px 20px;
     font-size: 1rem;
     background-color: #007bff; /* Blue color */
@@ -29,7 +35,7 @@
     transition: background-color 0.3s;
   }
   
-  .overlay button:hover {
+  .overlay1 button:hover {
     background-color: #0056b3; /* Darker blue on hover */
   }
   
