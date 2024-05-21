@@ -6,10 +6,10 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from
 import Paper from "@mui/material/Paper";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import TabComponent from "../../Common/TabComponent/TabComponent";
-import TextBox from "../../Common/TextBox/Textbox";
+import TabComponent from "../Common/TabComponent/TabComponent";
+import TextBox from "../Common/MultilineTextFields/MultilineTextFields";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
-import Accordian from "../../Common/Accordian/Accordian";
+import Accordian from "../Common/Accordian/Accordian";
 import ProductionHubTable from "../ProductionHubTable/ProductionHubTable";
  
 function Row({ variety, varieties, setVarieties }) {

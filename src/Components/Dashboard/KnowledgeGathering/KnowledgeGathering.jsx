@@ -1,10 +1,10 @@
 import Accordian from "../../Common/Accordian/Accordian";
-import Textbox from "../../Common/TextBox/Textbox";
-import VarietyData from "../VarietyData/VarietyData";
-import DocumentTesting from "../DocumentTesting/DocumentTesting";
-import CertificatesLicense from "../CertificatesLicense/CertificatesLicense";
-import EpcRcmc from "../EpcRcmc/EpcRcmc";
-import ApplicationUsage from "../ApplicationUsage/ApplicationUsage";
+import Textbox from "../../Common/MultilineTextFields/MultilineTextFields";
+import VarietyData from "../../VarietyData/VarietyData";
+import DocumentTesting from "../../DocumentTesting/DocumentTesting";
+import CertificatesLicense from "../../CertificatesLicense/CertificatesLicense";
+import EpcRcmc from "../../EpcRcmc/EpcRcmc";
+import InputArray from "../../Common/InputArray/InputArray";
 import "./KnowledgeGathering.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
@@ -133,12 +133,15 @@ const KnowledgeGathering = () => {
       />
       <Accordian
         label="Application of Product Use (End Consumer of Goods/Services)"
-        component={ApplicationUsage}
+        component={InputArray}
         saveFunction={() => {
           dispatch(updateApplicationUseCase({ applicationUsecase }))
         }}
-        applicationUsecase={applicationUsecase}
-        setApplicationUseCase={setApplicationUseCase}
+        items={applicationUsecase.Applications}
+        name={"Applications"}
+        color={"lightgrey"}
+        mainData={applicationUsecase}
+        setMainData={setApplicationUseCase}
       />
     </div>
   );

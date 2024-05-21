@@ -1,6 +1,6 @@
 import { IconButton, Table, TableBody, TableCell, TableRow } from "@mui/material";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
-import EditableList from "../../Common/EditableFields/EditableList";
+import EditableList from "../Common/EditableFields/EditableList";
 
 const CertificatesLicense = ({credentialCollection,setCredentialCollection}) => {
 

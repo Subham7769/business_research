@@ -3,7 +3,7 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import { Button, IconButton, Table, TableBody, TableCell, TableRow } from "@mui/material";
-import TextBox from "../TextBox/Textbox";
+import TextBox from "../MultilineTextFields/MultilineTextFields";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 
 //All properties with corresponding property key-value pair

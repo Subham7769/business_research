@@ -4,7 +4,7 @@ import "./Edit.css";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import { IconButton } from "@mui/material";
 
-                  //   Array, label, bgColor,StateObj,StateSetFunc
+                  //    Array,label, bgColor,StateObj,StateSetFunc
 const EditableList = ({ items, name, color, mainData, setMainData }) => {
   const [inputValue, setInputValue] = useState("");
 

@@ -5,7 +5,7 @@ import {
   TableCell,
   TableRow,
 } from "@mui/material";
-import TextBox from "../../Common/TextBox/Textbox";
+import TextBox from "../Common/MultilineTextFields/MultilineTextFields";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import { toast } from "react-toastify";
 

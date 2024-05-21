@@ -1,5 +1,5 @@
 import { Table, TableBody, TableCell, TableRow } from "@mui/material";
-import EditableList from "../../Common/EditableFields/EditableList";
+import EditableList from "../Common/EditableFields/EditableList";
 
 // required only evaluationCriteria: {}
 const DocumentTesting = ({evaluationCriteria,setEvaluationCriteria}) => {

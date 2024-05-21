@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Table, TableBody, TableCell, TableRow } from "@mui/material";
-import TextBox from "../../Common/TextBox/Textbox";
+import TextBox from "../Common/MultilineTextFields/MultilineTextFields";
 
 
 const EpcRcmc = ({ EPC, setEPC, RCMC, setRCMC }) => {

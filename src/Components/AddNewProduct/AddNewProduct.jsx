@@ -2,8 +2,8 @@ import { useState } from "react";
 import "./AddNewProduct.css";
 import { Box, Button, TextField, FormGroup, FormControlLabel, Checkbox } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import { resetReasons, changeReason } from "../../../Redux/Slices/ReasonSlice";
-import { createNewProduct } from "../../../Redux/Slices/ProductSlice"
+import { resetReasons, changeReason } from "../../Redux/Slices/ReasonSlice";
+import { createNewProduct } from "../../Redux/Slices/ProductSlice"
 
 const AddNewProduct = () => {
   const dispatch = useDispatch();

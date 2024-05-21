@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import EditableList from "../../Common/EditableFields/EditableList";
+import EditableList from "../Common/EditableFields/EditableList";
 import "./SWOTComponent.css";
 import { Button } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
-import {updateSwot} from "../../../Redux/Slices/ProductSlice"
+import {updateSwot} from "../../Redux/Slices/ProductSlice"
 
 //we need full product state to update 
 //we need updateProduct function to update full product state in save function
