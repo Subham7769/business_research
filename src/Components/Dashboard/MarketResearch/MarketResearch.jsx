@@ -1,13 +1,10 @@
 import Accordian from "../../Common/Accordian/Accordian";
-import Textbox from "../../Common/MultilineTextFields/MultilineTextFields";
-import VarietyData from "../../VarietyData/VarietyData";
-import DocumentTesting from "../../DocumentTesting/DocumentTesting";
-import CertificatesLicense from "../../CertificatesLicense/CertificatesLicense";
-import EpcRcmc from "../../EpcRcmc/EpcRcmc";
+
 import InputArray from "../../Common/InputArray/InputArray";
 import "./MarketResearch.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+import InputValue from '../../Common/InputValue/InputValue';
 import { updateDescription, updateVariety, updateEPC_RCMC, updateEvaluationCriteria, updateCredentialCollection, updateApplicationUseCase } from "../../../Redux/Slices/ProductSlice"
 const KnowledgeGathering = () => {
 
@@ -107,33 +104,17 @@ const KnowledgeGathering = () => {
         setMainData={setMarkets}
       />
       <Accordian
-        label="Market Details"
-        component={VarietyData}
-        saveFunction={() => console.log("Market Details")}
-        varieties={varieties}
-        setVarieties={setVarieties}
-        createVariety={createVariety}
-      />
-      <Accordian
-        label="Certificates, Licenses, Documents Required"
-        component={CertificatesLicense}
-        saveFunction={() => {
-          dispatch(updateCredentialCollection({ credentialCollection }))
-        }}
-        credentialCollection={credentialCollection}
-        setCredentialCollection={setCredentialCollection}
-      />
-      <Accordian
-        label="EPC & RCMC Required"
-        component={EpcRcmc}
-        saveFunction={() => {
-          dispatch(updateEPC_RCMC({ EPC, RCMC }))
-        }}
-        EPC={EPC}
-        RCMC={RCMC}
-        setEPC={setEPC}
-        setRCMC={setRCMC}
-      />
+        label="Target Markets Details"
+        component={InputValue}
+        saveFunction={() => console.log("Target markets")}
+        items={Markets.TargetMarkets}//Array of state object
+        name={"TargetMarkets"}
+        color={"lightgrey"}
+        mainData={Markets}
+        setMainData={setMarkets}
+      >
+      </Accordian>
+
 
     </div>
   );

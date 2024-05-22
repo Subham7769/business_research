@@ -5,6 +5,7 @@ import "./TestComponent.css";
 // import TestProductList from "./TestProductList.jsx";
 // import ProductResearchView from "../../ProductResearchView/ProductResearchView";
 import InputValue from "../../Common/InputValue/InputValue";
+import Accordian from "../../Common/Accordian/Accordian";
 
 const TestComponent = () => {
   return (
@@ -14,7 +15,14 @@ const TestComponent = () => {
       {/* <TestDocumentTesting/> */}
       {/* <TestProductList/> */}
       {/* <ProductResearchView /> */}
-      <InputValue />
+      <Accordian
+      nested={true}
+      label="Market Details"
+      component={InputValue}
+      productionHub={""}
+      setProductionHub={() => console.log("Market Research")}
+      >
+      </Accordian>
     </div>
   );
 };
