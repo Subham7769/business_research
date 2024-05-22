@@ -27,7 +27,7 @@ const DashboardMain = () => {
         <Route path="knowledgeBase" element={<UpdatedKnowledgeGathering />} />
         <Route path="MarketResearch" element={<UpdatedMarketResearch />} />
         <Route path="PriceCalculation" element={<UpdatedPriceCalculation />} />
-        <Route path="TestComponent" element={<UpdatedTestComponent />} />
+        {/* <Route path="TestComponent" element={<UpdatedTestComponent />} /> */}
       </Routes>
     </div>
   );

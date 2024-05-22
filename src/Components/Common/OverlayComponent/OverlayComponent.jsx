@@ -6,7 +6,7 @@ const OverlayComponent = () => {
 console.log("inside overlay");
 
   const handleNavigate = () => {
-    navigate('/Dashboard');
+    navigate('/DashboardKG');
   };
 
   return (

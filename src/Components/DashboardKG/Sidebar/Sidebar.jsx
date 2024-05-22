@@ -20,30 +20,30 @@ const Sidebar = () => {
       {!products.length < 1 ? (<><SelectDropDown /> <Divider /></>) : null}
 
       <nav className="navSidebar">
-        <NavLink to="/Dashboard/" className="NavLink">
+        <NavLink to="/DashboardKG/" className="NavLink">
           <AddRoundedIcon />
           New Product
         </NavLink>
-        <NavLink to="/Dashboard/swot" className="NavLink">
+        <NavLink to="/DashboardKG/swot" className="NavLink">
           <QueryStatsRoundedIcon />
           Swot Analysis
         </NavLink>
-        <NavLink to="/Dashboard/knowledgeBase" className="NavLink">
+        <NavLink to="/DashboardKG/knowledgeBase" className="NavLink">
           <AcUnitRoundedIcon />
           Knowledge Base
         </NavLink>
-        <NavLink to="/Dashboard/MarketResearch" className="NavLink">
+        <NavLink to="/DashboardKG/MarketResearch" className="NavLink">
           <TravelExploreRoundedIcon />
           Market Research
         </NavLink>
-        <NavLink to="/Dashboard/PriceCalculation" className="NavLink">
+        <NavLink to="/DashboardKG/PriceCalculation" className="NavLink">
           <PriceCheckRoundedIcon />
           Price Calculation
         </NavLink>
-        <NavLink to="/Dashboard/TestComponent" className="NavLink">
+        {/* <NavLink to="/DashboardKG/TestComponent" className="NavLink">
           <ScienceRoundedIcon />
           Test Component
-        </NavLink>
+        </NavLink> */}
       </nav>
     </div>
   );

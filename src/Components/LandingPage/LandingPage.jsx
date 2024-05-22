@@ -38,7 +38,7 @@ const LandingPage = () => {
           transition={{ duration: 1, delay: 0.1 }}
           className="buttonContainer"
         >
-          <NavLink to="/Dashboard">
+          <NavLink to="/DashboardKG">
             <Button variant="contained">Dashboard</Button>
           </NavLink>
           <RWebShare
