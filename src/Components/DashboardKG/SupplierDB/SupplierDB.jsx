@@ -41,7 +41,7 @@ const SupplierDB = () => {
   return (
     <div className="KnowledgeGathering">
       <h3>Supplier Database</h3>
-      <form >
+      <form className="SupplierContainer">
         <div className="fieldContainer">
           <MultilineTextFields
             value={supplierData.companyName}

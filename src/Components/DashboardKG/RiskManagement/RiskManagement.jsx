@@ -69,14 +69,14 @@ const RiskManagement = () => {
         <table className='table'>
           <thead>
             <tr>
-              <th>Risks</th>
-              <th>Mitigations</th>
+              <th style={{width:"50%"}}>Risks</th>
+              <th style={{width:"50%"}}>Mitigations</th>
             </tr>
           </thead>
           <tbody>
             {risks.map((risk, riskIndex) => (
               <tr key={riskIndex}>
-                <td>
+                <td style={{width:"50%"}}>
                   <TagsInput
                     tags={risks} // Pass the entire array of risks
                     setTags={handleRisksChange} // Handle changes to the entire array
@@ -84,7 +84,7 @@ const RiskManagement = () => {
                     label={"Risk"}
                   />
                 </td>
-                <td>
+                <td style={{width:"50%"}}>
                   <TagsInput
                     tags={mitigations[riskIndex] || []}
                     setTags={(newMitigations) => handleMitigationsChange(riskIndex, newMitigations)}
