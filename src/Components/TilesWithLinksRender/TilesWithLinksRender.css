@@ -1,4 +1,4 @@
-.BankContainer{
+.TileContainer{
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
@@ -6,9 +6,9 @@
     width: 100%;
     justify-content: center;
     padding: 1rem;
-    overflow: hidden;
+    overflow: scroll;
 }
-.BankContainer *{
+.TileContainer *{
     width: 350px;
     height: 200px;
     border-radius: 1rem;

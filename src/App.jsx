@@ -25,6 +25,8 @@ const App = () => {
               <Route path="knowledgeBase" element={<DashboardKG.DashboardMain />} />
               <Route path="MarketResearch" element={<DashboardKG.DashboardMain />} />
               <Route path="PriceCalculation" element={<DashboardKG.DashboardMain />} />
+              <Route path="SupplierDB" element={<DashboardKG.DashboardMain />} />
+              <Route path="RiskManagement" element={<DashboardKG.DashboardMain />} />
               <Route path="TestComponent" element={<DashboardKG.DashboardMain />} />
             </Route>
             <Route path="/DashboardSI" element={<DashboardSI />} >

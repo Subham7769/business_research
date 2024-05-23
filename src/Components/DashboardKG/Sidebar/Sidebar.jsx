@@ -4,7 +4,8 @@ import SelectDropDown from "../../Common/SelectDropDown/SelectDropDown";
 import AcUnitRoundedIcon from '@mui/icons-material/AcUnitRounded';
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
 import QueryStatsRoundedIcon from "@mui/icons-material/QueryStatsRounded";
-import ScienceRoundedIcon from "@mui/icons-material/ScienceRounded";
+import GroupAddIcon from '@mui/icons-material/GroupAdd';
+import DangerousIcon from '@mui/icons-material/Dangerous';
 import TravelExploreRoundedIcon from '@mui/icons-material/TravelExploreRounded';
 import PriceCheckRoundedIcon from '@mui/icons-material/PriceCheckRounded';
 import { Divider } from "@mui/material";
@@ -39,6 +40,14 @@ const Sidebar = () => {
         <NavLink to="/DashboardKG/PriceCalculation" className="NavLink">
           <PriceCheckRoundedIcon />
           Price Calculation
+        </NavLink>
+        <NavLink to="/DashboardKG/SupplierDB" className="NavLink">
+          <GroupAddIcon />
+          Supplier Database
+        </NavLink>
+        <NavLink to="/DashboardKG/RiskManagement" className="NavLink">
+          <DangerousIcon />
+          Risk Management
         </NavLink>
         {/* <NavLink to="/DashboardKG/TestComponent" className="NavLink">
           <ScienceRoundedIcon />

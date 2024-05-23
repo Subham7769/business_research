@@ -16,7 +16,7 @@ const Sidebar = () => {
       <nav className="navSidebar">
         <NavLink to="/DashboardSI/" className="NavLink">
           <BusinessIcon />
-          Business Setup & Legal
+          Business Setup
         </NavLink>
         <NavLink to="/DashboardSI/BankingSetup" className="NavLink">
           <AccountBalanceIcon />
@@ -36,7 +36,7 @@ const Sidebar = () => {
         </NavLink>
         <NavLink to="/DashboardSI/DigitalWebsiteSetup" className="NavLink">
           <LanguageIcon />
-          Digital & Website Setup
+          Website Setup
         </NavLink>
       </nav>
     </div>

@@ -32,12 +32,12 @@ const Header = () => {
         </div>
       </div>
       <div className="LowerHeader">
-        <Link to="/DashboardKG" style={{ backgroundColor: "lightgreen" }}>Learning & Understanding</Link>
+        {/* <Link to="/DashboardKG" style={{ backgroundColor: "lightgreen" }}>Learning & Understanding</Link> */}
         <Link to="/DashboardKG" style={{ backgroundColor: "Orange" }}>Knowledge Gathering</Link>
         <Link to="/DashboardSI" style={{ backgroundColor: "dodgerblue" }}>Setup & Implementation</Link>
-        <Link to="/DashboardSI" style={{ backgroundColor: "gold" }}>Business & Promotion</Link>
-        <Link to="/DashboardSI" style={{ backgroundColor: "lightgrey" }}>Trade & Deals</Link>
-        <Link to="/DashboardSI" style={{ backgroundColor: "crimson" }}>Feedback & Followup</Link>
+        {/* <Link to="/DashboardSI" style={{ backgroundColor: "gold" }}>Business & Promotion</Link> */}
+        {/* <Link to="/DashboardSI" style={{ backgroundColor: "lightgrey" }}>Trade & Deals</Link> */}
+        {/* <Link to="/DashboardSI" style={{ backgroundColor: "crimson" }}>Feedback & Followup</Link> */}
       </div>
     </>
   );

@@ -17,12 +17,12 @@ function createData(name) {
 }
 
 const placeholders = [
-  "Documents Required For Selling", "Lab Reports Cost", "Certificates Cost",
-  "Licenses Cost", "Product Procurement & Process Cost", "Transport Cost (Warehouse to Shipping yard)",
-  "Packing Customization Availability Provided", "Banking Charges & Remittance Conversion Charges",
+  "Documents Required", "Lab Reports Cost", "Certificates Cost",
+  "Licenses Cost", "Product Procurement Process Cost", "Transport Cost",
+  "Packing Customization", "Banking & Conversion Charges",
   "Packing Cost", "Maintenance Cost", "Time to Arrange Final Product", "Quantity",
-  "Different CHA Charges", "Different Port Charges (Nearest to the Product Variety)",
-  "Different Freight Forwarder Charges", "Custom Charges", "ECGC/Insurance Charges",
+  "CHA Charges", "Port Charges",
+  "Freight Forwarder Charges", "Custom Charges", "ECGC/Insurance Charges",
   "Other Miscellaneous charges", "Profit"
 ];
 

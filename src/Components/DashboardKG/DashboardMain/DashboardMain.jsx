@@ -8,6 +8,8 @@ import MarketResearch from '../MarketResearch/MarketResearch.jsx'
 import PriceCalculation from '../PriceCalculation/PriceCalculation.jsx'
 import withProductCheck from '../../WithProductCheck/WithProductCheck.jsx';
 import OverlayComponent from '../../Common/OverlayComponent/OverlayComponent.jsx';
+import SupplierDB from '../SupplierDB/SupplierDB.jsx';
+import RiskManagement from '../RiskManagement/RiskManagement.jsx';
 
 const DashboardMain = () => {
 
@@ -27,6 +29,8 @@ const DashboardMain = () => {
         <Route path="knowledgeBase" element={<UpdatedKnowledgeGathering />} />
         <Route path="MarketResearch" element={<UpdatedMarketResearch />} />
         <Route path="PriceCalculation" element={<UpdatedPriceCalculation />} />
+        <Route path="SupplierDB" element={<SupplierDB />} />
+        <Route path="RiskManagement" element={<RiskManagement />} />
         {/* <Route path="TestComponent" element={<UpdatedTestComponent />} /> */}
       </Routes>
     </div>
